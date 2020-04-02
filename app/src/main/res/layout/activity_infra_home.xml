@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_home"
+    tools:context=".InfrastructureHead.InfraHome.InfraHome">
+
+    <!-- include tool bar -->
+    <include layout="@layout/app_tool_bar"
+        android:id="@+id/infra_tool_bar"/>
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/card_view"
+        android:layout_marginTop="@dimen/margin_top_card_news_feed"
+        android:id="@+id/scrollView"
+        android:layout_below="@+id/infra_tool_bar"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/parentLayout"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:layout_marginBottom="@dimen/card_view"
+                android:id="@+id/firstLayout"
+                android:layout_below="@+id/infra_tool_bar"
+                >
+
+                <!-- News Feed card view-->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="160dp"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:onClick="clickOnNewsFeedCard"
+                    android:layout_below="@id/infra_tool_bar"
+                    android:id="@+id/newsFeedCardViewOfInfra"
+                    android:layout_marginBottom="@dimen/edit_text_margin"
+                    android:layout_marginLeft="@dimen/edit_text_margin"
+                    android:layout_marginRight="@dimen/edit_text_margin"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="@dimen/card_elevation"
+                    app:strokeColor="@color/sign_in_txt_color"
+                    app:strokeWidth="3dp"
+                    >
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <ImageView
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:id="@+id/newsFeedImage"
+                            android:src="@drawable/newsfeed"
+                            android:layout_centerHorizontal="true"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/newsFeedImage"
+                            android:id="@+id/newsFeedText"
+                            android:text="@string/newsfeed"
+                            android:textSize="16sp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginBottom="4dp"
+                            android:textStyle="bold"
+                            />
+
+
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+                <!-- Complaints card view-->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="160dp"
+                    android:layout_below="@id/infra_tool_bar"
+                    android:layout_weight="1"
+                    android:id="@+id/complaintCardViewInInfra"
+                    android:clickable="true"
+                    android:onClick="clickOnCompCard"
+                    android:layout_marginBottom="@dimen/edit_text_margin"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:layout_marginRight="@dimen/edit_text_margin"
+                    android:layout_marginLeft="@dimen/edit_text_margin"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="@dimen/card_elevation"
+                    app:strokeColor="@color/sign_in_txt_color"
+                    app:strokeWidth="3dp"
+                    >
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <ImageView
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:layout_centerHorizontal="true"
+                            android:id="@+id/complaintImage"
+                            android:src="@drawable/newsfeed"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/complaintImage"
+                            android:id="@+id/complaintText"
+                            android:text="Complaints"
+                            android:textSize="16sp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginBottom="4dp"
+                            android:textStyle="bold"
+                            />
+
+
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:id="@+id/secondLayout"
+                android:layout_marginBottom="@dimen/card_view"
+                android:layout_marginTop="@dimen/card_view"
+                android:layout_below="@+id/firstLayout"
+                >
+
+                <!-- Worker List card view-->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="160dp"
+                    android:layout_below="@id/newsFeedCardViewOfInfra"
+                    android:layout_weight="1"
+                    android:id="@+id/workerListCardViewOfInfra"
+                    android:clickable="true"
+                    android:layout_marginBottom="@dimen/edit_text_margin"
+                    android:onClick="clickOnWorkerListCardView"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="@dimen/edit_text_margin"
+                    android:layout_marginRight="@dimen/edit_text_margin"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="@dimen/card_elevation"
+                    app:strokeColor="@color/sign_in_txt_color"
+                    app:strokeWidth="3dp"
+                    >
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:outlineSpotShadowColor="#000"
+                        >
+
+                        <ImageView
+                            android:id="@+id/workerListImageInfra"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:layout_centerHorizontal="true"
+                            android:src="@drawable/newsfeed" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/workerListImageInfra"
+                            android:id="@+id/workerListTextInfra"
+                            android:text="@string/worker_list"
+                            android:textSize="16sp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginBottom="4dp"
+                            android:textStyle="bold"
+                            />
+
+
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="160dp"
+                    android:layout_below="@id/complaintCardViewInInfra"
+                    android:layout_weight="1"
+                    android:id="@+id/nocCardViewOfInfra"
+                    android:clickable="true"
+                    android:layout_marginBottom="@dimen/edit_text_margin"
+                    android:onClick="clickOnBuildingNoc"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="@dimen/edit_text_margin"
+                    android:layout_marginRight="@dimen/edit_text_margin"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="@dimen/card_elevation"
+                    app:strokeColor="@color/sign_in_txt_color"
+                    app:strokeWidth="3dp"
+                    >
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:outlineSpotShadowColor="#000"
+                        >
+
+                        <ImageView
+                            android:id="@+id/nocImageInfra"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:layout_centerHorizontal="true"
+                            android:src="@drawable/newsfeed" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/nocImageInfra"
+                            android:id="@+id/nocTextInfra"
+                            android:text="Building Noc"
+                            android:textSize="16sp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginBottom="4dp"
+                            android:textStyle="bold"
+                            />
+
+
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="1"
+                android:id="@+id/thirdLayout"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="@dimen/card_view"
+                android:layout_marginTop="@dimen/card_view"
+                android:layout_below="@+id/secondLayout"
+                >
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="180dp"
+                    android:layout_height="160dp"
+                    android:layout_below="@id/secondLayout"
+                    android:layout_weight="1"
+                    android:id="@+id/firebrigadeCardViewOfInfra"
+                    android:clickable="true"
+                    android:onClick="clickOnFireFightingCard"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginBottom="@dimen/edit_text_margin"
+                    android:layout_marginTop="@dimen/card_view"
+                    android:layout_marginLeft="@dimen/edit_text_margin"
+                    android:layout_marginRight="@dimen/edit_text_margin"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="@dimen/card_elevation"
+                    app:strokeColor="@color/sign_in_txt_color"
+                    app:strokeWidth="3dp"
+                    >
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:outlineSpotShadowColor="#000"
+                        >
+
+                        <ImageView
+                            android:id="@+id/firebrigadeImageInfra"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:layout_centerHorizontal="true"
+                            android:src="@drawable/newsfeed" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/firebrigadeImageInfra"
+                            android:id="@+id/firebrigadeTextInfra"
+                            android:text="Fire Fighting"
+                            android:textSize="16sp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginBottom="4dp"
+                            android:textStyle="bold"
+                            />
+
+
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+
+</RelativeLayout>

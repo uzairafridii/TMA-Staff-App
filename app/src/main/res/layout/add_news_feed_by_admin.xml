@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- post news feed text view -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/sign_in_txt_color"
+        android:id="@+id/postNewsFeed"
+        android:text="Post News Feed"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:textColor="#fff"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:paddingTop="@dimen/recycler_view_margin"
+        android:inputType="text"
+        />
+
+    <!-- Edit text for title-->
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/title"
+        android:layout_marginTop="@dimen/margin_login_card_view"
+        android:layout_marginLeft="@dimen/margin_login_card_view"
+        android:layout_marginRight="@dimen/margin_login_card_view"
+        android:hint="@string/title"
+        />
+
+    <!-- Edit text for description-->
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/news_description"
+        android:layout_marginTop="@dimen/margin_login_card_view"
+        android:layout_marginLeft="@dimen/margin_login_card_view"
+        android:layout_marginRight="@dimen/margin_login_card_view"
+        android:hint="@string/description"
+        />
+
+    <!-- Btn for post news feed-->
+    <Button
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/post_news_feed"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/margin_top_login_card_view"
+        android:layout_marginBottom="@dimen/margin_login_card_view"
+        android:text="Post"
+        android:backgroundTint="@color/sign_in_txt_color"
+        android:elevation="@dimen/card_view"
+        app:cornerRadius="16dp"
+        app:icon="@drawable/ic_update_black_24dp"
+        />
+
+</LinearLayout>

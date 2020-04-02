@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/admin_bg"
+    tools:context=".Login.LoginActivity">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="550dp"
+        android:layout_marginTop="@dimen/margin_top_login_card_view"
+        android:layout_marginLeft="@dimen/margin_login_card_view"
+        android:layout_marginRight="@dimen/margin_login_card_view"
+        android:clipToPadding="false"
+        android:clipChildren="false"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="8dp"
+        app:contentPadding="@dimen/margin_login_card_view"
+        app:cardPreventCornerOverlap="false"
+        app:cardUseCompatPadding="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- Sign in text view-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtSignIn"
+                android:text="@string/sign_in"
+                android:layout_centerHorizontal="true"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/sign_in_txt_color"
+                ></TextView>
+
+            <!-- Email edit text -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:id="@+id/emailTextInputLayout"
+                android:layout_below="@id/txtSignIn"
+                android:layout_marginTop="@dimen/margin_top_login_card_view"
+                app:boxStrokeColor="@color/sign_in_txt_color"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/email"
+                    android:inputType="textEmailAddress"
+                    android:layout_marginTop="32dp"
+                    android:drawableStart="@drawable/ic_email_black_24dp"
+                    android:drawableLeft="@drawable/ic_email_black_24dp"
+                    android:drawablePadding="16dp"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Password edit text -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:id="@+id/passwordTextInputLayout"
+                android:layout_below="@id/emailTextInputLayout"
+                android:layout_marginTop="@dimen/edit_text_margin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxStrokeColor="@color/sign_in_txt_color">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/password"
+                    android:layout_marginTop="16dp"
+                    android:inputType="textPassword"
+                    android:drawableStart="@drawable/ic_remove_red_eye_black_24dp"
+                    android:drawableLeft="@drawable/ic_remove_red_eye_black_24dp"
+                    android:drawablePadding="16dp"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/remember_me"
+                android:layout_below="@id/passwordTextInputLayout"
+                android:text="@string/remember_me"
+                android:layout_marginTop="@dimen/recycler_view_margin"
+
+
+                />
+
+            <!-- Button login -->
+            <Button
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.Button"
+                android:id="@+id/btnLogin"
+                android:onClick="loginBtnClick"
+                android:backgroundTint="@color/btn_bg_color"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/remember_me"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/margin_login_card_view"
+                android:layout_marginLeft="@dimen/edit_text_margin"
+                android:layout_marginRight="@dimen/edit_text_margin"
+                android:textSize="15sp"
+                android:text="Login"
+                app:cornerRadius="16dp"/>
+
+        </RelativeLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+</RelativeLayout>

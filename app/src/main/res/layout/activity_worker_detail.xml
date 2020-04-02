@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/admin_bg"
+    tools:context=".SanitationHead.SanitationWorkers.WorkerDetailActivity">
+
+    <include
+         layout="@layout/app_tool_bar"
+        android:id="@+id/workerDetailToolBar"/>
+
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:id="@+id/workerProfileInDetail"
+        android:src="@drawable/avatar"
+        android:layout_below="@id/workerDetailToolBar"
+        android:layout_marginTop="@dimen/edit_text_margin"
+        android:layout_marginLeft="@dimen/edit_text_margin"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/workerNameInDetail"
+        android:layout_below="@id/workerDetailToolBar"
+        android:layout_toRightOf="@+id/workerProfileInDetail"
+        android:layout_marginTop="@dimen/worker_name_margin_top"
+        android:text="@string/worker_name"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginLeft="@dimen/card_view"
+        />
+
+    <RatingBar
+        style="@style/Widget.AppCompat.RatingBar.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/workerRatingBarInDetail"
+        android:layout_below="@id/workerNameInDetail"
+        android:layout_toRightOf="@id/workerProfileInDetail"
+        android:layout_marginLeft="@dimen/card_view"
+        android:layout_marginTop="@dimen/card_view"
+        android:isIndicator="true"
+        android:stepSize="0.1"
+        android:rating="3.5"
+        android:progressTint="@color/stars_color"
+        android:progressBackgroundTint="@color/stars_color"
+/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/averageRatingOfWorker"
+        android:layout_below="@id/workerNameInDetail"
+        android:layout_toRightOf="@id/workerRatingBarInDetail"
+        android:text="3.5"
+        android:textColor="@color/white"
+        android:layout_marginTop="@dimen/recycler_view_margin"
+        android:layout_marginLeft="@dimen/card_view"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/gradeOfRating"
+        android:layout_below="@+id/workerRatingBarInDetail"
+        android:layout_toRightOf="@id/workerProfileInDetail"
+        android:layout_marginLeft="@dimen/card_view"
+        android:text="@string/excellent"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/workerCommentsAndRatingList"
+        android:layout_below="@+id/workerProfileInDetail"
+        android:layout_marginTop="@dimen/margin_top_card_news_feed"
+        />
+
+</RelativeLayout>

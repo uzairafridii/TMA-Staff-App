@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Administration.NewsFeedForAdmin.NewsFeedForAdmin">
+
+
+    <include layout="@layout/app_tool_bar"
+        android:id="@+id/admin_news_feed_tool_bar"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/news_feed_admin_recycler"
+        android:layout_below="@+id/admin_news_feed_tool_bar"
+        />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/add_news_fab"
+        android:onClick="posetNewsFeedClickOnFab"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/edit_text_margin"
+        android:layout_marginBottom="@dimen/margin_login_card_view"
+        android:src="@drawable/ic_add_black_24dp"
+        app:backgroundTint="@color/sign_in_txt_color"
+        app:elevation="0dp"
+        />
+
+</RelativeLayout>

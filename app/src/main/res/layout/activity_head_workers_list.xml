@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Administration.AdminStaffManagement.WorkerListInAdminPage.WorkersListActivityInAdmin">
+
+
+    <include layout="@layout/app_tool_bar"
+        android:id="@+id/tool_bar_in_admin_page"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/worker_list_recycler_in_admin"
+        android:layout_below="@id/tool_bar_in_admin_page"
+        />
+
+
+</RelativeLayout>

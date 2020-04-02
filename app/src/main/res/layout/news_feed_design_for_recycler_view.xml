@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/newsFeedCardDesign"
+        android:layout_marginLeft="@dimen/card_view"
+        android:layout_marginRight="@dimen/card_view"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="6dp"
+        app:cardUseCompatPadding="true"
+        app:strokeColor="@color/sign_in_txt_color"
+        app:strokeWidth="1dp"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/recycler_view_margin">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/titleOfNewsFeed"
+                android:text="Title Of News Feed"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:drawableLeft="@drawable/ic_notifications_active_black_24dp"
+                android:drawablePadding="@dimen/card_view"></TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/dateAndTime"
+                android:layout_below="@+id/titleOfNewsFeed"
+                android:text="Date and time"
+                android:textSize="10sp"
+                android:layout_marginLeft="@dimen/card_view"
+                android:drawableStart="@drawable/ic_access_alarm_black_24dp"
+                android:drawableLeft="@drawable/ic_access_alarm_black_24dp"
+                android:drawablePadding="@dimen/recycler_view_margin">
+
+            </TextView>
+
+            <com.borjabravo.readmoretextview.ReadMoreTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dateAndTime"
+                android:id="@+id/descriptionOfNewsFeed"
+                android:layout_margin="@dimen/recycler_view_margin"
+                android:text="@string/dummy_text"
+                app:trimLength="70"
+                app:trimCollapsedText="@string/read_more"
+                app:colorClickableText="@color/sign_in_txt_color"
+                app:trimMode="trimModeLength"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:id="@+id/viewInNewsFeed"
+                android:layout_below="@+id/descriptionOfNewsFeed"
+                android:background="#000"
+                android:layout_margin="@dimen/recycler_view_margin"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/authorName"
+                android:layout_below="@+id/viewInNewsFeed"
+                android:layout_alignParentLeft="true"
+                android:layout_margin="@dimen/recycler_view_margin"
+                android:text="@string/posted_by"
+
+                />
+
+
+
+        </RelativeLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+</RelativeLayout>

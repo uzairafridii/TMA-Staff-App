@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- update worker text view -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/sign_in_txt_color"
+        android:id="@+id/updateWorkerTxt"
+        android:text="Update Worker Details"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:textColor="#fff"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:paddingTop="@dimen/recycler_view_margin"
+        android:inputType="text"
+        />
+
+    <!-- Edit text for worker name-->
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/worker_name_in_update_layout"
+        android:layout_marginTop="@dimen/margin_login_card_view"
+        android:layout_marginLeft="@dimen/margin_login_card_view"
+        android:layout_marginRight="@dimen/margin_login_card_view"
+        android:hint="@string/enter_worker_name"
+        android:drawableLeft="@drawable/ic_person_black_24dp"
+        android:drawablePadding="@dimen/recycler_view_margin"
+        />
+
+    <!-- Edit text for worker phone no-->
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/worker_phone_no_in_update_layout"
+        android:layout_marginTop="@dimen/margin_login_card_view"
+        android:layout_marginLeft="@dimen/margin_login_card_view"
+        android:layout_marginRight="@dimen/margin_login_card_view"
+        android:hint="@string/phone_no"
+        android:drawableLeft="@drawable/ic_phone_black_24dp"
+        android:drawablePadding="@dimen/recycler_view_margin"
+        android:inputType="phone"
+        />
+
+    <!-- Btn for update worker-->
+    <Button
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/update_worker_btn_in_update_layout"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/margin_top_login_card_view"
+        android:layout_marginBottom="@dimen/margin_login_card_view"
+        android:text="Update"
+        android:backgroundTint="@color/sign_in_txt_color"
+        android:elevation="@dimen/card_view"
+        app:cornerRadius="16dp"
+        app:icon="@drawable/ic_update_black_24dp"
+        />
+
+
+</LinearLayout>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/workerCardViewInAdmin"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:layout_marginTop="@dimen/recycler_view_margin"
+        android:layout_marginBottom="1.5dp"
+        android:layout_marginLeft="@dimen/recycler_view_margin"
+        android:layout_marginRight="@dimen/recycler_view_margin"
+        app:cardElevation="4dp"
+        app:strokeColor="#000"
+        app:strokeWidth="0.2dp"
+
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/card_elevation"
+            >
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:id="@+id/workerProfileImageInItemDesign"
+                android:src="@drawable/avatar"
+                android:layout_marginLeft="@dimen/recycler_view_margin"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/workerNameInItemDesign"
+                android:text="@string/worker_name"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_toRightOf="@+id/workerProfileImageInItemDesign"
+                android:layout_marginLeft="@dimen/recycler_view_margin"
+                android:layout_marginTop="@dimen/recycler_view_margin"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/worker_field_text_admin_worker_list"
+                android:text="Sanitation"
+                android:layout_below="@+id/workerNameInItemDesign"
+                android:layout_toRightOf="@id/workerProfileImageInItemDesign"
+                android:layout_marginLeft="@dimen/recycler_view_margin"
+                android:layout_marginTop="@dimen/recycler_view_margin"
+                />
+
+
+            <RatingBar
+                style="@style/Widget.AppCompat.RatingBar.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/workerRatingInItemDesign"
+                android:layout_alignParentRight="true"
+                android:isIndicator="true"
+                android:stepSize="0.1"
+                android:rating="3.5"
+                android:progressTint="@color/stars_color"
+                android:progressBackgroundTint="@color/stars_color"
+                android:layout_marginRight="@dimen/edit_text_margin"
+                android:layout_marginTop="@dimen/recycler_view_margin"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ratingResultInItemDesign"
+                android:text="Outstanding"
+                android:layout_below="@+id/workerRatingInItemDesign"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/edit_text_margin"
+                android:gravity="center"
+                />
+
+
+
+        </RelativeLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+</RelativeLayout>

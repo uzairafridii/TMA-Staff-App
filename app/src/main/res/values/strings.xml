@@ -1,0 +1,43 @@
+<resources>
+    <string name="app_name">TMA(Admin App)</string>
+    <string name="sign_in">Sign In</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="newsfeed">NewsFeed</string>
+    <string name="worker_list">Worker List</string>
+    <string name="dummy_text">An announcement is a statement made to the public or to the media
+        which gives information about something that has happened or that will happen. ...
+        An announcement in a public place, such as a newspaper or the window of a shop,
+        is a short piece of writing telling people about something or asking for something.!</string>
+    <string name="posted_by">Posted By Admin</string>
+    <string name="enter_worker_name">Enter Worker Name</string>
+    <string name="phone_no">Phone No</string>
+    <string name="worker_cnic">Worker Cnic</string>
+    <string name="add_worker">Add Worker</string>
+    <string name="remember_me">Remember Me</string>
+    <string name="worker_name">Worker Name</string>
+    <string name="delete_menu">Delete</string>
+    <string name="edit_menu">Edit</string>
+    <string name="detail_menu">Detail</string>
+    <string name="excellent">Excellent</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title">Title</string>
+    <string name="status_of_complaints">Status</string>
+    <string name="first_worker_name">First Worker Name</string>
+    <string name="second_worker_name">Second Worker Name</string>
+    <string name="completed">Completed</string>
+    <string name="move_to_infrastructure">Move to Infrastructure</string>
+    <string name="enter_driver_name">Enter Driver Name</string>
+    <string name="fire_fighting">Fire Fighting</string>
+    <string name="finance">Finance</string>
+    <string name="complaints">Complaints</string>
+    <string name="regulation">Regulation</string>
+    <string name="appoint_and_retire"><![CDATA[Appoint &\nRetire Details]]></string>
+    <string name="workers_head">Workers Head</string>
+    <string name="description">Description</string>
+    <string name="uc_lachi">Birth Certificates</string>
+    <string name="uc_darmalak">Death Certificates</string>
+    <string name="uc_sudal">Marriage Certificates</string>
+</resources>

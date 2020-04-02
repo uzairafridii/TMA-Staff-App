@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_home"
+    tools:context=".Administration.AdminHome.AdminHome">
+
+    <include layout="@layout/app_tool_bar"
+        android:id="@+id/administration_tool_bar"></include>
+
+
+    <!-- News Feed card view-->
+    <androidx.cardview.widget.CardView
+        android:layout_width="180dp"
+        android:layout_height="160dp"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:onClick="newsFeedCardClick"
+        android:layout_below="@id/administration_tool_bar"
+        android:id="@+id/newsFeedCardViewOfInfra"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="@dimen/edit_text_margin"
+        android:layout_marginRight="@dimen/edit_text_margin"
+        android:layout_marginTop="@dimen/margin_top_card_news_feed"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="@dimen/card_elevation"
+        app:strokeColor="@color/sign_in_txt_color"
+        app:strokeWidth="3dp"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:id="@+id/newsFeedImage"
+                android:src="@drawable/newsfeed"
+                android:layout_centerHorizontal="true"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/newsFeedImage"
+                android:id="@+id/newsFeedText"
+                android:text="@string/newsfeed"
+                android:textSize="16sp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="4dp"
+                android:textStyle="bold"
+                />
+
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+    <!-- Complaints card view-->
+    <androidx.cardview.widget.CardView
+        android:layout_width="180dp"
+        android:layout_height="160dp"
+        android:layout_below="@id/administration_tool_bar"
+        android:id="@+id/complaintCardViewInInfra"
+        android:clickable="true"
+        android:onClick="staffManagementCardClick"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/edit_text_margin"
+        android:layout_marginLeft="@dimen/edit_text_margin"
+        android:layout_marginTop="@dimen/margin_top_card_news_feed"
+        android:layout_weight="1"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="@dimen/card_elevation"
+        app:strokeColor="@color/sign_in_txt_color"
+        app:strokeWidth="3dp"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/complaintImage"
+                android:src="@drawable/newsfeed"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/complaintImage"
+                android:id="@+id/complaintText"
+                android:text="Staff Management"
+                android:textSize="16sp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="4dp"
+                android:textStyle="bold"
+                />
+
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Worker List card view-->
+    <androidx.cardview.widget.CardView
+        android:layout_width="180dp"
+        android:layout_height="160dp"
+        android:layout_below="@id/newsFeedCardViewOfInfra"
+        android:id="@+id/workerListCardViewOfInfra"
+        android:clickable="true"
+        android:onClick="financeCardClick"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="@dimen/edit_text_margin"
+        android:layout_marginTop="@dimen/edit_text_margin"
+        android:layout_marginRight="@dimen/edit_text_margin"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="@dimen/card_elevation"
+        app:strokeColor="@color/sign_in_txt_color"
+        app:strokeWidth="3dp"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:outlineSpotShadowColor="#000"
+            >
+
+            <ImageView
+                android:id="@+id/workerListImageInfra"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/newsfeed" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/workerListImageInfra"
+                android:id="@+id/workerListTextInfra"
+                android:text="@string/finance"
+                android:textSize="16sp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="4dp"
+                android:textStyle="bold"
+                />
+
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="180dp"
+        android:layout_height="160dp"
+        android:layout_below="@id/complaintCardViewInInfra"
+        android:id="@+id/nocCardViewOfInfra"
+        android:clickable="true"
+        android:onClick="complaintCardClick"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="@dimen/edit_text_margin"
+        android:layout_marginTop="@dimen/edit_text_margin"
+        android:layout_marginRight="@dimen/edit_text_margin"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="@dimen/card_elevation"
+        app:strokeColor="@color/sign_in_txt_color"
+        app:strokeWidth="3dp"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:outlineSpotShadowColor="#000"
+            >
+
+            <ImageView
+                android:id="@+id/nocImageInfra"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/newsfeed" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/nocImageInfra"
+                android:id="@+id/nocTextInfra"
+                android:text="@string/complaints"
+                android:textSize="16sp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="4dp"
+                android:textStyle="bold"
+                />
+
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>

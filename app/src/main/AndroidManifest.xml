@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.tmaadminapp">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".UnionCouncilHead.UcMain"></activity>
+        <activity android:name=".UnionCouncilHead.UnionCouncil" />
+        <activity android:name=".Administration.NewsFeedForAdmin.NewsFeedForAdmin" />
+        <activity android:name=".Administration.AdminStaffManagement.RegulationInStaffManagment.RegulationInStaffManagement" />
+        <activity android:name=".Administration.AdminStaffManagement.AppointAndRetireInStaffManagement.AppointAndRetireDetails" />
+        <activity android:name=".Administration.AdminStaffManagement.StaffManagementHome.StaffManagementHome" />
+        <activity android:name=".Administration.AdminStaffManagement.WorkerListInAdminPage.WorkersListActivityInAdmin" />
+        <activity android:name=".Administration.AdminStaffManagement.WorkerHeadList.WorkerHeadList" />
+        <activity android:name=".Administration.AdminHome.AdminHome" />
+        <activity android:name=".InfrastructureHead.BuildingNoc.BuildingNocActivity" />
+        <activity android:name=".SplashScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".InfrastructureHead.InfraComplaints.InfraComplaints" />
+        <activity android:name=".InfrastructureHead.InfraWorkerList.WorkersListActivity" />
+        <activity android:name=".InfrastructureHead.InfraHome.InfraHome" />
+        <activity android:name=".SanitationHead.ComplaintFragements.CompletedComplaints.AddCompletedWorkOnComplaint" />
+        <activity android:name=".SanitationHead.SanitationComplaints.Complaints" />
+        <activity android:name=".SanitationHead.SanitationWorkers.WorkerDetailActivity" />
+        <activity android:name=".SanitationHead.SanitationWorkers.SanitationWorkerList" />
+        <activity android:name=".NewsFeed.NewsFeedActivity.NewsFeedActivity" />
+        <activity android:name=".SanitationHead.SanitationHome.SanitationMain" />
+        <activity android:name=".Login.LoginActivity" />
+        <activity android:name=".MainActivity" />
+    </application>
+
+</manifest>
