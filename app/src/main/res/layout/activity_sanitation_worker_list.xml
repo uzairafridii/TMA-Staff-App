@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SanitationHead.SanitationWorkers.SanitationWorkerList">
+    tools:context=".AppModules.SanitationHead.SanitationWorkers.SanitationWorkerList">
 
     <RelativeLayout
         android:layout_width="match_parent"

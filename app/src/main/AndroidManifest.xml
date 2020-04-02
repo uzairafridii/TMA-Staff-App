@@ -9,16 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UnionCouncilHead.UcMain"></activity>
-        <activity android:name=".UnionCouncilHead.UnionCouncil" />
-        <activity android:name=".Administration.NewsFeedForAdmin.NewsFeedForAdmin" />
-        <activity android:name=".Administration.AdminStaffManagement.RegulationInStaffManagment.RegulationInStaffManagement" />
-        <activity android:name=".Administration.AdminStaffManagement.AppointAndRetireInStaffManagement.AppointAndRetireDetails" />
-        <activity android:name=".Administration.AdminStaffManagement.StaffManagementHome.StaffManagementHome" />
-        <activity android:name=".Administration.AdminStaffManagement.WorkerListInAdminPage.WorkersListActivityInAdmin" />
-        <activity android:name=".Administration.AdminStaffManagement.WorkerHeadList.WorkerHeadList" />
-        <activity android:name=".Administration.AdminHome.AdminHome" />
-        <activity android:name=".InfrastructureHead.BuildingNoc.BuildingNocActivity" />
+        <activity android:name=".AppModules.UnionCouncilHead.UcMain"></activity>
+        <activity android:name=".AppModules.UnionCouncilHead.UnionCouncil" />
+        <activity android:name=".AppModules.Administration.NewsFeedForAdmin.NewsFeedForAdmin" />
+        <activity android:name=".AppModules.Administration.AdminStaffManagement.RegulationInStaffManagment.RegulationInStaffManagement" />
+        <activity android:name=".AppModules.Administration.AdminStaffManagement.AppointAndRetireInStaffManagement.AppointAndRetireDetails" />
+        <activity android:name=".AppModules.Administration.AdminStaffManagement.StaffManagementHome.StaffManagementHome" />
+        <activity android:name=".AppModules.Administration.AdminStaffManagement.WorkerListInAdminPage.WorkersListActivityInAdmin" />
+        <activity android:name=".AppModules.Administration.AdminStaffManagement.WorkerHeadList.WorkerHeadList" />
+        <activity android:name=".AppModules.Administration.AdminHome.AdminHome" />
+        <activity android:name=".AppModules.InfrastructureHead.BuildingNoc.BuildingNocActivity" />
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,16 +26,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".InfrastructureHead.InfraComplaints.InfraComplaints" />
-        <activity android:name=".InfrastructureHead.InfraWorkerList.WorkersListActivity" />
-        <activity android:name=".InfrastructureHead.InfraHome.InfraHome" />
-        <activity android:name=".SanitationHead.ComplaintFragements.CompletedComplaints.AddCompletedWorkOnComplaint" />
-        <activity android:name=".SanitationHead.SanitationComplaints.Complaints" />
-        <activity android:name=".SanitationHead.SanitationWorkers.WorkerDetailActivity" />
-        <activity android:name=".SanitationHead.SanitationWorkers.SanitationWorkerList" />
-        <activity android:name=".NewsFeed.NewsFeedActivity.NewsFeedActivity" />
-        <activity android:name=".SanitationHead.SanitationHome.SanitationMain" />
-        <activity android:name=".Login.LoginActivity" />
+        <activity android:name=".AppModules.InfrastructureHead.InfraComplaints.InfraComplaints" />
+        <activity android:name=".AppModules.InfrastructureHead.InfraWorkerList.WorkersListActivity" />
+        <activity android:name=".AppModules.InfrastructureHead.InfraHome.InfraHome" />
+        <activity android:name=".AppModules.SanitationHead.ComplaintFragements.CompletedComplaints.AddCompletedWorkOnComplaint" />
+        <activity android:name=".AppModules.SanitationHead.SanitationComplaints.Complaints" />
+        <activity android:name=".AppModules.SanitationHead.SanitationWorkers.WorkerDetailActivity" />
+        <activity android:name=".AppModules.SanitationHead.SanitationWorkers.SanitationWorkerList" />
+        <activity android:name=".AppModules.NewsFeed.NewsFeedActivity.NewsFeedActivity" />
+        <activity android:name=".AppModules.SanitationHead.SanitationHome.SanitationMain" />
+        <activity android:name=".AppModules.Login.LoginActivity" />
         <activity android:name=".MainActivity" />
     </application>
 

@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".InfrastructureHead.BuildingNoc.BuildingNocActivity">
+    tools:context=".AppModules.InfrastructureHead.BuildingNoc.BuildingNocActivity">
 
     <include layout="@layout/app_tool_bar"
         android:id="@+id/noc_tool_bar"/>

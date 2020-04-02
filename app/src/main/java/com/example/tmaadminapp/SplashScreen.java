@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.WindowManager;
 
-import com.example.tmaadminapp.Login.LoginActivity;
+import com.example.tmaadminapp.AppModules.Login.LoginActivity;
 
 import static java.lang.Thread.sleep;
 

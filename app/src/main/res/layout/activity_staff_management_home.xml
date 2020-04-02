@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_home"
-    tools:context=".Administration.AdminStaffManagement.StaffManagementHome.StaffManagementHome">
+    tools:context=".AppModules.Administration.AdminStaffManagement.StaffManagementHome.StaffManagementHome">
 
 
     <include layout="@layout/app_tool_bar"

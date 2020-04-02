@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_home"
-    tools:context=".UnionCouncilHead.UnionCouncil">
+    tools:context=".AppModules.UnionCouncilHead.UnionCouncil">
 
     <include layout="@layout/app_tool_bar"
         android:id="@+id/union_council_tool_bar"></include>

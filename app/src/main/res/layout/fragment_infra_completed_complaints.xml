@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".InfrastructureHead.ComplaintsFragments.CompletedComplaints.InfraCompletedComplaints">
+    tools:context=".AppModules.InfrastructureHead.ComplaintsFragments.CompletedComplaints.InfraCompletedComplaints">
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
