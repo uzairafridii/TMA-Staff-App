@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-    <com.google.android.material.card.MaterialCardView
+    <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/newsFeedCardDesign"
@@ -14,8 +14,6 @@
         app:cardCornerRadius="8dp"
         app:cardElevation="6dp"
         app:cardUseCompatPadding="true"
-        app:strokeColor="@color/sign_in_txt_color"
-        app:strokeWidth="1dp"
         >
 
         <RelativeLayout
@@ -106,7 +104,7 @@
         </RelativeLayout>
 
 
-    </com.google.android.material.card.MaterialCardView>
+    </androidx.cardview.widget.CardView>
 
 
 

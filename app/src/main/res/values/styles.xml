@@ -10,4 +10,17 @@
 
     </style>
 
+
+    <style name="TextLabel" parent="TextAppearance.AppCompat">
+        <!-- Label color in TRUE state and bar color FALSE and TRUE State -->
+        <item name="android:textColorHint">#C0C0C0</item>
+        <item name="colorControlActivated">@color/sign_in_txt_color</item>
+    </style>
+
+    <style name="MyAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">@color/sign_in_txt_color</item>
+    </style>
+
+
+
 </resources>

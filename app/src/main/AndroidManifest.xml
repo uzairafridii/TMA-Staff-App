@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.tmaadminapp">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AppModules.UnionCouncilHead.UcMain"></activity>
+        <activity android:name=".AppModules.Administration.AdminStaffManagement.ComplaintsListForAdmin.AdminComplaintsPage"></activity>
+        <activity android:name=".AppModules.UnionCouncilHead.UcMain" />
         <activity android:name=".AppModules.UnionCouncilHead.UnionCouncil" />
         <activity android:name=".AppModules.Administration.NewsFeedForAdmin.NewsFeedForAdmin" />
         <activity android:name=".AppModules.Administration.AdminStaffManagement.RegulationInStaffManagment.RegulationInStaffManagement" />

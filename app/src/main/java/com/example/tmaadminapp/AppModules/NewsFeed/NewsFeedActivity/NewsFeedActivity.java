@@ -32,7 +32,6 @@ public class NewsFeedActivity extends AppCompatActivity {
         setContentView(R.layout.activity_news_feed);
 
         initViews();
-        setItemsOfRecyclerView();
 
         mRecyclerView.setAdapter(adapterForNewsFeed);
 
@@ -57,7 +56,6 @@ public class NewsFeedActivity extends AppCompatActivity {
         // tool bar
         mToolbar = findViewById(R.id.newsFeedToolBar);
         setTitle("News Feed");
-        setTitleColor(Color.WHITE);
         setSupportActionBar(mToolbar);
 
         //action bar
@@ -65,16 +63,5 @@ public class NewsFeedActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
-    private void setItemsOfRecyclerView()
-    {
-        String date = DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
 
-        modelArrayList.add(new NewsFeedModel("First" , getString(R.string.dummy_text) , "By Admin",date ));
-        modelArrayList.add(new NewsFeedModel("Second" , getString(R.string.dummy_text) , "By Clerk",date ));
-        modelArrayList.add(new NewsFeedModel("Third" , getString(R.string.dummy_text) , "By Admin",date ));
-        modelArrayList.add(new NewsFeedModel("Fourth" , getString(R.string.dummy_text) , "By Admin",date ));
-        modelArrayList.add(new NewsFeedModel("Fifth" , getString(R.string.dummy_text) , "By Clerk",date ));
-        modelArrayList.add(new NewsFeedModel("Sixth" , getString(R.string.dummy_text) , "By Admin",date ));
-        modelArrayList.add(new NewsFeedModel("Seven" , getString(R.string.dummy_text) , "By Clerk",date ));
-    }
 }

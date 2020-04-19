@@ -24,39 +24,49 @@
     <!-- Edit text for title-->
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/title"
+        android:layout_height="40dp"
+        android:id="@+id/news_title_in_admin"
+        android:background="@drawable/edit_text_bg"
+        android:padding="@dimen/card_view"
         android:layout_marginTop="@dimen/margin_login_card_view"
-        android:layout_marginLeft="@dimen/margin_login_card_view"
-        android:layout_marginRight="@dimen/margin_login_card_view"
+        android:layout_marginLeft="@dimen/card_view"
+        android:layout_marginRight="@dimen/card_view"
         android:hint="@string/title"
+        android:textSize="12sp"
+        android:inputType="text"
         />
 
     <!-- Edit text for description-->
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/news_description"
-        android:layout_marginTop="@dimen/margin_login_card_view"
-        android:layout_marginLeft="@dimen/margin_login_card_view"
-        android:layout_marginRight="@dimen/margin_login_card_view"
+        android:id="@+id/news_description_in_admin"
+        android:background="@drawable/edit_text_bg"
+        android:padding="@dimen/card_view"
+        android:layout_marginTop="@dimen/edit_text_margin"
+        android:layout_marginLeft="@dimen/card_view"
+        android:layout_marginRight="@dimen/card_view"
         android:hint="@string/description"
+        android:textSize="12sp"
+        android:inputType="text"
         />
 
     <!-- Btn for post news feed-->
     <Button
         style="@style/Widget.MaterialComponents.Button"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:id="@+id/post_news_feed"
+        android:id="@+id/post_news_feed_submit"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/margin_top_login_card_view"
-        android:layout_marginBottom="@dimen/margin_login_card_view"
+        android:layout_marginLeft="@dimen/margin_login_card_view"
+        android:layout_marginRight="@dimen/margin_login_card_view"
+        android:layout_marginTop="@dimen/edit_text_margin"
+        android:layout_marginBottom="@dimen/edit_text_margin"
         android:text="Post"
         android:backgroundTint="@color/sign_in_txt_color"
         android:elevation="@dimen/card_view"
-        app:cornerRadius="16dp"
-        app:icon="@drawable/ic_update_black_24dp"
+        app:cornerRadius="@dimen/card_view"
         />
+
 
 </LinearLayout>

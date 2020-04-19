@@ -10,4 +10,6 @@
     <dimen name="fab_margin_right">8dp</dimen>
     <dimen name="card_elevation">8dp</dimen>
     <dimen name="worker_name_margin_top">32dp</dimen>
+    <dimen name="padding_10">10dp</dimen>
+    <dimen name="margin_24">24dp</dimen>
 </resources>
