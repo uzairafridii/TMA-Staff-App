@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".AppModules.Administration.AdminStaffManagement.WorkerHeadList.BottomSheetWorkerHeadDetails">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_for_detail_bottom_sheet"
+            android:paddingBottom="@dimen/margin_top_login_card_view"
+
+            >
+            <View
+                android:layout_width="70dp"
+                android:layout_height="3dp"
+                android:id="@+id/view"
+                android:paddingTop="@dimen/recycler_view_margin"
+                android:layout_marginBottom="@dimen/edit_text_margin"
+                android:background="@android:color/darker_gray"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/recycler_view_margin"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/workerHeadNameInBottomSheet"
+                android:text="Name : "
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:layout_below="@id/view"
+                android:layout_marginLeft="@dimen/edit_text_margin"
+                android:layout_marginTop="@dimen/edit_text_margin"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/nameInBottomSheet"
+                android:text="name"
+                android:textSize="14sp"
+                android:layout_below="@id/view"
+                android:layout_toRightOf="@+id/workerHeadNameInBottomSheet"
+                android:layout_marginLeft="@dimen/edit_text_margin"
+                android:layout_marginTop="@dimen/edit_text_margin"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/workerHeadEmailInBottomSheet"
+                android:text="email : "
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="@dimen/edit_text_margin"
+                android:layout_marginTop="@dimen/edit_text_margin"
+                android:layout_below="@+id/workerHeadNameInBottomSheet"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/emailInBottomSheet"
+                android:text="abac@gmail.com "
+                android:textSize="14sp"
+                android:layout_toRightOf="@+id/workerHeadEmailInBottomSheet"
+                android:layout_below="@+id/nameInBottomSheet"
+                android:layout_marginLeft="@dimen/edit_text_margin"
+                android:layout_marginTop="@dimen/edit_text_margin"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/workerHeadPhoneInBottomSheet"
+                android:text="Phone : "
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="@dimen/edit_text_margin"
+                android:layout_marginTop="@dimen/edit_text_margin"
+                android:layout_below="@+id/workerHeadEmailInBottomSheet"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/phoneInBottomSheet"
+                android:text="034433433577 "
+                android:textSize="14sp"
+                android:layout_toRightOf="@+id/workerHeadPhoneInBottomSheet"
+                android:layout_below="@+id/emailInBottomSheet"
+                android:layout_marginLeft="@dimen/edit_text_margin"
+                android:layout_marginTop="@dimen/edit_text_margin"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/workerHeadDepartmentInBottomSheet"
+                android:text="Department : "
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="@dimen/edit_text_margin"
+                android:layout_marginTop="@dimen/edit_text_margin"
+                android:layout_below="@+id/workerHeadPhoneInBottomSheet"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/departmentInBottomSheet"
+                android:text="snaitation "
+                android:textSize="14sp"
+                android:layout_toRightOf="@+id/workerHeadDepartmentInBottomSheet"
+                android:layout_below="@+id/phoneInBottomSheet"
+                android:layout_marginLeft="@dimen/edit_text_margin"
+                android:layout_marginTop="@dimen/edit_text_margin"
+                />
+
+        </RelativeLayout>
+
+
+
+
+
+
+</RelativeLayout>

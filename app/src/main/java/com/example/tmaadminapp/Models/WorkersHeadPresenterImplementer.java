@@ -65,11 +65,11 @@ public class WorkersHeadPresenterImplementer implements WorkersHeadPresenter
                             final Map<String, String> workerHeadData = new HashMap<>();
                             workerHeadData.put("name_worker_head", name);
                             workerHeadData.put("phone", phone);
-                            workerHeadData.put("worker_head_field", department);
+                            workerHeadData.put("department", department);
                             workerHeadData.put("password", password);
                             workerHeadData.put("email", email);
                             workerHeadData.put("pushKey", pushKey);
-                            workerHeadData.put("token", deviceToken);
+                            workerHeadData.put("token", "null for this time");
                             workerHeadData.put("uid", mAuth.getCurrentUser().getUid());
 
                             // store data in firebase database

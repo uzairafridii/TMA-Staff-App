@@ -106,7 +106,7 @@ public class WorkerHeadList extends AppCompatActivity implements WorkerHeadView
     @Override
     public void onGetAllWorkerHeadDetails(List<ModelForWorkerHead> workerHeadList) {
 
-        adapter = new AdapterForWorkerHeadRecycler(workerHeadList , this);
+        adapter = new AdapterForWorkerHeadRecycler(workerHeadList , this, databaseReference , this);
         mRecyclerView.setAdapter(adapter);
 
     }

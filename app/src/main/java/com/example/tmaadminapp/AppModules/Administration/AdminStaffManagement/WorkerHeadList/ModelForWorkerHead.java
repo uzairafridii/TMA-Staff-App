@@ -2,28 +2,26 @@ package com.example.tmaadminapp.AppModules.Administration.AdminStaffManagement.W
 
 public class ModelForWorkerHead
 {
-    private String name_worker_head , worker_head_field;
+    private String name_worker_head , department , pushKey ;
 
+    public ModelForWorkerHead(String name_worker_head, String department, String pushKey) {
+        this.name_worker_head = name_worker_head;
+        this.department = department;
+        this.pushKey = pushKey;
 
-
-    public ModelForWorkerHead(String nameOfWorkerHead, String fieldOfWorkerHead) {
-        this.name_worker_head = nameOfWorkerHead;
-        this.worker_head_field = fieldOfWorkerHead;
     }
 
-    public String getNameOfWorkerHead() {
+    public ModelForWorkerHead() {}
+
+    public String getName_worker_head() {
         return name_worker_head;
     }
 
-    public void setNameOfWorkerHead(String nameOfWorkerHead) {
-        this.name_worker_head = nameOfWorkerHead;
+    public String getDepartment() {
+        return department;
     }
 
-    public String getFieldOfWorkerHead() {
-        return worker_head_field;
-    }
-
-    public void setFieldOfWorkerHead(String fieldOfWorkerHead) {
-        this.worker_head_field = fieldOfWorkerHead;
+    public String getPushKey() {
+        return pushKey;
     }
 }
