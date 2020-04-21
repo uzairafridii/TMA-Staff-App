@@ -4,20 +4,23 @@ import java.util.List;
 
 public class ModelForTotalComplaints
 {
-    private String title , description , status , field , date;
+    private String title , description , status , field , date , uid , name;
     private List<String> imageUrl;
 
 
     public ModelForTotalComplaints() {
     }
 
-    public ModelForTotalComplaints(String title, String description, String status, String field, String date, List<String> imageUrl) {
-        this.title = title;
-        this.description = description;
-        this.status = status;
-        this.field = field;
-        this.date = date;
-        this.imageUrl = imageUrl;
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getUid() {
+        return uid;
     }
 
     public String getTitle() {

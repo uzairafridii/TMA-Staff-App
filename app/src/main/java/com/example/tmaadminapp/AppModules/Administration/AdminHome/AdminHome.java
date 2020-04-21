@@ -30,7 +30,7 @@ public class AdminHome extends AppCompatActivity implements AdminHomeView
         adminHomePresenter = new AdminHomePresenterImplementer(this);
     }
 
-    // call backs methods
+    // call backs methods of admin home view
     @Override
     public void onNewsFeedCardClick()
     {
@@ -39,7 +39,7 @@ public class AdminHome extends AppCompatActivity implements AdminHomeView
 
     @Override
     public void onStaffManagementCardClick() {
-        startActivity(new Intent(AdminHome.this , NewsFeedForAdmin.class));
+        startActivity(new Intent(AdminHome.this , StaffManagementHome.class));
     }
 
     @Override

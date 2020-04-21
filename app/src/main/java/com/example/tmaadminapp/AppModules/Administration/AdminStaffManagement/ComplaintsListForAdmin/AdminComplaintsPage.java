@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.tmaadminapp.Models.AdminComplaintPresenterImplementer;
@@ -21,6 +23,7 @@ public class AdminComplaintsPage extends AppCompatActivity implements AdminCompa
 
     private Toolbar mToolbar;
     private RecyclerView totalComplaintRecyclerView;
+    private TextView noItemFoundTextView;
     private LinearLayoutManager layoutManager;
     private AdapterTotalComplaintRv adapterTotalComplaintRv;
     private AdminComplaintPreseneter adminComplaintPreseneter;
@@ -36,14 +39,17 @@ public class AdminComplaintsPage extends AppCompatActivity implements AdminCompa
         adminComplaintPreseneter.getAllComplaints(databaseReference);
     }
 
-    private void initViews() {
+    private void initViews()
+    {
+
         adminComplaintPreseneter = new AdminComplaintPresenterImplementer(this);
 
         // tool bar
         mToolbar = findViewById(R.id.adminTotalComplaintToolbar);
         setSupportActionBar(mToolbar);
         setTitle("Total Complaints");
-        // getActionBar().setDisplayHomeAsUpEnabled(true);
+
+        noItemFoundTextView = findViewById(R.id.noItemFoundTextView);
 
         // recycler view
         totalComplaintRecyclerView = findViewById(R.id.allComplaintsRv);
@@ -62,13 +68,18 @@ public class AdminComplaintsPage extends AppCompatActivity implements AdminCompa
      */
     @Override
     public void onGetComplaints(List<ModelForTotalComplaints> complaintsList) {
-        adapterTotalComplaintRv = new AdapterTotalComplaintRv(this, complaintsList);
+        adapterTotalComplaintRv = new AdapterTotalComplaintRv(this, complaintsList , this);
         totalComplaintRecyclerView.setAdapter(adapterTotalComplaintRv);
     }
 
     @Override
     public void showErrorMessage(String message) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onHideTextView() {
+        noItemFoundTextView.setVisibility(View.INVISIBLE);
     }
 
 }

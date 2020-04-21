@@ -16,13 +16,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.tmaadminapp.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class AdapterForWorkerHeadRecycler extends RecyclerView.Adapter<AdapterForWorkerHeadRecycler.MyHeadViewHolder>
 {
-    private ArrayList<ModelForWorkerHead> arrayList;
+    private List<ModelForWorkerHead> arrayList;
     private Context context;
 
-    public AdapterForWorkerHeadRecycler(ArrayList<ModelForWorkerHead> arrayList, Context context) {
+    public AdapterForWorkerHeadRecycler(List<ModelForWorkerHead> arrayList, Context context) {
         this.arrayList = arrayList;
         this.context = context;
     }

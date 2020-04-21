@@ -12,7 +12,7 @@
         app:cardCornerRadius="@dimen/card_view"
         >
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/recycler_view_margin"
@@ -26,12 +26,10 @@
                 android:src="@drawable/tma_logo"
                 android:layout_marginLeft="@dimen/edit_text_margin"
                 android:layout_marginTop="@dimen/card_view"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 />
 
             <TextView
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/titleInAdminRv"
                 android:text="Title"
@@ -40,10 +38,21 @@
                 android:textColor="@android:color/black"
                 android:layout_marginTop="@dimen/padding_10"
                 android:layout_marginLeft="@dimen/padding_10"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintLeft_toRightOf="@+id/complainImageForAdminRv"
+                android:layout_marginRight="@dimen/padding_10"
+                android:layout_toLeftOf="@+id/complainType"
+                android:layout_toRightOf="@+id/complainImageForAdminRv"
                 />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/dateInAdminRv"
+                android:text="Date and time"
+                android:textSize="10sp"
+                android:layout_marginLeft="@dimen/padding_10"
+                android:layout_toRightOf="@id/complainImageForAdminRv"
+                android:layout_below="@+id/titleInAdminRv"
+                />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -60,19 +69,23 @@
                 android:background="@color/sign_in_txt_color"
                 android:layout_marginTop="@dimen/card_view"
                 android:layout_marginRight="@dimen/edit_text_margin"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                android:layout_alignParentRight="true"
                 />
 
-            <TextView
+            <com.borjabravo.readmoretextview.ReadMoreTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/descriptionInAdminRv"
-                android:text="Description"
+                android:text="Description this is descroption of complaitn in this i will ssfh lhsdlri dlf hi hi hi ih"
                 android:layout_marginTop="@dimen/padding_10"
                 android:layout_marginLeft="@dimen/padding_10"
-                app:layout_constraintLeft_toRightOf="@+id/complainImageForAdminRv"
-                app:layout_constraintTop_toBottomOf="@+id/titleInAdminRv"
+                android:layout_marginRight="@dimen/edit_text_margin"
+                app:showTrimExpandedText="true"
+                app:trimCollapsedText="@string/read_more"
+                app:trimLength="80"
+                app:trimMode="trimModeLength"
+                android:layout_toRightOf="@+id/complainImageForAdminRv"
+                android:layout_below="@+id/dateInAdminRv"
                 />
 
             <View
@@ -83,19 +96,21 @@
                 android:layout_marginTop="@dimen/margin_24"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/descriptionInAdminRv"
+                android:layout_below="@+id/descriptionInAdminRv"
                 />
 
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/dateInAdminRv"
-                android:text="Date and time"
+                android:id="@+id/userName"
+                android:text="User name"
+                android:textSize="12sp"
+                android:textColor="@android:color/black"
                 android:layout_marginTop="@dimen/recycler_view_margin"
                 android:layout_marginLeft="@dimen/edit_text_margin"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/view"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/view"
                 />
 
             <TextView
@@ -105,12 +120,12 @@
                 android:text="Status"
                 android:layout_marginRight="@dimen/edit_text_margin"
                 android:layout_marginTop="@dimen/recycler_view_margin"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/view"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/view"
                 />
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
 

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/sign_in_txt_color"
+        android:id="@+id/signUpText"
+        android:text="Worker Heaad Sign Up"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="#fff"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:paddingTop="@dimen/recycler_view_margin"
+        />
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:id="@+id/worker_head_name"
+                android:background="@drawable/edit_text_bg"
+                android:hint="Worker head name"
+                android:layout_marginTop="@dimen/margin_login_card_view"
+                android:layout_marginLeft="@dimen/margin_login_card_view"
+                android:layout_marginRight="@dimen/margin_login_card_view"
+                android:paddingLeft="@dimen/recycler_view_margin"
+                android:drawableLeft="@drawable/ic_person_black_24dp"
+                android:drawablePadding="@dimen/recycler_view_margin"
+                android:inputType="text"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:id="@+id/worker_head_phone_no"
+                android:background="@drawable/edit_text_bg"
+                android:hint="@string/phone_no"
+                android:layout_marginTop="@dimen/margin_login_card_view"
+                android:layout_marginLeft="@dimen/margin_login_card_view"
+                android:layout_marginRight="@dimen/margin_login_card_view"
+                android:paddingLeft="@dimen/recycler_view_margin"
+                android:drawableLeft="@drawable/ic_phone_black_24dp"
+                android:drawablePadding="@dimen/recycler_view_margin"
+                android:inputType="phone"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:id="@+id/worker_head_email"
+                android:background="@drawable/edit_text_bg"
+                android:hint="Enter email"
+                android:layout_marginTop="@dimen/margin_login_card_view"
+                android:layout_marginLeft="@dimen/margin_login_card_view"
+                android:layout_marginRight="@dimen/margin_login_card_view"
+                android:paddingLeft="@dimen/recycler_view_margin"
+                android:drawableLeft="@drawable/ic_email"
+                android:drawablePadding="@dimen/recycler_view_margin"
+                android:inputType="textEmailAddress"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:id="@+id/worker_head_dept"
+                android:background="@drawable/edit_text_bg"
+                android:hint="Enter department"
+                android:layout_marginTop="@dimen/margin_login_card_view"
+                android:layout_marginLeft="@dimen/margin_login_card_view"
+                android:layout_marginRight="@dimen/margin_login_card_view"
+                android:paddingLeft="@dimen/recycler_view_margin"
+                android:drawableLeft="@drawable/ic_accessibility_black_24dp"
+                android:drawablePadding="@dimen/recycler_view_margin"
+                android:inputType="text"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:id="@+id/worker_head_password"
+                android:background="@drawable/edit_text_bg"
+                android:hint="Enter password"
+                android:paddingLeft="@dimen/recycler_view_margin"
+                android:layout_marginTop="@dimen/margin_login_card_view"
+                android:layout_marginLeft="@dimen/margin_login_card_view"
+                android:layout_marginRight="@dimen/margin_login_card_view"
+                android:drawableLeft="@drawable/ic_visibility_black_24dp"
+                android:drawablePadding="@dimen/recycler_view_margin"
+                android:inputType="textPassword"
+                />
+
+            <Button
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/registerWorkerHeadButton"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/margin_top_login_card_view"
+                android:layout_marginBottom="@dimen/margin_login_card_view"
+                android:text="Register"
+                android:backgroundTint="@color/sign_in_txt_color"
+                app:cornerRadius="16dp"
+                android:elevation="@dimen/card_view"
+
+
+                />
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</LinearLayout>

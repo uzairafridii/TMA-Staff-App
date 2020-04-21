@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.tmaadminapp.R;
+import com.example.tmaadminapp.Views.AdminCompaintView;
 
 import java.util.List;
 
@@ -21,10 +22,12 @@ public class AdapterTotalComplaintRv extends RecyclerView.Adapter<AdapterTotalCo
 
     private Context context;
     private List<ModelForTotalComplaints> list;
+    private AdminCompaintView adminCompaintView;
 
-    public AdapterTotalComplaintRv(Context context, List<ModelForTotalComplaints> list) {
+    public AdapterTotalComplaintRv(Context context, List<ModelForTotalComplaints> list, AdminCompaintView adminCompaintView) {
         this.context = context;
         this.list = list;
+        this.adminCompaintView = adminCompaintView;
     }
 
     @NonNull
@@ -46,17 +49,27 @@ public class AdapterTotalComplaintRv extends RecyclerView.Adapter<AdapterTotalCo
         holder.setType(complaints.getField());
         holder.setDate(complaints.getDate());
         holder.setComplaintImage(complaints.getImageUrl());
+        holder.setUserName(complaints.getName());
 
 
     }
 
     @Override
     public int getItemCount() {
-        return list.size();
+
+        if(list.size() > 0)
+        {
+            adminCompaintView.onHideTextView();
+            return list.size();
+        }
+        else
+            {
+            return list.size();
+        }
     }
 
     public class MyCompaintViewHolder extends RecyclerView.ViewHolder {
-        private TextView title, description, status, date, type;
+        private TextView title, description, status, date, type , userName;
         private ImageView complaintImage;
         private View complaintView;
 
@@ -94,6 +107,11 @@ public class AdapterTotalComplaintRv extends RecyclerView.Adapter<AdapterTotalCo
         private void setType(String complainType) {
             type = complaintView.findViewById(R.id.complainType);
             type.setText(complainType);
+        }
+
+        private void setUserName(String name) {
+            userName = complaintView.findViewById(R.id.userName);
+            userName.setText("Complaint By: "+name);
         }
 
         private void setDate(String complainDate) {

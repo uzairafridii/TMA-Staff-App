@@ -2,28 +2,28 @@ package com.example.tmaadminapp.AppModules.Administration.AdminStaffManagement.W
 
 public class ModelForWorkerHead
 {
-    private String nameOfWorkerHead , fieldOfWorkerHead;
-    //private int image;
+    private String name_worker_head , worker_head_field;
+
 
 
     public ModelForWorkerHead(String nameOfWorkerHead, String fieldOfWorkerHead) {
-        this.nameOfWorkerHead = nameOfWorkerHead;
-        this.fieldOfWorkerHead = fieldOfWorkerHead;
+        this.name_worker_head = nameOfWorkerHead;
+        this.worker_head_field = fieldOfWorkerHead;
     }
 
     public String getNameOfWorkerHead() {
-        return nameOfWorkerHead;
+        return name_worker_head;
     }
 
     public void setNameOfWorkerHead(String nameOfWorkerHead) {
-        this.nameOfWorkerHead = nameOfWorkerHead;
+        this.name_worker_head = nameOfWorkerHead;
     }
 
     public String getFieldOfWorkerHead() {
-        return fieldOfWorkerHead;
+        return worker_head_field;
     }
 
     public void setFieldOfWorkerHead(String fieldOfWorkerHead) {
-        this.fieldOfWorkerHead = fieldOfWorkerHead;
+        this.worker_head_field = fieldOfWorkerHead;
     }
 }

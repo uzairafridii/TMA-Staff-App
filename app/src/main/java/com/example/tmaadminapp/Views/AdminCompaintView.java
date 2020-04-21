@@ -12,4 +12,6 @@ public interface AdminCompaintView
 
     void showErrorMessage(String message);
 
+    void onHideTextView();
+
 }

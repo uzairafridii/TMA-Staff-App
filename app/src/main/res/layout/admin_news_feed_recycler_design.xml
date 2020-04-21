@@ -38,10 +38,10 @@
                 android:layout_below="@+id/titleOfNewsFeed"
                 android:text="Date and time"
                 android:textSize="10sp"
-                android:layout_marginLeft="@dimen/card_view"
+                android:paddingLeft="@dimen/recycler_view_margin"
                 android:drawableStart="@drawable/ic_access_alarm_black_24dp"
                 android:drawableLeft="@drawable/ic_access_alarm_black_24dp"
-                android:drawablePadding="@dimen/recycler_view_margin">
+                android:drawablePadding="@dimen/card_view">
 
             </TextView>
 
