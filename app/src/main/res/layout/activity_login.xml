@@ -36,18 +36,18 @@
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:textColor="@color/sign_in_txt_color"
-                ></TextView>
+                />
 
             <!-- Email edit text -->
             <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:id="@+id/emailTextInputLayout"
-                android:layout_below="@id/txtSignIn"
-                android:layout_marginTop="@dimen/margin_top_login_card_view"
+                android:id="@+id/emailTextInputLayoutLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:boxStrokeColor="@color/sign_in_txt_color"
                 android:theme="@style/TextLabel"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_marginTop="@dimen/edit_text_margin"
+                android:layout_below="@id/txtSignIn"
+                app:boxStrokeColor="@color/sign_in_txt_color"
 
                 >
 
@@ -56,45 +56,51 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/email"
                     android:inputType="textEmailAddress"
-                    android:layout_marginTop="32dp"
+                    android:paddingLeft="@dimen/edit_text_margin"
+                    android:paddingRight="@dimen/edit_text_margin"
+                    android:textColorHint="@color/sign_in_txt_color"
                     android:drawableEnd="@drawable/ic_email_black_24dp"
                     android:drawableRight="@drawable/ic_email_black_24dp"
-                    android:drawablePadding="16dp"
-                    android:paddingLeft="@dimen/card_view"
-                    android:paddingRight="@dimen/card_view"/>
+                    android:drawablePadding="16dp"/>
+
+
 
             </com.google.android.material.textfield.TextInputLayout>
 
+
             <!-- Password edit text -->
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/passwordTextInputLayoutLogin"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:id="@+id/passwordTextInputLayout"
-                android:layout_below="@id/emailTextInputLayout"
+                android:layout_below="@id/emailTextInputLayoutLogin"
                 android:layout_marginTop="@dimen/edit_text_margin"
+                android:theme="@style/TextLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:theme="@style/TextLabel"
+                app:boxStrokeColor="@color/sign_in_txt_color"
                 app:passwordToggleEnabled="true"
                 app:passwordToggleTint="@color/sign_in_txt_color"
+
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/password"
+                    android:paddingLeft="@dimen/edit_text_margin"
+                    android:paddingRight="@dimen/edit_text_margin"
                     android:layout_marginTop="16dp"
                     android:inputType="textPassword"
-                    android:drawablePadding="16dp"
-                    android:paddingLeft="@dimen/card_view"
-                    android:paddingRight="@dimen/card_view"/>
+                    android:drawablePadding="16dp"/>
 
             </com.google.android.material.textfield.TextInputLayout>
+
 
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/remember_me"
-                android:layout_below="@id/passwordTextInputLayout"
+                android:layout_below="@id/passwordTextInputLayoutLogin"
                 android:text="@string/remember_me"
                 android:layout_marginTop="@dimen/recycler_view_margin"
                 android:buttonTint="@color/sign_in_txt_color"

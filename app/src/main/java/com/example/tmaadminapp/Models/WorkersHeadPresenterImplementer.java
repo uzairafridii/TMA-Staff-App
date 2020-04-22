@@ -15,7 +15,6 @@ import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 
@@ -54,13 +53,12 @@ public class WorkersHeadPresenterImplementer implements WorkersHeadPresenter
                         @Override
                         public void onSuccess(InstanceIdResult instanceIdResult) {
 
-                            DatabaseReference databaseReference = dbRef.child("Workers Head").push();
 
-                            // get token and pushkey
+                            // get token
                             String deviceToken = instanceIdResult.getToken();
                             Log.d("deviceTokenByAdmin", "onSuccess: "+deviceToken);
-                            String pushKey = databaseReference.getRef().getKey();
 
+                            //TODO : token id is left to store in database
                             // set data in map
                             final Map<String, String> workerHeadData = new HashMap<>();
                             workerHeadData.put("name_worker_head", name);
@@ -68,12 +66,12 @@ public class WorkersHeadPresenterImplementer implements WorkersHeadPresenter
                             workerHeadData.put("department", department);
                             workerHeadData.put("password", password);
                             workerHeadData.put("email", email);
-                            workerHeadData.put("pushKey", pushKey);
                             workerHeadData.put("token", "null for this time");
                             workerHeadData.put("uid", mAuth.getCurrentUser().getUid());
 
                             // store data in firebase database
-                            databaseReference.setValue(workerHeadData).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            dbRef.child("Workers Head").child(mAuth.getCurrentUser().getUid())
+                                    .setValue(workerHeadData).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
 

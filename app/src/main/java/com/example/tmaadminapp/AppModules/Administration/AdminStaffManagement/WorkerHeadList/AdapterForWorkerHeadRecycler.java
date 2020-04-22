@@ -2,6 +2,7 @@ package com.example.tmaadminapp.AppModules.Administration.AdminStaffManagement.W
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -79,23 +80,24 @@ public class AdapterForWorkerHeadRecycler extends RecyclerView.Adapter<AdapterFo
                 menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
+
                         switch (item.getItemId())
                         {
                             case R.id.edit:
                             {
-                                holder.updateValueDialog(model.getPushKey());
+                                holder.updateValueDialog(model.getUid());
                                 break;
                             }
 
                             case R.id.delete:
                             {
-                                holder.deleteCurrentValue(model.getPushKey());
+                                holder.deleteCurrentValue(model.getUid());
                                 break;
                             }
 
                             case R.id.detail:
                             {
-                                new BottomSheetWorkerHeadDetails(model.getPushKey()).show(((FragmentActivity)context)
+                                new BottomSheetWorkerHeadDetails(model.getUid()).show(((FragmentActivity)context)
                                         .getSupportFragmentManager(), "detail bottom sheet");
                                 break;
 
@@ -148,6 +150,7 @@ public class AdapterForWorkerHeadRecycler extends RecyclerView.Adapter<AdapterFo
         private void deleteCurrentValue(final String key)
         {
 
+            Log.d("userKey", "deleteCurrentValue: "+key);
             AlertDialog.Builder alert = new AlertDialog.Builder(mView.getRootView().getContext());
             alert.setMessage("Do you want to delete worker head?");
             alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
@@ -156,7 +159,7 @@ public class AdapterForWorkerHeadRecycler extends RecyclerView.Adapter<AdapterFo
 
 
 
-                    Query query = databaseReference.child("Workers Head").orderByChild("pushKey").equalTo(key);
+                    Query query = databaseReference.child("Workers Head").orderByChild("uid").equalTo(key);
 
                     query.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -165,6 +168,8 @@ public class AdapterForWorkerHeadRecycler extends RecyclerView.Adapter<AdapterFo
                             // remove current item
                             for (DataSnapshot data : dataSnapshot.getChildren()) {
                                 data.getRef().removeValue();
+
+                                Log.d("refKeyChecking", "onDataChange: "+data.getRef());
 
                                 dialogInterface.dismiss();
                                 arrayList.remove(getAdapterPosition());
@@ -195,7 +200,7 @@ public class AdapterForWorkerHeadRecycler extends RecyclerView.Adapter<AdapterFo
         }
 
         /// update value dialog
-        private void updateValueDialog(final String refKey) {
+        private void updateValueDialog(final String uid) {
             View myView = LayoutInflater.from(context).inflate(R.layout.workers_head_sign_up, null);
             AlertDialog.Builder alert = new AlertDialog.Builder(mView.getRootView().getContext());
             alert.setView(myView);
@@ -241,7 +246,7 @@ public class AdapterForWorkerHeadRecycler extends RecyclerView.Adapter<AdapterFo
                         updateData.put("department", department.getText().toString());
 
                         //store update data in firebase
-                        databaseReference.child("Workers Head").child(refKey).updateChildren(updateData)
+                        databaseReference.child("Workers Head").child(uid).updateChildren(updateData)
                                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
@@ -264,7 +269,7 @@ public class AdapterForWorkerHeadRecycler extends RecyclerView.Adapter<AdapterFo
                         });
 
                     } else {
-                        workerHeadView.showMessage("Please fill the fileds");
+                        workerHeadView.showMessage("Please fill the fields");
                     }
 
                 }
