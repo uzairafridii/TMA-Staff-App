@@ -30,11 +30,13 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
+    // firebase
     implementation 'com.google.firebase:firebase-auth:16.0.5'
     implementation 'com.google.firebase:firebase-database:16.0.4'
     implementation 'com.google.firebase:firebase-storage:16.0.4'
 
-
+    implementation 'com.google.android.gms:play-services-maps:16.1.0'// map
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
     implementation 'androidx.cardview:cardview:1.0.0' // card view
     implementation 'androidx.recyclerview:recyclerview:1.1.0' // recycler view
     implementation 'com.borjabravo:readmoretextview:2.1.0' // expand views
@@ -42,6 +44,7 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.0.1' // circle image view
     implementation 'com.facebook.shimmer:shimmer:0.1.0@aar' // blinking items
     implementation 'com.github.bumptech.glide:glide:4.11.0' // for image
+
 
 
 }

@@ -10,17 +10,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.tmaadminapp.AppModules.SanitationHead.SanitationComplaints.ModelForComplaints;
 import com.example.tmaadminapp.R;
-import com.example.tmaadminapp.AppModules.SanitationHead.ComplaintFragements.CompletedComplaints.ModelForCompletedComplaints;
 
 import java.util.ArrayList;
 
 public class AdapterForInfraCompletedComplaints extends RecyclerView.Adapter<AdapterForInfraCompletedComplaints.MyInfraViewHolder>
 {
-    private ArrayList<ModelForCompletedComplaints> listOfCompletedComplaints;
+    private ArrayList<ModelForComplaints> listOfCompletedComplaints;
     private Context ctx;
 
-    public AdapterForInfraCompletedComplaints(ArrayList<ModelForCompletedComplaints> listOfCompletedComplaints, Context ctx) {
+    public AdapterForInfraCompletedComplaints(ArrayList<ModelForComplaints> listOfCompletedComplaints, Context ctx) {
         this.listOfCompletedComplaints = listOfCompletedComplaints;
         this.ctx = ctx;
     }
@@ -28,7 +28,7 @@ public class AdapterForInfraCompletedComplaints extends RecyclerView.Adapter<Ada
     @NonNull
     @Override
     public AdapterForInfraCompletedComplaints.MyInfraViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View myView = LayoutInflater.from(ctx).inflate(R.layout.design_for_completed_complaints_recycler , null);
+        View myView = LayoutInflater.from(ctx).inflate(R.layout.design_for_sanit_and_infra_complaints , null);
         MyInfraViewHolder holder = new MyInfraViewHolder(myView);
             return holder;
     }
@@ -37,11 +37,11 @@ public class AdapterForInfraCompletedComplaints extends RecyclerView.Adapter<Ada
     public void onBindViewHolder(@NonNull MyInfraViewHolder holder, int position)
     {
 
-        ModelForCompletedComplaints model = listOfCompletedComplaints.get(position);
+        ModelForComplaints model = listOfCompletedComplaints.get(position);
 
-        holder.setTitle(model.getTitleOfPComplaints());
-        holder.setStatus(model.getStatusOfPComplaints());
-        holder.setDateAndTime(model.getDataAndTimeOfPComplaints());
+        holder.setTitle(model.getTitle());
+        holder.setStatus(model.getStatus());
+        holder.setDateAndTime(model.getDate());
     }
 
     @Override
@@ -61,20 +61,20 @@ public class AdapterForInfraCompletedComplaints extends RecyclerView.Adapter<Ada
 
         private void setTitle(String completeCompTitle)
         {
-            title = mView.findViewById(R.id.completedComplaintTitleInItemDesign);
+            title = mView.findViewById(R.id.sanitationComplaintsTitleInItemDesign);
             title.setText(completeCompTitle);
         }
 
         public void setStatus(String completeCompStatus) {
 
-            status = mView.findViewById(R.id.statusOfCompletedcomplaints);
+            status = mView.findViewById(R.id.statusOfSanitationComplaints);
             status.setTextColor(Color.RED);
             status.setText(completeCompStatus);
 
         }
 
         public void setDateAndTime(String completeCompDateAndTime) {
-            dateAndTime = mView.findViewById(R.id.dateAndTimeOfCompletedComplaints);
+            dateAndTime = mView.findViewById(R.id.dateAndTimeOfSanitationComplaints);
             dateAndTime.setText(completeCompDateAndTime);
         }
     }

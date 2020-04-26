@@ -14,5 +14,23 @@
         app:showAsAction="never"
         />
 
+     <item
+        android:id="@+id/inComplete"
+        android:title="@string/inComplete"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/showDetails"
+        android:title="@string/show_details"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/showLocation"
+        android:title="@string/show_location"
+        app:showAsAction="never"
+        />
+
 
 </menu>

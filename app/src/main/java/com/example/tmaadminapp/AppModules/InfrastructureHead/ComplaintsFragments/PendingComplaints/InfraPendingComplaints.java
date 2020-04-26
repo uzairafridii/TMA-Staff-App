@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.tmaadminapp.R;
-import com.example.tmaadminapp.AppModules.SanitationHead.ComplaintFragements.PendingComplaints.ModelForPendingComplaints;
+import com.example.tmaadminapp.AppModules.SanitationHead.SanitationComplaints.ModelForComplaints;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -25,8 +25,7 @@ public class InfraPendingComplaints extends Fragment {
 
     private View pComplaintsView;
     private RecyclerView listOfPendingComplaints;
-    private AdapterForInfraPendingComplaints adapter;
-    private ArrayList<ModelForPendingComplaints> arrayList;
+
 
     public InfraPendingComplaints() {
         // Required empty public constructor
@@ -41,8 +40,7 @@ public class InfraPendingComplaints extends Fragment {
         pComplaintsView = inflater.inflate(R.layout.fragment_infra_pending_complaints, container, false);
 
         initViews();
-        setItemsInRecyclerView();
-        listOfPendingComplaints.setAdapter(adapter);
+
         return pComplaintsView;
     }
 
@@ -50,22 +48,9 @@ public class InfraPendingComplaints extends Fragment {
         listOfPendingComplaints = pComplaintsView.findViewById(R.id.pendingComplaintsListOfInfra);
         listOfPendingComplaints.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        arrayList = new ArrayList<>();
 
-        adapter = new AdapterForInfraPendingComplaints(arrayList, getContext());
 
     }
 
-    private void setItemsInRecyclerView() {
-        String date = DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
-        arrayList.add(new ModelForPendingComplaints("First", getString(R.string.dummy_text),
-                "Pending", date));
-        arrayList.add(new ModelForPendingComplaints("Second", getString(R.string.dummy_text),
-                "Pending", date));
 
-        arrayList.add(new ModelForPendingComplaints("Third", getString(R.string.dummy_text),
-                "Pending", date));
-        arrayList.add(new ModelForPendingComplaints("Fouth", getString(R.string.dummy_text),
-                "Pending", date));
-    }
 }

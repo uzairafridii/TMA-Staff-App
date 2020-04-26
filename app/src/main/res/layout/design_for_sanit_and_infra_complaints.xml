@@ -27,7 +27,7 @@
                 <ImageView
                     android:layout_width="74dp"
                     android:layout_height="74dp"
-                    android:id="@+id/pendingComplaintImageInItemDesign"
+                    android:id="@+id/sanitationComplaintsImageInItemDesign"
                     android:src="@drawable/ic_launcher_background"
                     android:layout_marginLeft="@dimen/recycler_view_margin"
                     android:layout_marginTop="@dimen/recycler_view_margin"
@@ -36,11 +36,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/pendingComplaintTitleInItemDesign"
+                    android:id="@+id/sanitationComplaintsTitleInItemDesign"
                     android:text="@string/title"
                     android:textStyle="bold"
                     android:textSize="16sp"
-                    android:layout_toRightOf="@+id/pendingComplaintImageInItemDesign"
+                    android:layout_toRightOf="@+id/sanitationComplaintsImageInItemDesign"
                     android:layout_marginLeft="@dimen/recycler_view_margin"
                     android:layout_marginTop="@dimen/recycler_view_margin"
                     />
@@ -48,9 +48,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/dateAndTimeOfPComplaints"
-                    android:layout_below="@+id/pendingComplaintTitleInItemDesign"
-                    android:layout_toRightOf="@id/pendingComplaintImageInItemDesign"
+                    android:id="@+id/dateAndTimeOfSanitationComplaints"
+                    android:layout_below="@+id/sanitationComplaintsTitleInItemDesign"
+                    android:layout_toRightOf="@id/sanitationComplaintsImageInItemDesign"
                     android:text="Date and time"
                     android:textSize="10sp"
                     android:layout_marginLeft="@dimen/recycler_view_margin"
@@ -62,10 +62,10 @@
                 <com.borjabravo.readmoretextview.ReadMoreTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/pComplaintdescriptionInItemDesign"
+                    android:id="@+id/sanitationComplaintsdescription"
                     android:text="@string/dummy_text"
-                    android:layout_below="@+id/dateAndTimeOfPComplaints"
-                    android:layout_toRightOf="@id/pendingComplaintImageInItemDesign"
+                    android:layout_below="@+id/dateAndTimeOfSanitationComplaints"
+                    android:layout_toRightOf="@id/sanitationComplaintsImageInItemDesign"
                     android:layout_marginLeft="@dimen/recycler_view_margin"
                     app:trimMode="trimModeLength"
                     app:trimLength="70"
@@ -75,7 +75,7 @@
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/moreIconButtonInPendingComplaintItemDesign"
+                    android:id="@+id/moreIconButtonInSanitationComplaints"
                     android:layout_alignParentRight="true"
                     android:src="@drawable/ic_more_vert_black_24dp"
                     android:background="@null"
@@ -88,14 +88,25 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:id="@+id/view"
-                    android:layout_below="@+id/pComplaintdescriptionInItemDesign"
+                    android:layout_below="@+id/sanitationComplaintsdescription"
                     android:layout_marginTop="@dimen/card_view"
                     android:background="#000"
                     />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/statusOfPcomplaints"
+                    android:id="@+id/complaintPersonName"
+                    android:text="Name"
+                    android:layout_below="@id/view"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="@dimen/recycler_view_margin"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/statusOfSanitationComplaints"
                     android:layout_below="@id/view"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="@dimen/card_view"

@@ -3,6 +3,8 @@
     package="com.example.tmaadminapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -11,7 +13,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AppModules.Administration.AdminStaffManagement.ComplaintsListForAdmin.AdminComplaintsPage"></activity>
+        <activity android:name=".AppModules.Complaint_CompletedWork_Map_Details.MapActivity"></activity>
+        <activity android:name=".AppModules.Complaint_CompletedWork_Map_Details.ComplaintDetails" />
+        <activity android:name=".AppModules.Complaint_CompletedWork_Map_Details.AddCompletedWorkActivity" />
+        <activity android:name=".AppModules.Administration.AdminStaffManagement.ComplaintsListForAdmin.AdminComplaintsPage" />
         <activity android:name=".AppModules.UnionCouncilHead.UcMain" />
         <activity android:name=".AppModules.UnionCouncilHead.UnionCouncil" />
         <activity android:name=".AppModules.Administration.NewsFeedForAdmin.NewsFeedForAdmin" />
@@ -32,7 +37,6 @@
         <activity android:name=".AppModules.InfrastructureHead.InfraComplaints.InfraComplaints" />
         <activity android:name=".AppModules.InfrastructureHead.InfraWorkerList.WorkersListActivity" />
         <activity android:name=".AppModules.InfrastructureHead.InfraHome.InfraHome" />
-        <activity android:name=".AppModules.SanitationHead.ComplaintFragements.CompletedComplaints.AddCompletedWorkOnComplaint" />
         <activity android:name=".AppModules.SanitationHead.SanitationComplaints.Complaints" />
         <activity android:name=".AppModules.SanitationHead.SanitationWorkers.WorkerDetailActivity" />
         <activity android:name=".AppModules.SanitationHead.SanitationWorkers.SanitationWorkerList" />
@@ -40,6 +44,14 @@
         <activity android:name=".AppModules.SanitationHead.SanitationHome.SanitationMain" />
         <activity android:name=".AppModules.Login.LoginActivity" />
         <activity android:name=".MainActivity" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/map_api_key" />
+
     </application>
 
 </manifest>

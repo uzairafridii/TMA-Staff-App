@@ -21,13 +21,13 @@ public class DetailBottomSheetPresenterImplementer implements DetailBottomSheetP
     }
 
     @Override
-    public void getWorkerDetails(DatabaseReference dbRef, String pushKey)
+    public void getWorkerDetails(DatabaseReference dbRef, String key)
     {
 
-        if(dbRef != null && !pushKey.isEmpty())
+        if(dbRef != null && !key.isEmpty())
         {
 
-            Query query = dbRef.child(pushKey);
+            Query query = dbRef.child(key);
 
             query.addValueEventListener(new ValueEventListener() {
                 @Override

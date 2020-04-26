@@ -16,17 +16,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tmaadminapp.R;
-import com.example.tmaadminapp.AppModules.SanitationHead.ComplaintFragements.CompletedComplaints.AddCompletedWorkOnComplaint;
-import com.example.tmaadminapp.AppModules.SanitationHead.ComplaintFragements.PendingComplaints.ModelForPendingComplaints;
+import com.example.tmaadminapp.AppModules.SanitationHead.SanitationComplaints.ModelForComplaints;
 
 import java.util.ArrayList;
 
 public class AdapterForInfraPendingComplaints extends RecyclerView.Adapter<AdapterForInfraPendingComplaints.MyViewHolder> {
 
-    private ArrayList<ModelForPendingComplaints> listOfPComplaints;
+    private ArrayList<ModelForComplaints> listOfPComplaints;
     private Context ctx;
 
-    public AdapterForInfraPendingComplaints(ArrayList<ModelForPendingComplaints> listOfPComplaints, Context ctx) {
+    public AdapterForInfraPendingComplaints(ArrayList<ModelForComplaints> listOfPComplaints, Context ctx) {
         this.listOfPComplaints = listOfPComplaints;
         this.ctx = ctx;
     }
@@ -35,7 +34,7 @@ public class AdapterForInfraPendingComplaints extends RecyclerView.Adapter<Adapt
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
     {
-        View myView = LayoutInflater.from(ctx).inflate(R.layout.design_for_pending_complaints , null);
+        View myView = LayoutInflater.from(ctx).inflate(R.layout.design_for_sanit_and_infra_complaints, null);
         MyViewHolder holder = new MyViewHolder(myView);
         return holder;
     }
@@ -45,12 +44,12 @@ public class AdapterForInfraPendingComplaints extends RecyclerView.Adapter<Adapt
     {
 
 
-        ModelForPendingComplaints model = listOfPComplaints.get(position);
+        ModelForComplaints model = listOfPComplaints.get(position);
 
-        holder.setTitle(model.getTitleOfPComplaints());
-        holder.setDesc(model.getDescriptionOfPComplaints());
-        holder.setStatus(model.getStatusOfPComplaints());
-        holder.setDateAndTime(model.getDataAndTimeOfPComplaints());
+        holder.setTitle(model.getTitle());
+        holder.setDesc(model.getDescription());
+        holder.setStatus(model.getStatus());
+        holder.setDateAndTime(model.getDate());
 
         holder.optionMenuBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,7 +73,7 @@ public class AdapterForInfraPendingComplaints extends RecyclerView.Adapter<Adapt
 
                             case R.id.completedInfra:
                             {
-                                ctx.startActivity(new Intent(ctx , AddCompletedWorkOnComplaint.class));
+                              //  ctx.startActivity(new Intent(ctx , AddCompletedWorkOnComplaint.class));
                                 break;
                             }
 
@@ -106,30 +105,30 @@ public class AdapterForInfraPendingComplaints extends RecyclerView.Adapter<Adapt
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             mView = itemView;
-            optionMenuBtn = mView.findViewById(R.id.moreIconButtonInPendingComplaintItemDesign);
+            optionMenuBtn = mView.findViewById(R.id.moreIconButtonInSanitationComplaints);
         }
 
         private void setTitle(String pCompTitle)
         {
-            title = mView.findViewById(R.id.pendingComplaintTitleInItemDesign);
+            title = mView.findViewById(R.id.sanitationComplaintsTitleInItemDesign);
             title.setText(pCompTitle);
         }
 
         public void setDesc(String pCompDesc) {
-            desc = mView.findViewById(R.id.pComplaintdescriptionInItemDesign);
+            desc = mView.findViewById(R.id.sanitationComplaintsdescription);
             desc.setText(pCompDesc);
         }
 
         public void setStatus(String pCompStatus) {
 
-            status = mView.findViewById(R.id.statusOfPcomplaints);
+            status = mView.findViewById(R.id.statusOfSanitationComplaints);
             status.setTextColor(Color.RED);
             status.setText(pCompStatus);
 
         }
 
         public void setDateAndTime(String pCompDateAndTime) {
-            dateAndTime = mView.findViewById(R.id.dateAndTimeOfPComplaints);
+            dateAndTime = mView.findViewById(R.id.dateAndTimeOfSanitationComplaints);
             dateAndTime.setText(pCompDateAndTime);
         }
     }

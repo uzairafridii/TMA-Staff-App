@@ -1,5 +1,7 @@
 package com.example.tmaadminapp.Models;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -18,10 +20,16 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 public class LoginPresenterImplementer implements LoginPresenter {
+    public static final String DB_KEY = "saveEmailAndPassword";
     private LoginView loginView;
+    private SharedPreferences saveUserNameAndPassword;
+    private SharedPreferences.Editor editor;
+    private final String USER_EMAIL_KEY = "userEmail", USER_PASSWORD_KEY = "userPassword";
+    private Context context;
 
-    public LoginPresenterImplementer(LoginView loginView) {
+    public LoginPresenterImplementer(LoginView loginView , Context context) {
         this.loginView = loginView;
+        this.context = context;
     }
 
     @Override
@@ -33,16 +41,12 @@ public class LoginPresenterImplementer implements LoginPresenter {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
 
-                    if (task.isSuccessful())
-                    {
-                        if (email.equals("admin@gmail.com"))
-                        {
+                    if (task.isSuccessful()) {
+                        if (email.equals("admin@gmail.com")) {
                             loginView.moveToMainPage();
                             loginView.hideProgressBar();
                             loginView.showMessage("Successfully login");
-                        }
-                        else
-                            {
+                        } else {
                             String currentUser = mAuth.getCurrentUser().getUid();
                             Query query = dbRef.child(currentUser);
 
@@ -86,6 +90,23 @@ public class LoginPresenterImplementer implements LoginPresenter {
 
     @Override
     public void savePassword(String userEmail, String userPassword) {
+        saveUserNameAndPassword = context.getSharedPreferences(DB_KEY, Context.MODE_PRIVATE);
+        editor = saveUserNameAndPassword.edit();
+
+        editor.putString(USER_EMAIL_KEY, userEmail);
+        editor.putString(USER_PASSWORD_KEY, userPassword);
+        editor.apply();
+
+    }
+
+    @Override
+    public void getUserNameAndPasswordFromSaveDb()
+    {
+        saveUserNameAndPassword = context.getSharedPreferences(DB_KEY, Context.MODE_PRIVATE);
+        String saveEmail = saveUserNameAndPassword.getString(USER_EMAIL_KEY, "");
+        String savePassword = saveUserNameAndPassword.getString(USER_PASSWORD_KEY, "");
+
+        loginView.getSaveUserEmailAndPassword(saveEmail, savePassword);
 
     }
 }

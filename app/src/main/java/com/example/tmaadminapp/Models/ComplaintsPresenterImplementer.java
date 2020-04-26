@@ -6,66 +6,73 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.tmaadminapp.AppModules.Administration.AdminStaffManagement.ComplaintsListForAdmin.ModelForTotalComplaints;
-import com.example.tmaadminapp.Presenters.AdminComplaintPreseneter;
-import com.example.tmaadminapp.Views.AdminCompaintView;
+import com.example.tmaadminapp.AppModules.SanitationHead.SanitationComplaints.ModelForComplaints;
+import com.example.tmaadminapp.Presenters.ComplaintsPresenter;
+import com.example.tmaadminapp.Views.ComplaintsView;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdminComplaintPresenterImplementer
-        implements AdminComplaintPreseneter
+public class ComplaintsPresenterImplementer implements ComplaintsPresenter
 {
-    private AdminCompaintView complaintView;
-    private List<ModelForTotalComplaints> totalComplaintsList = new ArrayList<>();
+    private ComplaintsView complaintsView;
+    private List<ModelForComplaints> complaintsList = new ArrayList<>();
 
-    public AdminComplaintPresenterImplementer(AdminCompaintView complaintView) {
-        this.complaintView = complaintView;
+    public ComplaintsPresenterImplementer(ComplaintsView complaintsView) {
+        this.complaintsView = complaintsView;
     }
 
-
     @Override
-    public void getAllComplaints(final DatabaseReference databaseReference) {
-        if (databaseReference != null)
+    public void getTotalComplaints(DatabaseReference dbRef)
+    {
+        if(dbRef != null)
         {
+            // query to get only sanitation complaints
+            Query query = dbRef.orderByChild("field").equalTo("Sanitation");
 
-            databaseReference.addChildEventListener(new ChildEventListener() {
+            query.addChildEventListener(new ChildEventListener() {
                 @Override
-                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s)
+                {
 
-                    // get all data from firebase
-                    final ModelForTotalComplaints totalComplaints = dataSnapshot.getValue(ModelForTotalComplaints.class);
+                    // get user complaints details
+                    final ModelForComplaints complaints = dataSnapshot.getValue(ModelForComplaints.class);
 
                     // users ref to get username who complaint
                     DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("TMA Lachi").child("Users")
-                            .child(totalComplaints.getUid());
+                            .child(complaints.getUid());
 
                     ref.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
+                            // get the user name
                             String name = dataSnapshot.child("user_name").getValue().toString();
 
-                            totalComplaints.setName(name);
-                            Log.d("userNameInComplaint", "onDataChange: " + name);
+                            // set user name in setter of complaint model
+                            complaints.setName(name);
+                            Log.d("userNameInComplaint", "onDataChange: " + name+"/n Field"+complaints.getField());
 
-                            totalComplaintsList.add(totalComplaints);
-
+                            complaintsList.add(complaints);
                             // send list to adapter
-                            complaintView.onGetComplaints(totalComplaintsList);
+                            complaintsView.onGetAllSanitationComplaints(complaintsList);
                         }
 
                         @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {}
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
                     });
 
-                }
 
+                }
                 @Override
                 public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {}
                 @Override
@@ -74,16 +81,10 @@ public class AdminComplaintPresenterImplementer
                 public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {}
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {}
-
             });
 
         }
-        else
-            {
-            complaintView.showErrorMessage("Database reference not found");
-        }
 
     }
-
 
 }

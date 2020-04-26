@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AppModules.Complaint_CompletedWork_Map_Details.ComplaintDetails">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+
+   <TextView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/detailText"
+       android:text="Complaint Detail"
+       android:textSize="16sp"
+       android:textStyle="bold"
+       android:padding="@dimen/padding_10"
+       android:gravity="center_horizontal"
+       android:layout_centerHorizontal="true"
+       android:background="@color/sign_in_txt_color"
+       android:textColor="@color/white"
+
+       />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/titleOfComplaint"
+        android:text="Title"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/edit_text_margin"
+        android:layout_marginLeft="@dimen/edit_text_margin"
+        android:layout_below="@+id/detailText"
+        />
+
+    <com.borjabravo.readmoretextview.ReadMoreTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/descriptionInDetail"
+        android:layout_below="@+id/titleOfComplaint"
+        android:layout_marginLeft="@dimen/edit_text_margin"
+        android:text="@string/dummy_text"
+        app:showTrimExpandedText="true"
+        app:trimMode="trimModeLength"
+        app:trimLength="100"
+        app:colorClickableText="@color/sign_in_txt_color"
+        />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/complaintImagesInDetails"
+        android:text="Complaint Images : "
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/edit_text_margin"
+        android:layout_marginLeft="@dimen/edit_text_margin"
+        android:layout_below="@id/descriptionInDetail"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/complaintDetailRv"
+        android:layout_marginTop="@dimen/edit_text_margin"
+        android:layout_marginLeft="@dimen/edit_text_margin"
+        android:layout_marginRight="@dimen/edit_text_margin"
+        android:layout_below="@+id/complaintImagesInDetails"
+        />
+
+
+    </RelativeLayout>
+
+</ScrollView>

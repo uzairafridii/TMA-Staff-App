@@ -31,6 +31,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView
     private CheckBox rememberMe;
     private LoginPresenter loginPresenter;
     private ProgressDialog progressBar;
+    private String saveUserEmail , saveUserPassword;
     private FirebaseAuth mAuth;
     private DatabaseReference databaseReference;
 
@@ -39,12 +40,13 @@ public class LoginActivity extends AppCompatActivity implements LoginView
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         initViews();
+        loginPresenter.getUserNameAndPasswordFromSaveDb();
 
     }
 
     private void initViews()
     {
-        loginPresenter = new LoginPresenterImplementer(this);
+        loginPresenter = new LoginPresenterImplementer(this , this);
         userEmail  = findViewById(R.id.emailTextInputLayoutLogin);
         userPassword  = findViewById(R.id.passwordTextInputLayoutLogin);
         rememberMe   = findViewById(R.id.remember_me);
@@ -57,15 +59,27 @@ public class LoginActivity extends AppCompatActivity implements LoginView
     }
 
 
+    // login butto click
     public void loginBtnClick(View view)
     {
         String email = userEmail.getEditText().getText().toString();
         String password = userPassword.getEditText().getText().toString();
 
-        loginPresenter.login(databaseReference ,mAuth , email , password);
+        if(rememberMe.isChecked())
+        {
+            loginPresenter.savePassword(email , password);
+            loginPresenter.login(databaseReference ,mAuth , email , password);
+        }
+        else
+        {
+            loginPresenter.login(databaseReference ,mAuth , email , password);
+        }
+
 
     }
 
+
+    // login view callbacks methods
     @Override
     public void showProgressBar()
     {
@@ -119,6 +133,25 @@ public class LoginActivity extends AppCompatActivity implements LoginView
 
     @Override
     public void goToFinanceHomePage() {
+
+    }
+
+    @Override
+    public void getSaveUserEmailAndPassword(String userEmail, String userPassword)
+    {
+          saveUserEmail = userEmail;
+          saveUserPassword = userPassword;
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        if(!saveUserEmail.isEmpty() && !saveUserPassword.isEmpty())
+        {
+            userEmail.getEditText().setText(saveUserEmail);
+            userPassword.getEditText().setText(saveUserPassword);
+        }
 
     }
 }

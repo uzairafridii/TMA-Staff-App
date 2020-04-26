@@ -20,5 +20,7 @@ public interface LoginView
 
     void goToFinanceHomePage();
 
+    void getSaveUserEmailAndPassword(String userEmail, String userPassword);
+
 
 }
