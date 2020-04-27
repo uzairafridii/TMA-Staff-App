@@ -14,13 +14,14 @@ import com.example.tmaadminapp.AppModules.NewsFeed.ModelForNewsFeed.NewsFeedMode
 import com.example.tmaadminapp.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class AdapterForNewsFeed extends RecyclerView.Adapter<AdapterForNewsFeed.MyNewsViewHolder>
 {
-    private ArrayList<NewsFeedModel> modelArrayList;
+    private List<NewsFeedModel> modelArrayList;
     private Context ctx;
 
-    public AdapterForNewsFeed(ArrayList<NewsFeedModel> modelArrayList, Context ctx) {
+    public AdapterForNewsFeed(List<NewsFeedModel> modelArrayList, Context ctx) {
         this.modelArrayList = modelArrayList;
         this.ctx = ctx;
     }
@@ -71,7 +72,7 @@ public class AdapterForNewsFeed extends RecyclerView.Adapter<AdapterForNewsFeed.
         private void setAuthorName(String author)
         {
             authorName = mView.findViewById(R.id.authorName);
-            authorName.setText(author);
+            authorName.setText("By : "+author);
         }
 
         private void setReadMoreTextView(String description)

@@ -140,8 +140,6 @@ public class AdapterForAdminNewsFeedRecycler extends RecyclerView.Adapter<Adapte
         }
 
 
-
-
         // delete value method
 
         private void deleteCurrentValue(final String key)

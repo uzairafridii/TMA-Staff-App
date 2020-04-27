@@ -104,6 +104,8 @@ public class AddCompletedWorkActivity extends AppCompatActivity implements AddCo
 
        workPresenter.submitData(dbRef ,storageRef , userAuth , pushKey , title ,workerList, imageUriList);
 
+       // TODO : Send notification to complaint user
+
     }
 
     @Override

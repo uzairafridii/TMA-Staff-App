@@ -11,20 +11,26 @@ import android.os.Bundle;
 
 import com.example.tmaadminapp.AppModules.NewsFeed.AdapterOfNewsFeed.AdapterForNewsFeed;
 import com.example.tmaadminapp.AppModules.NewsFeed.ModelForNewsFeed.NewsFeedModel;
+import com.example.tmaadminapp.Models.NewsFeedPresenterImplementer;
+import com.example.tmaadminapp.Presenters.NewsFeedPresenter;
 import com.example.tmaadminapp.R;
+import com.example.tmaadminapp.Views.NewsFeedView;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
-public class NewsFeedActivity extends AppCompatActivity {
-
+public class NewsFeedActivity extends AppCompatActivity implements NewsFeedView
+{
     private Toolbar mToolbar;
     private RecyclerView mRecyclerView;
     private LinearLayoutManager layoutManager;
-    private ArrayList<NewsFeedModel> modelArrayList;
     private AdapterForNewsFeed adapterForNewsFeed;
-
+    private NewsFeedPresenter presenter;
+    private DatabaseReference dbRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,36 +38,35 @@ public class NewsFeedActivity extends AppCompatActivity {
         setContentView(R.layout.activity_news_feed);
 
         initViews();
-
-        mRecyclerView.setAdapter(adapterForNewsFeed);
-
-
     }
 
     private void initViews()
     {
+        presenter = new NewsFeedPresenterImplementer(this);
+
         mRecyclerView  = findViewById(R.id.newsFeedRecyclerView);
         layoutManager = new LinearLayoutManager(this);
         layoutManager.setStackFromEnd(true);
         layoutManager.setReverseLayout(true);
         mRecyclerView.setLayoutManager(layoutManager);
 
-
-        // array list
-        modelArrayList = new ArrayList<>();
-
-        //Adapter of news feed list
-        adapterForNewsFeed = new AdapterForNewsFeed(modelArrayList , this);
-
         // tool bar
         mToolbar = findViewById(R.id.newsFeedToolBar);
         setTitle("News Feed");
         setSupportActionBar(mToolbar);
-
-        //action bar
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+
+        dbRef = FirebaseDatabase.getInstance().getReference().child("NewsFeed");
+
+        presenter.getAllNewsFeed(dbRef);
     }
 
 
+    @Override
+    public void onSetNewsRecyclerAdapter(List<NewsFeedModel> list)
+    {
+       adapterForNewsFeed = new AdapterForNewsFeed(list , this);
+       mRecyclerView.setAdapter(adapterForNewsFeed);
+    }
 }

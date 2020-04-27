@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-    <com.google.android.material.card.MaterialCardView
+    <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/newsFeedCardDesign"
@@ -14,8 +14,6 @@
         app:cardCornerRadius="8dp"
         app:cardElevation="6dp"
         app:cardUseCompatPadding="true"
-        app:strokeColor="@color/sign_in_txt_color"
-        app:strokeWidth="1dp"
         >
 
         <RelativeLayout
@@ -52,7 +50,10 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/dateAndTime"
                 android:id="@+id/descriptionOfNewsFeed"
-                android:layout_margin="@dimen/recycler_view_margin"
+                android:layout_marginTop="@dimen/recycler_view_margin"
+                android:layout_marginBottom="@dimen/recycler_view_margin"
+                android:layout_marginLeft="@dimen/edit_text_margin"
+                android:layout_marginRight="@dimen/edit_text_margin"
                 android:text="@string/dummy_text"
                 app:trimLength="70"
                 app:trimCollapsedText="@string/read_more"
@@ -65,7 +66,7 @@
                 android:layout_height="1dp"
                 android:id="@+id/viewInNewsFeed"
                 android:layout_below="@+id/descriptionOfNewsFeed"
-                android:background="#000"
+                android:background="@android:color/darker_gray"
                 android:layout_margin="@dimen/recycler_view_margin"
                 />
 
@@ -85,6 +86,6 @@
         </RelativeLayout>
 
 
-    </com.google.android.material.card.MaterialCardView>
+    </androidx.cardview.widget.CardView>
 
 </RelativeLayout>

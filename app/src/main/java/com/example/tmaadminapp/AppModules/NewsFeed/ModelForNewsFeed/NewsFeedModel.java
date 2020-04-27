@@ -14,6 +14,7 @@ public class NewsFeedModel
 
     public NewsFeedModel() {}
 
+
     public String getPushKey() {
         return pushKey;
     }
@@ -22,31 +23,15 @@ public class NewsFeedModel
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public String getDescription() {
         return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public String getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
     public String getDateAndTime() {
         return dateAndTime;
-    }
-
-    public void setDateAndTime(String dateAndTime) {
-        this.dateAndTime = dateAndTime;
     }
 }
