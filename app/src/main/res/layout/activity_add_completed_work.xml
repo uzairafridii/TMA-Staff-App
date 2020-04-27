@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,12 +8,104 @@
 
 
 
-    <TextView
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add Completed work activity"
-        android:layout_centerInParent="true"
-        />
+        >
+        <include layout="@layout/app_tool_bar"
+            android:id="@+id/completedWorkToolbar"/>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/workerFirst"
+            android:text="Enter First Worker Name : "
+            android:textSize="14sp"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:layout_marginLeft="@dimen/edit_text_margin"
+            android:layout_marginTop="@dimen/edit_text_margin"
+            android:layout_below="@id/completedWorkToolbar"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:id="@+id/firstWorkerName"
+            android:hint="First worker"
+            android:layout_below="@id/workerFirst"
+            android:background="@drawable/edit_text_bg"
+            android:paddingLeft="@dimen/edit_text_margin"
+            android:layout_marginLeft="@dimen/edit_text_margin"
+            android:layout_marginRight="@dimen/edit_text_margin"
+            android:layout_marginTop="@dimen/recycler_view_margin"
+            android:inputType="text"
+            />
 
-</RelativeLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/workerSecond"
+            android:text="Enter Second Worker Name : "
+            android:textSize="14sp"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:layout_below="@id/firstWorkerName"
+            android:layout_marginLeft="@dimen/edit_text_margin"
+            android:layout_marginTop="@dimen/edit_text_margin"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:id="@+id/secondWorkerName"
+            android:hint="Second worker"
+            android:layout_below="@+id/workerSecond"
+            android:background="@drawable/edit_text_bg"
+            android:paddingLeft="@dimen/edit_text_margin"
+            android:layout_marginLeft="@dimen/edit_text_margin"
+            android:layout_marginRight="@dimen/edit_text_margin"
+            android:layout_marginTop="@dimen/recycler_view_margin"
+            android:inputType="text"
+            />
+
+        <Button
+            android:onClick="uploadWorkImages"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/selectImageButton"
+            android:text="Select Image"
+            android:backgroundTint="@color/sign_in_txt_color"
+            android:textAllCaps="false"
+            android:layout_below="@+id/secondWorkerName"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="@dimen/edit_text_margin"
+            android:layout_marginTop="@dimen/edit_text_margin"
+            />
+
+        <Button
+            android:onClick="submitWork"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/submitCompletedWork"
+            android:text="Submit"
+            android:textAllCaps="false"
+            android:backgroundTint="@color/sign_in_txt_color"
+            android:layout_below="@+id/secondWorkerName"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/edit_text_margin"
+            android:layout_marginTop="@dimen/edit_text_margin"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/selectedImagesRv"
+            android:layout_marginLeft="@dimen/edit_text_margin"
+            android:layout_marginRight="@dimen/edit_text_margin"
+            android:layout_marginTop="@dimen/edit_text_margin"
+            android:layout_below="@+id/selectImageButton"
+            />
+
+    </RelativeLayout>
+
+</ScrollView>

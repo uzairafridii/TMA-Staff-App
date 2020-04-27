@@ -100,7 +100,7 @@ public class AdapterForSanitationComplaintRv extends
 
                             case R.id.completed:
                             {
-                                holder.markAsCompleted(model.getTitle() , model.getPushKey());
+                                holder.markAsCompleted(model.getTitle() , model.getPushKey() , model.getUid());
                                 break;
                             }
 
@@ -234,7 +234,7 @@ public class AdapterForSanitationComplaintRv extends
             });
         }
 
-        public void markAsCompleted(final String title, final String pushKey)
+        public void markAsCompleted(final String title, final String pushKey , final String uid)
         {
             Map<String , Object> statusUpdate = new HashMap<>();
             statusUpdate.put("status", "Completed");
@@ -249,6 +249,7 @@ public class AdapterForSanitationComplaintRv extends
                         Intent dataIntent = new Intent(ctx , AddCompletedWorkActivity.class);
                         dataIntent.putExtra("title",title);
                         dataIntent.putExtra("pushKey", pushKey);
+                        dataIntent.putExtra("uid", uid);
                         ctx.startActivity(dataIntent);
                     }
                 }
