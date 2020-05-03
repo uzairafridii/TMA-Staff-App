@@ -1,4 +1,4 @@
-package com.example.tmaadminapp.AppModules.Complaint_CompletedWork_Map_Details;
+package com.example.tmaadminapp.AppModules.ComplaintCompletedWorkAndFeedback;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -99,10 +99,11 @@ public class AddCompletedWorkActivity extends AppCompatActivity implements AddCo
     // click on submit work
     public void submitWork(View view)
     {
-       workerList.add(editTextFirstWorker.getText().toString());
-       workerList.add(editTextSecondWorker.getText().toString());
+       String firstWorker = editTextFirstWorker.getText().toString();
+       String secondWorker =  editTextSecondWorker.getText().toString();
 
-       workPresenter.submitData(dbRef ,storageRef , userAuth , pushKey , title ,workerList, imageUriList);
+       workPresenter.submitData(dbRef ,storageRef , userAuth , pushKey,
+               title ,firstWorker , secondWorker , imageUriList);
 
        // TODO : Send notification to complaint user
 
@@ -134,7 +135,7 @@ public class AddCompletedWorkActivity extends AppCompatActivity implements AddCo
         }
     }
 
-    // add completed work call backs methods
+    // add completed work view call backs methods
     @Override
     public void showProgressBar()
     {

@@ -1,0 +1,19 @@
+package com.example.tmaadminapp.Views;
+
+import com.example.tmaadminapp.AppModules.WorkersListAndDetails.ModelForWorkerList;
+
+import java.util.List;
+
+public interface AddWorkerView
+{
+    void showProgressBar();
+
+    void hideProgressBar();
+
+    void showMessage(String message);
+
+    void clickOnAddWorkerFab();
+
+    void getWorkersList(List<ModelForWorkerList> workerList);
+
+}

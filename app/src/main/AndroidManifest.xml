@@ -13,9 +13,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AppModules.Complaint_CompletedWork_Map_Details.MapActivity"></activity>
-        <activity android:name=".AppModules.Complaint_CompletedWork_Map_Details.ComplaintDetails" />
-        <activity android:name=".AppModules.Complaint_CompletedWork_Map_Details.AddCompletedWorkActivity" />
+        <activity android:name=".AppModules.ComplaintCompletedWorkAndFeedback.CompletedWorkList"></activity>
+        <activity android:name=".AppModules.ComplaintDetailAndMap.MapActivity" />
+        <activity android:name=".AppModules.ComplaintDetailAndMap.ComplaintDetails" />
+        <activity android:name=".AppModules.ComplaintCompletedWorkAndFeedback.AddCompletedWorkActivity" />
         <activity android:name=".AppModules.Administration.AdminStaffManagement.ComplaintsListForAdmin.AdminComplaintsPage" />
         <activity android:name=".AppModules.UnionCouncilHead.UcMain" />
         <activity android:name=".AppModules.UnionCouncilHead.UnionCouncil" />
@@ -37,9 +38,9 @@
         <activity android:name=".AppModules.InfrastructureHead.InfraComplaints.InfraComplaints" />
         <activity android:name=".AppModules.InfrastructureHead.InfraWorkerList.WorkersListActivity" />
         <activity android:name=".AppModules.InfrastructureHead.InfraHome.InfraHome" />
-        <activity android:name=".AppModules.SanitationHead.SanitationComplaints.Complaints" />
-        <activity android:name=".AppModules.SanitationHead.SanitationWorkers.WorkerDetailActivity" />
-        <activity android:name=".AppModules.SanitationHead.SanitationWorkers.SanitationWorkerList" />
+        <activity android:name=".AppModules.Complaints.Complaints" />
+        <activity android:name=".AppModules.WorkersListAndDetails.WorkerDetailActivity" />
+        <activity android:name=".AppModules.WorkersListAndDetails.WorkersListActivity" />
         <activity android:name=".AppModules.NewsFeed.NewsFeedActivity.NewsFeedActivity" />
         <activity android:name=".AppModules.SanitationHead.SanitationHome.SanitationMain" />
         <activity android:name=".AppModules.Login.LoginActivity" />
@@ -51,7 +52,6 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/map_api_key" />
-
     </application>
 
 </manifest>

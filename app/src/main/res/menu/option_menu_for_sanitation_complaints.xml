@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/moveToInfrastructure"
-        android:title="@string/move_to_infrastructure"
+        android:id="@+id/changeComplaintType"
+        android:title="@string/change_type"
         app:showAsAction="never"
         />
 
@@ -14,11 +14,6 @@
         app:showAsAction="never"
         />
 
-     <item
-        android:id="@+id/inComplete"
-        android:title="@string/inComplete"
-        app:showAsAction="never"
-        />
 
     <item
         android:id="@+id/showDetails"

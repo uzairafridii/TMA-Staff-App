@@ -153,11 +153,11 @@ public class AdapterForWorkerHeadRecycler extends RecyclerView.Adapter<AdapterFo
             Log.d("userKey", "deleteCurrentValue: "+key);
             AlertDialog.Builder alert = new AlertDialog.Builder(mView.getRootView().getContext());
             alert.setMessage("Do you want to delete worker head?");
-            alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            alert.setPositiveButton("Yes", new DialogInterface.OnClickListener()
+            {
                 @Override
-                public void onClick(final DialogInterface dialogInterface, int i) {
-
-
+                public void onClick(final DialogInterface dialogInterface, int i)
+                {
 
                     Query query = databaseReference.child("Workers Head").orderByChild("uid").equalTo(key);
 

@@ -10,10 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.tmaadminapp.AppModules.Complaints.Complaints;
 import com.example.tmaadminapp.AppModules.InfrastructureHead.BuildingNoc.BuildingNocActivity;
-import com.example.tmaadminapp.AppModules.InfrastructureHead.InfraComplaints.InfraComplaints;
-import com.example.tmaadminapp.AppModules.InfrastructureHead.InfraWorkerList.WorkersListActivity;
 import com.example.tmaadminapp.AppModules.NewsFeed.NewsFeedActivity.NewsFeedActivity;
+import com.example.tmaadminapp.AppModules.WorkersListAndDetails.WorkersListActivity;
 import com.example.tmaadminapp.R;
 
 public class InfraHome extends AppCompatActivity {
@@ -32,7 +32,7 @@ public class InfraHome extends AppCompatActivity {
     {
         mToolbar = findViewById(R.id.infra_tool_bar);
         setSupportActionBar(mToolbar);
-        setTitle("Sanitation Home");
+        setTitle("Infra Home");
     }
 
     public void clickOnNewsFeedCard(View view)
@@ -48,7 +48,7 @@ public class InfraHome extends AppCompatActivity {
 
     public void clickOnCompCard(View view)
     {
-        startActivity(new Intent(this , InfraComplaints.class));
+        startActivity(new Intent(this , Complaints.class));
     }
 
     public void clickOnFireFightingCard(View view)

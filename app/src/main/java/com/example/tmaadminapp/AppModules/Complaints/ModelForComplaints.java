@@ -1,4 +1,4 @@
-package com.example.tmaadminapp.AppModules.SanitationHead.SanitationComplaints;
+package com.example.tmaadminapp.AppModules.Complaints;
 
 import java.util.List;
 

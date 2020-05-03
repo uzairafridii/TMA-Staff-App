@@ -5,9 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-
-import com.example.tmaadminapp.AppModules.Administration.AdminStaffManagement.AppointAndRetireInStaffManagement.AppointAndRetireDetails;
-import com.example.tmaadminapp.AppModules.Administration.AdminStaffManagement.RegulationInStaffManagment.RegulationInStaffManagement;
+import android.widget.Toast;
 import com.example.tmaadminapp.AppModules.Administration.AdminStaffManagement.WorkerHeadList.WorkerHeadList;
 import com.example.tmaadminapp.AppModules.Administration.AdminStaffManagement.WorkerListInAdminPage.WorkersListActivityInAdmin;
 import com.example.tmaadminapp.Models.AdminStaffManagementPresenterImplementer;
@@ -66,11 +64,11 @@ public class StaffManagementHome extends AppCompatActivity implements AdminStaff
 
     @Override
     public void onAppoint() {
-        startActivity(new Intent(this , AppointAndRetireDetails.class));
+        Toast.makeText(this, "Not yet work", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onRegulation() {
-        startActivity(new Intent(this , RegulationInStaffManagement.class));
+        Toast.makeText(this, "Not yet work", Toast.LENGTH_SHORT).show();
     }
 }

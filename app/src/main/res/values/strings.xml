@@ -29,7 +29,7 @@
     <string name="first_worker_name">First Worker Name</string>
     <string name="second_worker_name">Second Worker Name</string>
     <string name="completed">Mark as completed</string>
-    <string name="move_to_infrastructure">Move to infrastructure</string>
+    <string name="change_type">Change Complaint type</string>
     <string name="enter_driver_name">Enter Driver Name</string>
     <string name="fire_fighting">Fire Fighting</string>
     <string name="finance">Finance</string>
@@ -44,4 +44,5 @@
     <string name="show_details">Show details</string>
     <string name="show_location">Show location</string>
     <string name="inComplete">Mark as incomplete</string>
+    <string name="worker_department">Worker Department</string>
 </resources>

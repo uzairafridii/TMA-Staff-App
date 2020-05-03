@@ -1,11 +1,10 @@
-package com.example.tmaadminapp.AppModules.Complaint_CompletedWork_Map_Details;
+package com.example.tmaadminapp.AppModules.ComplaintDetailAndMap;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.TextView;
 
 import com.borjabravo.readmoretextview.ReadMoreTextView;
@@ -15,7 +14,6 @@ import com.example.tmaadminapp.R;
 import com.example.tmaadminapp.Views.ComplaintDetailsView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ComplaintDetails extends AppCompatActivity implements ComplaintDetailsView
 {

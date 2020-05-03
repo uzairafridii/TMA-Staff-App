@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tmaadminapp.R;
-import com.example.tmaadminapp.AppModules.SanitationHead.SanitationWorkers.WorkerDetailActivity;
+import com.example.tmaadminapp.AppModules.WorkersListAndDetails.WorkerDetailActivity;
 import com.google.android.material.card.MaterialCardView;
 
 import java.util.ArrayList;

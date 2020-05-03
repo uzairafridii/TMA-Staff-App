@@ -5,8 +5,7 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.tmaadminapp.AppModules.Administration.AdminStaffManagement.ComplaintsListForAdmin.ModelForTotalComplaints;
-import com.example.tmaadminapp.AppModules.SanitationHead.SanitationComplaints.ModelForComplaints;
+import com.example.tmaadminapp.AppModules.Complaints.ModelForComplaints;
 import com.example.tmaadminapp.Presenters.ComplaintsPresenter;
 import com.example.tmaadminapp.Views.ComplaintsView;
 import com.google.firebase.database.ChildEventListener;
@@ -30,12 +29,12 @@ public class ComplaintsPresenterImplementer implements ComplaintsPresenter
     }
 
     @Override
-    public void getTotalComplaints(DatabaseReference dbRef)
+    public void getTotalComplaints(DatabaseReference dbRef , String field)
     {
         if(dbRef != null)
         {
             // query to get only sanitation complaints
-            Query query = dbRef.orderByChild("field").equalTo("Sanitation");
+            Query query = dbRef.orderByChild("field").equalTo(field);
 
             query.addChildEventListener(new ChildEventListener() {
                 @Override

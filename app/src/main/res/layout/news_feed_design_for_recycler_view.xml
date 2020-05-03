@@ -38,10 +38,10 @@
                 android:layout_below="@+id/titleOfNewsFeed"
                 android:text="Date and time"
                 android:textSize="10sp"
-                android:layout_marginLeft="@dimen/card_view"
+                android:layout_marginLeft="@dimen/recycler_view_margin"
                 android:drawableStart="@drawable/ic_access_alarm_black_24dp"
                 android:drawableLeft="@drawable/ic_access_alarm_black_24dp"
-                android:drawablePadding="@dimen/recycler_view_margin">
+                android:drawablePadding="@dimen/card_elevation">
 
             </TextView>
 
@@ -50,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/dateAndTime"
                 android:id="@+id/descriptionOfNewsFeed"
-                android:layout_marginTop="@dimen/recycler_view_margin"
+                android:layout_marginTop="@dimen/card_elevation"
                 android:layout_marginBottom="@dimen/recycler_view_margin"
                 android:layout_marginLeft="@dimen/edit_text_margin"
                 android:layout_marginRight="@dimen/edit_text_margin"

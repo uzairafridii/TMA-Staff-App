@@ -11,10 +11,9 @@ import com.example.tmaadminapp.AppModules.NewsFeed.NewsFeedActivity.NewsFeedActi
 import com.example.tmaadminapp.Models.SanitationMainPresenterImplementer;
 import com.example.tmaadminapp.Presenters.SanitationMainPresenter;
 import com.example.tmaadminapp.R;
-import com.example.tmaadminapp.AppModules.SanitationHead.SanitationComplaints.Complaints;
-import com.example.tmaadminapp.AppModules.SanitationHead.SanitationWorkers.SanitationWorkerList;
+import com.example.tmaadminapp.AppModules.Complaints.Complaints;
+import com.example.tmaadminapp.AppModules.WorkersListAndDetails.WorkersListActivity;
 import com.example.tmaadminapp.Views.SanitationMainView;
-import com.google.firebase.auth.FirebaseAuth;
 
 public class SanitationMain extends AppCompatActivity implements SanitationMainView
 {
@@ -56,6 +55,10 @@ public class SanitationMain extends AppCompatActivity implements SanitationMainV
         sanitationMainPresenter.complaints();
 
     }
+    public void clickOnComplaintsFeedbackCardView(View view)
+    {
+
+    }
 
 
 
@@ -67,12 +70,14 @@ public class SanitationMain extends AppCompatActivity implements SanitationMainV
 
     @Override
     public void onWorkerListCardClick() {
-        startActivity(new Intent(SanitationMain.this , SanitationWorkerList.class));
+        startActivity(new Intent(SanitationMain.this , WorkersListActivity.class));
     }
 
     @Override
     public void onComplaintCardClick() {
         startActivity(new Intent(SanitationMain.this , Complaints.class));
     }
+
+
 
 }

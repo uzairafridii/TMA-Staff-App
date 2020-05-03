@@ -1,4 +1,4 @@
-package com.example.tmaadminapp.AppModules.Complaint_CompletedWork_Map_Details;
+package com.example.tmaadminapp.AppModules.ComplaintDetailAndMap;
 
 import android.content.Context;
 import android.view.LayoutInflater;

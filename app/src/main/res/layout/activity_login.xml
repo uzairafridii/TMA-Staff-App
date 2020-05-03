@@ -8,7 +8,7 @@
     tools:context=".AppModules.Login.LoginActivity">
 
 
-    <com.google.android.material.card.MaterialCardView
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="550dp"
         android:layout_marginTop="@dimen/margin_top_login_card_view"
@@ -22,21 +22,22 @@
         app:cardPreventCornerOverlap="false"
         app:cardUseCompatPadding="true">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtSignIn"
+            android:text="@string/sign_in"
+            android:layout_gravity="center_horizontal"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/sign_in_txt_color"
+            />
+
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical">
 
-            <!-- Sign in text view-->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/txtSignIn"
-                android:text="@string/sign_in"
-                android:layout_centerHorizontal="true"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:textColor="@color/sign_in_txt_color"
-                />
 
             <!-- Email edit text -->
             <com.google.android.material.textfield.TextInputLayout
@@ -46,7 +47,6 @@
                 android:theme="@style/TextLabel"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_marginTop="@dimen/edit_text_margin"
-                android:layout_below="@id/txtSignIn"
                 app:boxStrokeColor="@color/sign_in_txt_color"
 
                 >
@@ -130,6 +130,6 @@
         </RelativeLayout>
 
 
-    </com.google.android.material.card.MaterialCardView>
+    </androidx.cardview.widget.CardView>
 
 </RelativeLayout>

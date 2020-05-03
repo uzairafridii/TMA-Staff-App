@@ -24,11 +24,13 @@
     <!-- Edit text for worker name-->
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:id="@+id/worker_name"
-        android:layout_marginTop="@dimen/margin_login_card_view"
-        android:layout_marginLeft="@dimen/margin_login_card_view"
-        android:layout_marginRight="@dimen/margin_login_card_view"
+        android:background="@drawable/edit_text_bg"
+        android:paddingLeft="@dimen/edit_text_margin"
+        android:layout_marginTop="@dimen/edit_text_margin"
+        android:layout_marginLeft="@dimen/edit_text_margin"
+        android:layout_marginRight="@dimen/edit_text_margin"
         android:hint="@string/enter_worker_name"
         android:drawableLeft="@drawable/ic_person_black_24dp"
         android:drawablePadding="@dimen/recycler_view_margin"
@@ -38,11 +40,13 @@
     <!-- Edit text for worker phone no-->
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:id="@+id/worker_phone_no"
-        android:layout_marginTop="@dimen/margin_login_card_view"
-        android:layout_marginLeft="@dimen/margin_login_card_view"
-        android:layout_marginRight="@dimen/margin_login_card_view"
+        android:background="@drawable/edit_text_bg"
+        android:paddingLeft="@dimen/edit_text_margin"
+        android:layout_marginTop="@dimen/edit_text_margin"
+        android:layout_marginLeft="@dimen/edit_text_margin"
+        android:layout_marginRight="@dimen/edit_text_margin"
         android:hint="@string/phone_no"
         android:drawableLeft="@drawable/ic_phone_black_24dp"
         android:drawablePadding="@dimen/recycler_view_margin"
@@ -52,16 +56,19 @@
     <!-- Edit text for worker cnic-->
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/worker_name_cnic"
-        android:layout_marginTop="@dimen/margin_login_card_view"
-        android:layout_marginLeft="@dimen/margin_login_card_view"
-        android:layout_marginRight="@dimen/margin_login_card_view"
+        android:layout_height="40dp"
+        android:id="@+id/worker_cnic"
+        android:background="@drawable/edit_text_bg"
+        android:paddingLeft="@dimen/edit_text_margin"
+        android:layout_marginTop="@dimen/edit_text_margin"
+        android:layout_marginLeft="@dimen/edit_text_margin"
+        android:layout_marginRight="@dimen/edit_text_margin"
         android:hint="@string/worker_cnic"
         android:drawableLeft="@drawable/ic_credit_card_black_24dp"
         android:drawablePadding="@dimen/recycler_view_margin"
         android:inputType="number"
         />
+
 
     <Button
         style="@style/Widget.MaterialComponents.Button"
@@ -69,8 +76,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/add_worker_btn"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/margin_top_login_card_view"
-        android:layout_marginBottom="@dimen/margin_login_card_view"
+        android:layout_marginTop="@dimen/edit_text_margin"
+        android:layout_marginBottom="@dimen/edit_text_margin"
         android:text="@string/add_worker"
         android:backgroundTint="@color/sign_in_txt_color"
         app:cornerRadius="16dp"
