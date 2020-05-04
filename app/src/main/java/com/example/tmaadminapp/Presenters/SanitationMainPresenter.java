@@ -9,5 +9,7 @@ public interface SanitationMainPresenter
 
     void workersList();
 
+    void feedback();
+
 
 }

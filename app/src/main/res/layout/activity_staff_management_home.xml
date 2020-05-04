@@ -26,6 +26,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:id="@+id/parentLayout"
+        android:layout_marginTop="@dimen/margin_top_card_news_feed"
         >
 
 

@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AppModules.ComplaintCompletedWorkAndFeedback.CompletedWorkList"></activity>
+        <activity android:name=".AppModules.FeedbackWorks.FeedbackWorkActivity"></activity>
+        <activity android:name=".AppModules.ComplaintCompletedWorkAndFeedback.CompletedWorkList" />
         <activity android:name=".AppModules.ComplaintDetailAndMap.MapActivity" />
         <activity android:name=".AppModules.ComplaintDetailAndMap.ComplaintDetails" />
         <activity android:name=".AppModules.ComplaintCompletedWorkAndFeedback.AddCompletedWorkActivity" />

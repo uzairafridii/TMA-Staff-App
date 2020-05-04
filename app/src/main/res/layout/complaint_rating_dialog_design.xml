@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/edit_text_margin">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/feebackComment"
+        android:text="comment"
+        android:textColor="@android:color/black"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/edit_text_margin"
+        />
+
+    <RatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/feedbackRatingbar"
+        style="@style/Widget.AppCompat.RatingBar.Indicator"
+        android:progressBackgroundTint="@color/yellow"
+        android:progressTint="@color/yellow"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/recycler_view_margin"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ratingValue"
+        android:text="3.5"
+        android:layout_gravity="center_horizontal"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/closeFeedbackRatingBtn"
+        android:text="Ok"
+        android:backgroundTint="@color/sign_in_txt_color"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/edit_text_margin"
+        />
+
+
+</LinearLayout>

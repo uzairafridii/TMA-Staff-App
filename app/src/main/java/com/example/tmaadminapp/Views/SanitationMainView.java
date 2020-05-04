@@ -9,6 +9,7 @@ public interface SanitationMainView
 
     void onComplaintCardClick();
 
+    void onFeedBackCardClick();
 
 
 }

@@ -123,6 +123,8 @@ public class LoginActivity extends AppCompatActivity implements LoginView
 
     @Override
     public void goToRegulationHomePage() {
+        Toast.makeText(this, "Not you work", Toast.LENGTH_SHORT).show();
+
     }
 
     @Override
@@ -133,7 +135,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView
 
     @Override
     public void goToFinanceHomePage() {
-
+        Toast.makeText(this, "Not you work", Toast.LENGTH_SHORT).show();
     }
 
     @Override

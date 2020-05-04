@@ -28,5 +28,11 @@ public class SanitationMainPresenterImplementer implements SanitationMainPresent
         sanitationMainView.onWorkerListCardClick();
     }
 
+    @Override
+    public void feedback()
+    {
+      sanitationMainView.onFeedBackCardClick();
+    }
+
 
 }

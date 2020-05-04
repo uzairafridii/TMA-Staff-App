@@ -33,11 +33,11 @@ import java.util.Map;
 
 public class AdapterForWorkerList extends RecyclerView.Adapter<AdapterForWorkerList.MyWorkerViewHolder>
 {
-    private List<ModelForWorkerList> modelForWorkerLists;
+    private List<ModelForWorkerList> workersList;
     private Context ctx;
 
-    public AdapterForWorkerList(List<ModelForWorkerList> modelForWorkerLists, Context ctx) {
-        this.modelForWorkerLists = modelForWorkerLists;
+    public AdapterForWorkerList(List<ModelForWorkerList> workersList, Context ctx) {
+        this.workersList = workersList;
         this.ctx = ctx;
     }
 
@@ -53,7 +53,7 @@ public class AdapterForWorkerList extends RecyclerView.Adapter<AdapterForWorkerL
     @Override
     public void onBindViewHolder(@NonNull final MyWorkerViewHolder holder, int position)
     {
-        final ModelForWorkerList model = modelForWorkerLists.get(position);
+        final ModelForWorkerList model = workersList.get(position);
 
         holder.setWorkerName(model.getNameOfWorker());
         holder.setRatingBar(Float.parseFloat(model.getAverage_rating()));
@@ -109,7 +109,7 @@ public class AdapterForWorkerList extends RecyclerView.Adapter<AdapterForWorkerL
 
     @Override
     public int getItemCount() {
-        return modelForWorkerLists.size();
+        return workersList.size();
     }
 
     // worker view holder class
@@ -246,8 +246,10 @@ public class AdapterForWorkerList extends RecyclerView.Adapter<AdapterForWorkerL
                             for(DataSnapshot dataSnap : dataSnapshot.getChildren())
                             {
                                 dataSnap.getRef().removeValue();
-                                notifyItemChanged(getAdapterPosition());
-                                notifyItemRangeChanged(getAdapterPosition(), modelForWorkerLists.size());
+                                dialogInterface.dismiss();
+                                workersList.remove(getAdapterPosition());
+                                notifyItemRemoved(getAdapterPosition());
+                                notifyItemRangeChanged(getAdapterPosition(), workersList.size());
                             }
                         }
 

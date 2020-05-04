@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.tmaadminapp.AppModules.FeedbackWorks.FeedbackWorkActivity;
 import com.example.tmaadminapp.AppModules.NewsFeed.NewsFeedActivity.NewsFeedActivity;
 import com.example.tmaadminapp.Models.SanitationMainPresenterImplementer;
 import com.example.tmaadminapp.Presenters.SanitationMainPresenter;
@@ -55,9 +56,10 @@ public class SanitationMain extends AppCompatActivity implements SanitationMainV
         sanitationMainPresenter.complaints();
 
     }
+
     public void clickOnComplaintsFeedbackCardView(View view)
     {
-
+         sanitationMainPresenter.feedback();
     }
 
 
@@ -78,6 +80,11 @@ public class SanitationMain extends AppCompatActivity implements SanitationMainV
         startActivity(new Intent(SanitationMain.this , Complaints.class));
     }
 
+    @Override
+    public void onFeedBackCardClick()
+    {
+      startActivity(new Intent(SanitationMain.this , FeedbackWorkActivity.class));
+    }
 
 
 }

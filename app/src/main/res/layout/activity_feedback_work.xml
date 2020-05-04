@@ -5,14 +5,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SplashScreen">
+    tools:context=".AppModules.FeedbackWorks.FeedbackWorkActivity">
 
+    <include layout="@layout/app_tool_bar"
+        android:id="@+id/feedbackWorkToolbar"/>
 
-    <ImageView
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/tma_logo"
-        android:layout_centerInParent="true"
+        android:id="@+id/feebackWorkRecycler"
+        android:layout_margin="@dimen/recycler_view_margin"
+        android:layout_below="@id/feedbackWorkToolbar"
         />
+
 
 </RelativeLayout>

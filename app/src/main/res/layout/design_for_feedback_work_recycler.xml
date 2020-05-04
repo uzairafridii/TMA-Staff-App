@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/feedbackCard"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/card_elevation"
+        android:layout_marginRight="@dimen/card_elevation"
+        android:layout_marginTop="@dimen/recycler_view_margin"
+        app:cardCornerRadius="@dimen/card_elevation"
+        app:cardElevation="@dimen/card_elevation"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/recycler_view_margin"
+            android:paddingBottom="@dimen/recycler_view_margin"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/completedComplaintTitle"
+                android:text="Title"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/completedComplaintdate"
+                android:text="date"
+                android:textSize="10sp"
+                android:layout_below="@+id/completedComplaintTitle"
+                />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:id="@+id/completedComplaintImage"
+                android:src="@drawable/ic_launcher_background"
+                android:scaleType="fitXY"
+                android:layout_below="@+id/completedComplaintdate"
+                android:layout_marginTop="@dimen/card_elevation"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:id="@+id/view"
+                android:background="@android:color/darker_gray"
+                android:layout_below="@+id/completedComplaintImage"
+                android:layout_marginTop="@dimen/recycler_view_margin"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/workersNameTextView"
+                android:text="Workers :"
+                android:layout_below="@id/view"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:layout_marginTop="@dimen/recycler_view_margin"
+                android:layout_marginLeft="@dimen/recycler_view_margin"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/workerFirst"
+                android:text="FirstWorker"
+                android:layout_below="@id/view"
+                android:layout_toRightOf="@id/workersNameTextView"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:layout_marginTop="@dimen/recycler_view_margin"
+                android:layout_marginLeft="@dimen/recycler_view_margin"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/workerSecond"
+                android:text="And SecondWorker"
+                android:layout_below="@id/view"
+                android:layout_toRightOf="@id/workerFirst"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:layout_marginTop="@dimen/recycler_view_margin"
+                android:layout_marginLeft="@dimen/recycler_view_margin"
+                />
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+
+
+</RelativeLayout>

@@ -6,12 +6,14 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:layout_width="250dp"
+        android:layout_width="match_parent"
         android:layout_height="250dp"
         android:id="@+id/imagesInComplaintDetailRv"
         android:layout_marginTop="@dimen/recycler_view_margin"
         android:layout_marginLeft="@dimen/recycler_view_margin"
+        android:layout_marginRight="@dimen/recycler_view_margin"
         android:src="@drawable/ic_launcher_background"
+        android:scaleType="fitXY"
         />
 
 
