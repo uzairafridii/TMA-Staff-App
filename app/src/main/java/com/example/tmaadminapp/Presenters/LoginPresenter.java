@@ -10,7 +10,7 @@ public interface LoginPresenter
 
     void savePassword(String userEmail , String userPassword);
 
-    void getUserNameAndPasswordFromSaveDb();
+    void getUserNameAndPasswordFromSharedPref();
 
 
 }

@@ -2,48 +2,31 @@ package com.example.tmaadminapp.AppModules.Administration.AdminStaffManagement.W
 
 public class ModelForWorkerLIstInAdmin
 {
-    private String workerName  , field;
-    private float ratingGrade;
-   // private int image;
+    private String nameOfWorker,average_rating , phone, cnic  , field , pushKey;
 
-    public ModelForWorkerLIstInAdmin(String workerName, String field, float ratingGrade) //int image)
-     {
-        this.workerName = workerName;
-        this.field = field;
-        this.ratingGrade = ratingGrade;
-      //  this.image = image;
+    public ModelForWorkerLIstInAdmin() {}
+
+    public String getPushKey() {
+        return pushKey;
     }
 
-
-    public String getWorkerName() {
-        return workerName;
+    public String getNameOfWorker() {
+        return nameOfWorker;
     }
 
-    public void setWorkerName(String workerName) {
-        this.workerName = workerName;
+    public String getAverage_rating() {
+        return average_rating;
     }
 
-    public float getRatingGrade() {
-        return ratingGrade;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setRatingGrade(float ratingGrade) {
-        this.ratingGrade = ratingGrade;
+    public String getCnic() {
+        return cnic;
     }
 
     public String getField() {
         return field;
     }
-
-    public void setField(String field) {
-        this.field = field;
-    }
-
-  /*  public int getImage() {
-        return image;
-    }
-
-    public void setImage(int image) {
-        this.image = image;
-    }*/
 }

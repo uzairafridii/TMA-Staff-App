@@ -12,8 +12,6 @@ public interface AddWorkerView
 
     void showMessage(String message);
 
-    void clickOnAddWorkerFab();
-
     void getWorkersList(List<ModelForWorkerList> workerList);
 
 }

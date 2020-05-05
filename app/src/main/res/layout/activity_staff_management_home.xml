@@ -150,7 +150,7 @@
         android:orientation="horizontal"
         android:weightSum="2"
         android:layout_marginBottom="@dimen/card_view"
-        android:layout_marginTop="@dimen/edit_text_margin"
+        android:layout_marginTop="@dimen/recycler_view_margin"
         android:id="@+id/secondLayoutLayout"
         android:layout_below="@+id/firstLayout"
         >

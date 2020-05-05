@@ -85,7 +85,7 @@
         android:textStyle="bold"
         android:textColor="@android:color/black"
         android:layout_marginLeft="@dimen/card_elevation"
-        android:layout_marginTop="@dimen/margin_24"
+        android:layout_marginTop="@dimen/margin_top_card_news_feed"
         android:layout_below="@+id/workerProfileInDetail"
         />
 

@@ -12,16 +12,18 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/card_elevation"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/margin_top_login_card_view"
+        android:paddingBottom="@dimen/margin_login_card_view"
         >
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="550dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/edit_text_margin"
             android:layout_marginTop="@dimen/margin_top_login_card_view"
             android:layout_marginLeft="@dimen/margin_login_card_view"
             android:layout_marginRight="@dimen/margin_login_card_view"
-            android:layout_marginBottom="@dimen/edit_text_margin"
             app:cardCornerRadius="8dp"
             app:cardElevation="8dp"
             app:contentPadding="@dimen/edit_text_margin"
@@ -40,8 +42,11 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|center_vertical">
+                android:layout_height="match_parent"
+                android:paddingTop="@dimen/margin_login_card_view"
+                android:paddingBottom="@dimen/margin_top_login_card_view"
+                android:layout_marginTop="@dimen/margin_login_card_view"
+                android:layout_gravity="center_horizontal">
 
 
                 <!-- Email edit text -->

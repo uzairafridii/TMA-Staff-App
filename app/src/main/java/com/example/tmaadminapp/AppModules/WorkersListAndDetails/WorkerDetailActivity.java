@@ -82,7 +82,7 @@ public class WorkerDetailActivity extends AppCompatActivity implements WorkerDet
 
         float rating = Float.parseFloat(avgRating);
         workerName.setText(name);
-        workerAverageRating.setText(avgRating);
+        workerAverageRating.setText("("+avgRating+")");
         ratingBar.setRating(rating);
 
         if(rating > 1 && rating <=2.5)

@@ -41,12 +41,16 @@ public class LoginPresenterImplementer implements LoginPresenter {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
 
-                    if (task.isSuccessful()) {
-                        if (email.equals("admin@gmail.com")) {
+                    if (task.isSuccessful())
+                    {
+                        if (email.equals("admin@gmail.com"))
+                        {
                             loginView.moveToMainPage();
                             loginView.hideProgressBar();
                             loginView.showMessage("Successfully login");
-                        } else {
+                        }
+                        else
+                            {
                             String currentUser = mAuth.getCurrentUser().getUid();
                             Query query = dbRef.child(currentUser);
 
@@ -60,6 +64,12 @@ public class LoginPresenterImplementer implements LoginPresenter {
 
                                     if (role.equals("Sanitation")) {
                                         loginView.goToSanitationHomePage();
+                                        loginView.hideProgressBar();
+                                        loginView.showMessage("Successfully login");
+                                    }
+                                    else if(role.equals("Infrastructure"))
+                                    {
+                                        loginView.goToInfraHomePage();
                                         loginView.hideProgressBar();
                                         loginView.showMessage("Successfully login");
                                     }
@@ -100,7 +110,7 @@ public class LoginPresenterImplementer implements LoginPresenter {
     }
 
     @Override
-    public void getUserNameAndPasswordFromSaveDb()
+    public void getUserNameAndPasswordFromSharedPref()
     {
         saveUserNameAndPassword = context.getSharedPreferences(DB_KEY, Context.MODE_PRIVATE);
         String saveEmail = saveUserNameAndPassword.getString(USER_EMAIL_KEY, "");

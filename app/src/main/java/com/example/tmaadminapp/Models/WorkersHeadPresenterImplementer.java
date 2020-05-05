@@ -1,12 +1,19 @@
 package com.example.tmaadminapp.Models;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 
 import com.example.tmaadminapp.AppModules.Administration.AdminStaffManagement.WorkerHeadList.ModelForWorkerHead;
 import com.example.tmaadminapp.Presenters.WorkersHeadPresenter;
+import com.example.tmaadminapp.R;
 import com.example.tmaadminapp.Views.WorkerHeadView;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
@@ -26,84 +33,22 @@ import java.util.Map;
 public class WorkersHeadPresenterImplementer implements WorkersHeadPresenter
 {
     private WorkerHeadView workerHeadView;
+    private Context context;
     private List<ModelForWorkerHead> workerHeadList = new ArrayList<>();
 
-    public WorkersHeadPresenterImplementer(WorkerHeadView workerHeadView) {
-        this.workerHeadView = workerHeadView;
-    }
-
-    @Override
-    public void onAddWorkerHeadDetails(final DatabaseReference dbRef, final FirebaseAuth mAuth, final String name, final String phone,
-                                       final String department, final String email, final String password)
+    public WorkersHeadPresenterImplementer(WorkerHeadView workerHeadView , Context context)
     {
-        if (dbRef != null && mAuth != null && !name.isEmpty() &&
-                !phone.isEmpty() && !department.isEmpty() &&
-                !email.isEmpty() && !password.isEmpty())
-        {
-
-            workerHeadView.onShowProgressBar();
-
-            // sign up the workers head with email
-            mAuth.createUserWithEmailAndPassword(email , password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                @Override
-                public void onSuccess(AuthResult authResult) {
-
-                    //to get device token
-                    FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(new OnSuccessListener<InstanceIdResult>() {
-                        @Override
-                        public void onSuccess(InstanceIdResult instanceIdResult) {
-
-
-                            // get token
-                            String deviceToken = instanceIdResult.getToken();
-                            Log.d("deviceTokenByAdmin", "onSuccess: "+deviceToken);
-
-                            //TODO : token id is left to store in database
-                            // set data in map
-                            final Map<String, String> workerHeadData = new HashMap<>();
-                            workerHeadData.put("name_worker_head", name);
-                            workerHeadData.put("phone", phone);
-                            workerHeadData.put("department", department);
-                            workerHeadData.put("password", password);
-                            workerHeadData.put("email", email);
-                            workerHeadData.put("token", "null for this time");
-                            workerHeadData.put("uid", mAuth.getCurrentUser().getUid());
-
-                            // store data in firebase database
-                            dbRef.child("Workers Head").child(mAuth.getCurrentUser().getUid())
-                                    .setValue(workerHeadData).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void aVoid) {
-
-                                    workerHeadView.onHideProgressBar();
-                                    workerHeadView.showMessage("SuccessFully register");
-                                    workerHeadView.onClearAllFields();
-
-                                }
-                            });
-
-
-                        }
-                    });
-
-
-
-                }
-            });
-
-
-
-
-        } else {
-            workerHeadView.showMessage("Please all fields are require");
-        }
-
+        this.workerHeadView = workerHeadView;
+        this.context = context;
     }
+
 
     // to show signUp  dialog
     @Override
-    public void showSignUpDialog() {
-        workerHeadView.onShowSignUpDialog();
+    public void signUpWorkerHead(DatabaseReference dbRef , FirebaseAuth auth)
+    {
+        signUpFormDialog(dbRef , auth);
+
     }
 
     // to get all workers head
@@ -135,5 +80,116 @@ public class WorkersHeadPresenterImplementer implements WorkersHeadPresenter
         });
 
 
+    }
+
+
+    // custom signup dialog method
+    private void signUpFormDialog(final DatabaseReference dbRef , final FirebaseAuth mAuth)
+    {
+        View customView = LayoutInflater.from(context).inflate(R.layout.workers_head_sign_up, null);
+        final AlertDialog.Builder alert = new AlertDialog.Builder(context);
+        alert.setView(customView);
+
+        // initialize edittext fields
+         final EditText name , phone , email, department , password;
+        name = customView.findViewById(R.id.worker_head_name);
+        phone = customView.findViewById(R.id.worker_head_phone_no);
+        email = customView.findViewById(R.id.worker_head_email);
+        department = customView.findViewById(R.id.worker_head_dept);
+        password = customView.findViewById(R.id.worker_head_password);
+
+        // set click on register button
+        customView.findViewById(R.id.registerWorkerHeadButton)
+                .setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+
+                        if (dbRef != null && mAuth != null && !name.getText().toString().isEmpty() &&
+                                !phone.getText().toString().isEmpty() && !department.getText().toString().isEmpty() &&
+                                !email.getText().toString().isEmpty() && !password.getText().toString().isEmpty())
+                        {
+
+                            workerHeadView.onShowProgressBar();
+
+                            // sign up the workers head with email
+                            mAuth.createUserWithEmailAndPassword(email.getText().toString() , password.getText().toString())
+                                    .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                                @Override
+                                public void onSuccess(AuthResult authResult) {
+
+                                    //to get device token
+                                    FirebaseInstanceId.getInstance().getInstanceId()
+                                            .addOnSuccessListener(new OnSuccessListener<InstanceIdResult>() {
+                                        @Override
+                                        public void onSuccess(InstanceIdResult instanceIdResult) {
+
+
+                                            // get token
+                                            String deviceToken = instanceIdResult.getToken();
+                                            Log.d("deviceTokenByAdmin", "onSuccess: "+deviceToken);
+
+                                            //TODO : token id is left to store in database
+                                            // set data in map
+                                            final Map<String, String> workerHeadData = new HashMap<>();
+                                            workerHeadData.put("name_worker_head", name.getText().toString());
+                                            workerHeadData.put("phone", phone.getText().toString());
+                                            workerHeadData.put("department", department.getText().toString());
+                                            workerHeadData.put("password", password.getText().toString());
+                                            workerHeadData.put("email", email.getText().toString());
+                                            workerHeadData.put("token", "null for this time");
+                                            workerHeadData.put("uid", mAuth.getCurrentUser().getUid());
+
+                                            // store data in firebase database
+                                            dbRef.child("Workers Head").child(mAuth.getCurrentUser().getUid())
+                                                    .setValue(workerHeadData).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                @Override
+                                                public void onSuccess(Void aVoid) {
+
+                                                    workerHeadView.onHideProgressBar();
+                                                    workerHeadView.showMessage("SuccessFully register");
+
+                                                }
+                                            });
+
+
+                                        }
+                                    });
+
+
+
+                                }
+                            });
+
+
+
+
+                        } else {
+                            workerHeadView.showMessage("Please all fields are require");
+                        }
+
+
+
+
+
+
+
+                        // dismiss dialog
+                        alert.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                            @Override
+                            public void onDismiss(DialogInterface dialogInterface) {
+
+                                dialogInterface.dismiss();
+                            }
+                        });
+
+
+                    }
+                });
+
+
+
+
+        alert.show();
     }
 }

@@ -4,10 +4,8 @@ import com.google.firebase.database.DatabaseReference;
 
 public interface AddWorkerPresenter
 {
+    void getAllWorkers(DatabaseReference dbRef , String field);
 
-    void addWorker(DatabaseReference dbRef , String name , String phone , String cnic);
+    void fabClick(DatabaseReference databaseReference);
 
-    void getAllWorkers(DatabaseReference dbRef);
-
-    void fabClick();
 }

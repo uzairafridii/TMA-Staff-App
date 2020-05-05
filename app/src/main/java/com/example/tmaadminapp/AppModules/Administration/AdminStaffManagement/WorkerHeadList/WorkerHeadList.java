@@ -30,7 +30,7 @@ public class WorkerHeadList extends AppCompatActivity implements WorkerHeadView
 {
 
     private Toolbar mToolbar;
-    private EditText name , phone , email, department , password;
+
     private RecyclerView mRecyclerView;
     private AdapterForWorkerHeadRecycler adapter;
     private ProgressDialog progressDialog;
@@ -54,7 +54,7 @@ public class WorkerHeadList extends AppCompatActivity implements WorkerHeadView
     private void initViews()
     {
 
-        workersHeadPresenter = new WorkersHeadPresenterImplementer(this);
+        workersHeadPresenter = new WorkersHeadPresenterImplementer(this , this);
 
         progressDialog = new ProgressDialog(this, R.style.MyAlertDialogStyle);
 
@@ -73,11 +73,11 @@ public class WorkerHeadList extends AppCompatActivity implements WorkerHeadView
         mAuth = FirebaseAuth.getInstance();
     }
 
-
     // click on floating action button to add worker head
     public void clickOnAddWorkerFab(View view)
     {
-        workersHeadPresenter.showSignUpDialog();
+      //  workersHeadPresenter.showSignUpDialog();
+        workersHeadPresenter.signUpWorkerHead(databaseReference , mAuth);
     }
 
     // call backs method of workers head view
@@ -111,64 +111,8 @@ public class WorkerHeadList extends AppCompatActivity implements WorkerHeadView
 
     }
 
-    @Override
-    public void onShowSignUpDialog() {
-        signUpFormDialog();
-    }
-
-    @Override
-    public void onClearAllFields()
-    {
-       name.setText("");
-       phone.setText("");
-       email.setText("");
-       password.setText("");
-       department.setText("");
-    }
-
-
-    // custom signup dialog method
-    private void signUpFormDialog()
-    {
-        View customView = LayoutInflater.from(this).inflate(R.layout.workers_head_sign_up, null);
-        final AlertDialog.Builder alert = new AlertDialog.Builder(this);
-        alert.setView(customView);
-
-        // initialize edittext fields
-        name = customView.findViewById(R.id.worker_head_name);
-        phone = customView.findViewById(R.id.worker_head_phone_no);
-        email = customView.findViewById(R.id.worker_head_email);
-        department = customView.findViewById(R.id.worker_head_dept);
-        password = customView.findViewById(R.id.worker_head_password);
-
-        // set click on register button
-        customView.findViewById(R.id.registerWorkerHeadButton)
-                .setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-
-                        // send data to presenter implementer
-                        workersHeadPresenter.onAddWorkerHeadDetails(databaseReference , mAuth ,name.getText().toString(), phone
-                                        .getText().toString(), department.getText().toString(),
-                                email.getText().toString() , password.getText().toString());
-
-                        // dismiss dialog
-                        alert.setOnDismissListener(new DialogInterface.OnDismissListener() {
-                            @Override
-                            public void onDismiss(DialogInterface dialogInterface) {
-
-                                dialogInterface.dismiss();
-                            }
-                        });
-
-
-                    }
-                });
 
 
 
-
-        alert.show();
-    }
 
 }

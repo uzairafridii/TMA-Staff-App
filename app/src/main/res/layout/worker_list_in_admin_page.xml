@@ -27,11 +27,12 @@
             >
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="64dp"
-                android:layout_height="64dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:id="@+id/workerProfileImageInItemDesign"
                 android:src="@drawable/avatar"
                 android:layout_marginLeft="@dimen/recycler_view_margin"
+                android:layout_marginTop="@dimen/recycler_view_margin"
                 />
 
             <TextView
@@ -67,7 +68,7 @@
                 android:isIndicator="true"
                 android:stepSize="0.1"
                 android:rating="3.5"
-                android:progressTint="@color/stars_color"
+                android:progressTint="@color/yellow"
                 android:progressBackgroundTint="@color/stars_color"
                 android:layout_marginRight="@dimen/edit_text_margin"
                 android:layout_marginTop="@dimen/recycler_view_margin"

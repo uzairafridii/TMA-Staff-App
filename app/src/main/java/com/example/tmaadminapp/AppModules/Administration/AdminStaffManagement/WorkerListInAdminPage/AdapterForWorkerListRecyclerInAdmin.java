@@ -17,13 +17,14 @@ import com.example.tmaadminapp.AppModules.WorkersListAndDetails.WorkerDetailActi
 import com.google.android.material.card.MaterialCardView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class AdapterForWorkerListRecyclerInAdmin extends RecyclerView.Adapter<AdapterForWorkerListRecyclerInAdmin.MyViewHolder>
 {
-    private ArrayList<ModelForWorkerLIstInAdmin> arrayList;
+    private List<ModelForWorkerLIstInAdmin> arrayList;
     private Context context;
 
-    public AdapterForWorkerListRecyclerInAdmin(ArrayList<ModelForWorkerLIstInAdmin> arrayList, Context context) {
+    public AdapterForWorkerListRecyclerInAdmin(List<ModelForWorkerLIstInAdmin> arrayList, Context context) {
         this.arrayList = arrayList;
         this.context = context;
     }
@@ -40,18 +41,22 @@ public class AdapterForWorkerListRecyclerInAdmin extends RecyclerView.Adapter<Ad
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position)
     {
-        ModelForWorkerLIstInAdmin model = arrayList.get(position);
+        final ModelForWorkerLIstInAdmin model = arrayList.get(position);
 
-        holder.setWorkerName(model.getWorkerName());
+        holder.setWorkerName(model.getNameOfWorker());
         holder.setField(model.getField());
-        holder.setRateGrading(model.getRatingGrade());
-        holder.setRatingBar(model.getRatingGrade());
+        holder.setRateGrading(Float.parseFloat(model.getAverage_rating()));
+        holder.setRatingBar(Float.parseFloat(model.getAverage_rating()));
 
         holder.workerCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                context.startActivity(new Intent(context, WorkerDetailActivity.class));
+                 Intent intent = new Intent(context, WorkerDetailActivity.class);
+                 intent.putExtra("name",model.getNameOfWorker());
+                 intent.putExtra("worker_key" , model.getPushKey());
+                 intent.putExtra("average_rating" , model.getAverage_rating());
+                context.startActivity(intent);
 
             }
         });
@@ -124,14 +129,6 @@ public class AdapterForWorkerListRecyclerInAdmin extends RecyclerView.Adapter<Ad
         ratingBar  = mView.findViewById(R.id.workerRatingInItemDesign);
         ratingBar.setRating(workerRating);
     }
-
-
-
-     /*  private void setWorkerImage(int image)
-        {
-            workerImage = mView.findViewById(R.id.workerProfileImageInItemDesign);
-            workerImage.setImageResource(R.drawable.avatar);
-        }*/
 
 
 

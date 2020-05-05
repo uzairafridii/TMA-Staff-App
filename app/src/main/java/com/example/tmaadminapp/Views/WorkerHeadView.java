@@ -14,8 +14,5 @@ public interface WorkerHeadView {
 
     void onGetAllWorkerHeadDetails(List<ModelForWorkerHead> workerHeadList);
 
-    void onShowSignUpDialog();
-
-    void onClearAllFields();
 
 }

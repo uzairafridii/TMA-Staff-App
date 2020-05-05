@@ -7,16 +7,24 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
+import com.example.tmaadminapp.Models.AdminWorkersListPresenterImplementer;
+import com.example.tmaadminapp.Presenters.AdminWorkerListPresenter;
 import com.example.tmaadminapp.R;
+import com.example.tmaadminapp.Views.AdminWorkersListView;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class WorkersListActivityInAdmin extends AppCompatActivity {
+public class WorkersListActivityInAdmin extends AppCompatActivity implements AdminWorkersListView
+{
 
     private RecyclerView mRecyclerView;
     private Toolbar mToolbar;
-    private ArrayList<ModelForWorkerLIstInAdmin> listOfWorker;
     private AdapterForWorkerListRecyclerInAdmin adapter;
+    private AdminWorkerListPresenter workerListPresenter;
+    private DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,38 +32,31 @@ public class WorkersListActivityInAdmin extends AppCompatActivity {
         setContentView(R.layout.activity_head_workers_list);
 
         initViews();
-        addItems();
-        mRecyclerView.setAdapter(adapter);
+        workerListPresenter.onGetWorkersList(databaseReference);
+
 
     }
 
     private void initViews()
     {
+        workerListPresenter = new AdminWorkersListPresenterImplementer(this);
+
         mRecyclerView = findViewById(R.id.worker_list_recycler_in_admin);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-
-        //tool bar
         mToolbar = findViewById(R.id.tool_bar_in_admin_page);
         setSupportActionBar(mToolbar);
         setTitle("Worker List");
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        // array list
-        listOfWorker = new ArrayList<>();
-        // adapter
-        adapter = new AdapterForWorkerListRecyclerInAdmin(listOfWorker , this);
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Worker List");
+
     }
 
-    // add items to recycler view
-    private void addItems()
+    @Override
+    public void getWorkerList(List<ModelForWorkerLIstInAdmin> list)
     {
-        listOfWorker.add(new ModelForWorkerLIstInAdmin("First", "Sanitation", 3.2f));
-        listOfWorker.add(new ModelForWorkerLIstInAdmin("Second", "Infrastructure", 2.2f));
-        listOfWorker.add(new ModelForWorkerLIstInAdmin("Third", "Sanitation", 4.2f));
-        listOfWorker.add(new ModelForWorkerLIstInAdmin("Fourth", "Sanitation", 5f));
-        listOfWorker.add(new ModelForWorkerLIstInAdmin("Fifth", "Infrastructure", 4.5f));
-
+      adapter = new AdapterForWorkerListRecyclerInAdmin(list, this);
+      mRecyclerView.setAdapter(adapter);
     }
 }

@@ -27,6 +27,9 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:id="@+id/parentLayout"
+            android:paddingBottom="@dimen/edit_text_margin"
+            android:layout_marginBottom="@dimen/card_elevation"
+            android:layout_marginTop="@dimen/margin_login_card_view"
             >
 
             <LinearLayout
@@ -34,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:weightSum="2"
-                android:layout_marginBottom="@dimen/card_view"
+                android:layout_marginTop="@dimen/margin_login_card_view"
                 android:id="@+id/firstLayout"
                 android:layout_below="@+id/infra_tool_bar"
                 >
@@ -52,6 +55,7 @@
                     android:layout_marginBottom="@dimen/edit_text_margin"
                     android:layout_marginLeft="@dimen/edit_text_margin"
                     android:layout_marginRight="@dimen/edit_text_margin"
+                    android:layout_marginTop="@dimen/card_elevation"
                     app:cardCornerRadius="8dp"
                     app:cardElevation="@dimen/card_elevation"
                     app:strokeColor="@color/sign_in_txt_color"
@@ -98,6 +102,7 @@
                     android:foreground="?android:attr/selectableItemBackground"
                     android:layout_marginRight="@dimen/edit_text_margin"
                     android:layout_marginLeft="@dimen/edit_text_margin"
+                    android:layout_marginTop="@dimen/card_elevation"
                     app:cardCornerRadius="8dp"
                     app:cardElevation="@dimen/card_elevation"
                     app:strokeColor="@color/sign_in_txt_color"
@@ -140,8 +145,6 @@
                 android:orientation="horizontal"
                 android:weightSum="2"
                 android:id="@+id/secondLayout"
-                android:layout_marginBottom="@dimen/card_view"
-                android:layout_marginTop="@dimen/card_view"
                 android:layout_below="@+id/firstLayout"
                 >
 
@@ -153,12 +156,13 @@
                     android:layout_weight="1"
                     android:id="@+id/workerListCardViewOfInfra"
                     android:clickable="true"
-                    android:layout_marginBottom="@dimen/edit_text_margin"
                     android:onClick="clickOnWorkerListCardView"
                     android:foreground="?android:attr/selectableItemBackground"
                     android:layout_alignParentLeft="true"
                     android:layout_marginLeft="@dimen/edit_text_margin"
                     android:layout_marginRight="@dimen/edit_text_margin"
+                    android:layout_marginBottom="@dimen/edit_text_margin"
+                    android:layout_marginTop="@dimen/card_elevation"
                     app:cardCornerRadius="8dp"
                     app:cardElevation="@dimen/card_elevation"
                     app:strokeColor="@color/sign_in_txt_color"
@@ -201,12 +205,13 @@
                     android:layout_weight="1"
                     android:id="@+id/nocCardViewOfInfra"
                     android:clickable="true"
-                    android:layout_marginBottom="@dimen/edit_text_margin"
                     android:onClick="clickOnBuildingNoc"
                     android:foreground="?android:attr/selectableItemBackground"
                     android:layout_alignParentRight="true"
                     android:layout_marginLeft="@dimen/edit_text_margin"
                     android:layout_marginRight="@dimen/edit_text_margin"
+                    android:layout_marginBottom="@dimen/edit_text_margin"
+                    android:layout_marginTop="@dimen/card_elevation"
                     app:cardCornerRadius="8dp"
                     app:cardElevation="@dimen/card_elevation"
                     app:strokeColor="@color/sign_in_txt_color"
@@ -245,31 +250,77 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:weightSum="1"
+                android:weightSum="2"
                 android:id="@+id/thirdLayout"
-                android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="@dimen/card_view"
-                android:layout_marginTop="@dimen/card_view"
                 android:layout_below="@+id/secondLayout"
                 >
 
                 <androidx.cardview.widget.CardView
-                    android:layout_width="180dp"
+                    android:layout_width="0dp"
                     android:layout_height="160dp"
-                    android:layout_below="@id/secondLayout"
+                    android:layout_below="@id/complaintCardViewInInfra"
+                    android:layout_weight="1"
+                    android:id="@+id/feedbackCardInInfra"
+                    android:clickable="true"
+                    android:onClick="clickOnBuildingNoc"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="@dimen/edit_text_margin"
+                    android:layout_marginRight="@dimen/edit_text_margin"
+                    android:layout_marginBottom="@dimen/card_elevation"
+                    android:layout_marginTop="@dimen/recycler_view_margin"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="@dimen/card_elevation"
+                    app:strokeColor="@color/sign_in_txt_color"
+                    app:strokeWidth="3dp"
+                    >
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:outlineSpotShadowColor="#000"
+                        >
+
+                        <ImageView
+                            android:id="@+id/feedbackImageInfra"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:layout_centerHorizontal="true"
+                            android:src="@drawable/newsfeed" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/feedbackImageInfra"
+                            android:id="@+id/feebackInfra"
+                            android:text="Building Noc"
+                            android:textSize="16sp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginBottom="4dp"
+                            android:textStyle="bold"
+                            />
+
+
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="160dp"
                     android:layout_weight="1"
                     android:id="@+id/firebrigadeCardViewOfInfra"
                     android:clickable="true"
                     android:onClick="clickOnFireFightingCard"
                     android:foreground="?android:attr/selectableItemBackground"
                     android:layout_alignParentLeft="true"
-                    android:layout_marginBottom="@dimen/edit_text_margin"
-                    android:layout_marginTop="@dimen/card_view"
                     android:layout_marginLeft="@dimen/edit_text_margin"
                     android:layout_marginRight="@dimen/edit_text_margin"
+                    android:layout_marginBottom="@dimen/card_elevation"
+                    android:layout_marginTop="@dimen/recycler_view_margin"
                     app:cardCornerRadius="8dp"
                     app:cardElevation="@dimen/card_elevation"
                     app:strokeColor="@color/sign_in_txt_color"
