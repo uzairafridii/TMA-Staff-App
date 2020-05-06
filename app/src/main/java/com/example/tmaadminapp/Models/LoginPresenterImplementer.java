@@ -33,7 +33,8 @@ public class LoginPresenterImplementer implements LoginPresenter {
     }
 
     @Override
-    public void login(final DatabaseReference dbRef, final FirebaseAuth mAuth, final String email, String password) {
+    public void login(final DatabaseReference dbRef, final FirebaseAuth mAuth, final String email, String password)
+    {
         if (mAuth != null && !email.isEmpty() && !password.isEmpty()) {
             loginView.showProgressBar();
 
@@ -43,6 +44,7 @@ public class LoginPresenterImplementer implements LoginPresenter {
 
                     if (task.isSuccessful())
                     {
+                        loginView.showMessage("onComplete method called");
                         if (email.equals("admin@gmail.com"))
                         {
                             loginView.moveToMainPage();
@@ -86,6 +88,10 @@ public class LoginPresenterImplementer implements LoginPresenter {
 
                         }
 
+                    }
+                    else
+                    {
+                        loginView.showMessage(String.valueOf(task.getException()));
                     }
 
                 }

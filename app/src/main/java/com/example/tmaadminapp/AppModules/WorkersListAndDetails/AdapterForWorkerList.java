@@ -115,7 +115,7 @@ public class AdapterForWorkerList extends RecyclerView.Adapter<AdapterForWorkerL
     // worker view holder class
     public class MyWorkerViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView workerName , gradingOfWorker , workerReviews;
+        private TextView workerName , gradingOfWorker;
         private RatingBar ratingBar;
         private ImageButton moreIconBtn;
         private View mView;
@@ -161,7 +161,6 @@ public class AdapterForWorkerList extends RecyclerView.Adapter<AdapterForWorkerL
             ratingBar  = mView.findViewById(R.id.workerRatingInItemDesign);
             ratingBar.setRating((float) workerRating);
         }
-
 
 
         // move to worker details activity

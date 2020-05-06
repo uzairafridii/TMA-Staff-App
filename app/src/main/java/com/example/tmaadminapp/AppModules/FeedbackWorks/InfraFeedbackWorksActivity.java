@@ -17,7 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
-public class FeedbackWorkActivity extends AppCompatActivity implements FeedbackWorkView
+public class InfraFeedbackWorksActivity extends AppCompatActivity implements FeedbackWorkView
 {
 
     private Toolbar mToolbar;
@@ -31,8 +31,7 @@ public class FeedbackWorkActivity extends AppCompatActivity implements FeedbackW
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_feedback_work);
-
+        setContentView(R.layout.activity_infra_feedback_works);
         initViews();
         workPresenter.getAllCompletedWork(databaseReference , firebaseAuth.getCurrentUser().getUid());
 
@@ -40,14 +39,14 @@ public class FeedbackWorkActivity extends AppCompatActivity implements FeedbackW
 
     private void initViews()
     {
-         workPresenter = new FeedbackWorkPresenterImplementer(this);
+        workPresenter = new FeedbackWorkPresenterImplementer(this);
 
-        mToolbar = findViewById(R.id.feedbackWorkToolbar);
+        mToolbar = findViewById(R.id.infraFeedbackWorkToolbar);
         setSupportActionBar(mToolbar);
         setTitle("Feedback Works");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        feedBackRecyclerView = findViewById(R.id.feebackWorkRecycler);
+        feedBackRecyclerView = findViewById(R.id.infraFeedbackWorkRecycler);
         layoutManager = new LinearLayoutManager(this);
         layoutManager.setReverseLayout(true);
         layoutManager.setStackFromEnd(true);
@@ -60,7 +59,7 @@ public class FeedbackWorkActivity extends AppCompatActivity implements FeedbackW
     @Override
     public void getAllFeedbackWorks(List<ModelForFeedbackWorks> list)
     {
-       adapter = new AdapterForFeedbackWorksRecycler(list , this);
-       feedBackRecyclerView.setAdapter(adapter);
+        adapter = new AdapterForFeedbackWorksRecycler(list , this);
+        feedBackRecyclerView.setAdapter(adapter);
     }
 }

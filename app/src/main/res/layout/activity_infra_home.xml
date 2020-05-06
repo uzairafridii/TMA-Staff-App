@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_home"
     tools:context=".AppModules.InfrastructureHead.InfraHome.InfraHome">
 
     <!-- include tool bar -->
@@ -12,12 +11,11 @@
         android:id="@+id/infra_tool_bar"/>
 
 
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="@dimen/card_view"
-        android:layout_marginTop="@dimen/margin_top_card_news_feed"
+        android:layout_marginTop="@dimen/edit_text_margin"
         android:id="@+id/scrollView"
         android:layout_below="@+id/infra_tool_bar"
         >
@@ -29,7 +27,6 @@
             android:id="@+id/parentLayout"
             android:paddingBottom="@dimen/edit_text_margin"
             android:layout_marginBottom="@dimen/card_elevation"
-            android:layout_marginTop="@dimen/margin_login_card_view"
             >
 
             <LinearLayout
@@ -54,7 +51,7 @@
                     android:id="@+id/newsFeedCardViewOfInfra"
                     android:layout_marginBottom="@dimen/edit_text_margin"
                     android:layout_marginLeft="@dimen/edit_text_margin"
-                    android:layout_marginRight="@dimen/edit_text_margin"
+                    android:layout_marginRight="@dimen/recycler_view_margin"
                     android:layout_marginTop="@dimen/card_elevation"
                     app:cardCornerRadius="8dp"
                     app:cardElevation="@dimen/card_elevation"
@@ -89,7 +86,7 @@
 
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
-                <!-- Complaints card view-->
+                <!-- SanitationComplaints card view-->
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
                     android:layout_height="160dp"
@@ -101,7 +98,7 @@
                     android:layout_marginBottom="@dimen/edit_text_margin"
                     android:foreground="?android:attr/selectableItemBackground"
                     android:layout_marginRight="@dimen/edit_text_margin"
-                    android:layout_marginLeft="@dimen/edit_text_margin"
+                    android:layout_marginLeft="@dimen/recycler_view_margin"
                     android:layout_marginTop="@dimen/card_elevation"
                     app:cardCornerRadius="8dp"
                     app:cardElevation="@dimen/card_elevation"
@@ -160,7 +157,7 @@
                     android:foreground="?android:attr/selectableItemBackground"
                     android:layout_alignParentLeft="true"
                     android:layout_marginLeft="@dimen/edit_text_margin"
-                    android:layout_marginRight="@dimen/edit_text_margin"
+                    android:layout_marginRight="@dimen/recycler_view_margin"
                     android:layout_marginBottom="@dimen/edit_text_margin"
                     android:layout_marginTop="@dimen/card_elevation"
                     app:cardCornerRadius="8dp"
@@ -208,7 +205,7 @@
                     android:onClick="clickOnBuildingNoc"
                     android:foreground="?android:attr/selectableItemBackground"
                     android:layout_alignParentRight="true"
-                    android:layout_marginLeft="@dimen/edit_text_margin"
+                    android:layout_marginLeft="@dimen/recycler_view_margin"
                     android:layout_marginRight="@dimen/edit_text_margin"
                     android:layout_marginBottom="@dimen/edit_text_margin"
                     android:layout_marginTop="@dimen/card_elevation"
@@ -266,11 +263,11 @@
                     android:layout_weight="1"
                     android:id="@+id/feedbackCardInInfra"
                     android:clickable="true"
-                    android:onClick="clickOnBuildingNoc"
+                    android:onClick="clickOnFeedbackCard"
                     android:foreground="?android:attr/selectableItemBackground"
                     android:layout_alignParentRight="true"
                     android:layout_marginLeft="@dimen/edit_text_margin"
-                    android:layout_marginRight="@dimen/edit_text_margin"
+                    android:layout_marginRight="@dimen/recycler_view_margin"
                     android:layout_marginBottom="@dimen/card_elevation"
                     android:layout_marginTop="@dimen/recycler_view_margin"
                     app:cardCornerRadius="8dp"
@@ -297,7 +294,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/feedbackImageInfra"
                             android:id="@+id/feebackInfra"
-                            android:text="Building Noc"
+                            android:text="Complaints FeedBack"
                             android:textSize="16sp"
                             android:layout_centerHorizontal="true"
                             android:layout_marginBottom="4dp"
@@ -317,7 +314,7 @@
                     android:onClick="clickOnFireFightingCard"
                     android:foreground="?android:attr/selectableItemBackground"
                     android:layout_alignParentLeft="true"
-                    android:layout_marginLeft="@dimen/edit_text_margin"
+                    android:layout_marginLeft="@dimen/recycler_view_margin"
                     android:layout_marginRight="@dimen/edit_text_margin"
                     android:layout_marginBottom="@dimen/card_elevation"
                     android:layout_marginTop="@dimen/recycler_view_margin"

@@ -66,12 +66,12 @@ public class AddWorkerPresenterImplementer implements AddWorkerPresenter
     }
 
     @Override
-    public void fabClick(DatabaseReference dbRef)
+    public void fabClick(DatabaseReference dbRef , String workerDept)
     {
-        addWorkerDialogForm(dbRef);
+        addWorkerDialogForm(dbRef , workerDept);
     }
 
-    private void addWorkerDialogForm(final DatabaseReference dbRef )
+    private void addWorkerDialogForm(final DatabaseReference dbRef , final String workerDept)
     {
         View customView =  LayoutInflater.from(context).inflate(R.layout.add_worker_dialog_layout, null);
         AlertDialog.Builder alert = new AlertDialog.Builder(context);
@@ -104,8 +104,7 @@ public class AddWorkerPresenterImplementer implements AddWorkerPresenter
                     dataMap.put("phone" , workerPhoneNo.getText().toString());
                     dataMap.put("cnic" , workerCnic.getText().toString());
                     dataMap.put("average_rating" , "5.0");
-                    dataMap.put("total_reviews" , "0");
-                    dataMap.put("field" , "Sanitation");
+                    dataMap.put("field" , workerDept);
                     dataMap.put("pushKey" , databaseReference.getKey());
 
                     databaseReference.setValue(dataMap).addOnCompleteListener(new OnCompleteListener<Void>() {

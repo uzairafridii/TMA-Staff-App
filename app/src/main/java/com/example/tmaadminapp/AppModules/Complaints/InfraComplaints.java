@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.tmaadminapp.Models.ComplaintsPresenterImplementer;
 import com.example.tmaadminapp.Presenters.ComplaintsPresenter;
@@ -19,25 +18,25 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
-public class Complaints extends AppCompatActivity implements ComplaintsView
+public class InfraComplaints extends AppCompatActivity implements ComplaintsView
 {
+
     private Toolbar mToolbar;
     private TextView noItemsText;
-    private RecyclerView listOfSanitationComplaints;
+    private RecyclerView listOfInfraComplaints;
     private AdapterForComplaintRv adapter;
     private LinearLayoutManager layoutManager;
     private ComplaintsPresenter complaintsPresenter;
     private DatabaseReference dbRef;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_complaints);
+        setContentView(R.layout.activity_infra_complaints2);
 
         initViews();
 
-        complaintsPresenter.getTotalComplaints(dbRef , "Sanitation");
+        complaintsPresenter.getTotalComplaints(dbRef , "Infrastructure");
 
     }
 
@@ -45,18 +44,18 @@ public class Complaints extends AppCompatActivity implements ComplaintsView
     {
         complaintsPresenter = new ComplaintsPresenterImplementer(this);
 
-        mToolbar = findViewById(R.id.complaintsToolbar);
+        mToolbar = findViewById(R.id.infraComplaintsToolbar);
         setSupportActionBar(mToolbar);
-        setTitle("Complaints");
+        setTitle("Infra Complaints");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        listOfSanitationComplaints = findViewById(R.id.sanitationComplaintRecycler);
+        listOfInfraComplaints = findViewById(R.id.infraComplaintRecycler);
         layoutManager = new LinearLayoutManager(this);
         layoutManager.setReverseLayout(true);
         layoutManager.setStackFromEnd(true);
-        listOfSanitationComplaints.setLayoutManager(layoutManager);
+        listOfInfraComplaints.setLayoutManager(layoutManager);
 
-        noItemsText = findViewById(R.id.sanitationNoItemText);
+        noItemsText = findViewById(R.id.infraNoItemText);
 
         dbRef = FirebaseDatabase.getInstance().getReference().child("Complaints");
 
@@ -71,9 +70,7 @@ public class Complaints extends AppCompatActivity implements ComplaintsView
     @Override
     public void onGetAllSanitationComplaints(List<ModelForComplaints> complaintsList)
     {
-        Toast.makeText(this, "Set Adapter Method called", Toast.LENGTH_SHORT).show();
         adapter = new AdapterForComplaintRv(complaintsList , this , this);
-        listOfSanitationComplaints.setAdapter(adapter);
+        listOfInfraComplaints.setAdapter(adapter);
     }
-
 }

@@ -22,7 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
-public class WorkersListActivity extends AppCompatActivity implements AddWorkerView
+public class SanitationWorkersListActivity extends AppCompatActivity implements AddWorkerView
 {
     private Toolbar mToolbar;
     private RecyclerView workerListRecycler;
@@ -63,11 +63,13 @@ public class WorkersListActivity extends AppCompatActivity implements AddWorkerV
 
     }
 
+    // fab button click to add worker
     public void fabAddWorkerClick(View view)
     {
-       presenter.fabClick(dbRef);
+       presenter.fabClick(dbRef , "Sanitation");
     }
 
+    // callbacks method of worker list view
     @Override
     public void showProgressBar()
     {

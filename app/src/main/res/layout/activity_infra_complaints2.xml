@@ -1,31 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/refreshLayoutSanitation"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".AppModules.Complaints.SanitationComplaints">
+    tools:context=".AppModules.Complaints.InfraComplaints">
 
 
     <include
-        android:id="@+id/complaintsToolbar"
+        android:id="@+id/infraComplaintsToolbar"
         layout="@layout/app_tool_bar" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/sanitationComplaintRecycler"
+        android:id="@+id/infraComplaintRecycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/complaintsToolbar"
+        android:layout_below="@+id/infraComplaintsToolbar"
         android:layout_marginTop="@dimen/recycler_view_margin" />
 
     <TextView
-        android:id="@+id/sanitationNoItemText"
+        android:id="@+id/infraNoItemText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:text="No Complaints" />
-
-
 </RelativeLayout>

@@ -113,6 +113,7 @@ public class AdapterForFeedbackWorksRecycler extends RecyclerView.Adapter<Adapte
             image = mView.findViewById(R.id.completedComplaintImage);
             Glide.with(context)
                     .load(imageUrl.get(0))
+                    .centerCrop()
                     .into(image);
         }
 

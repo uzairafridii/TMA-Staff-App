@@ -7,13 +7,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.tmaadminapp.AppModules.FeedbackWorks.FeedbackWorkActivity;
+import com.example.tmaadminapp.AppModules.Complaints.SanitationComplaints;
+import com.example.tmaadminapp.AppModules.FeedbackWorks.SanitationFeedbackWorkActivity;
 import com.example.tmaadminapp.AppModules.NewsFeed.NewsFeedActivity.NewsFeedActivity;
 import com.example.tmaadminapp.Models.SanitationMainPresenterImplementer;
 import com.example.tmaadminapp.Presenters.SanitationMainPresenter;
 import com.example.tmaadminapp.R;
-import com.example.tmaadminapp.AppModules.Complaints.Complaints;
-import com.example.tmaadminapp.AppModules.WorkersListAndDetails.WorkersListActivity;
+import com.example.tmaadminapp.AppModules.WorkersListAndDetails.SanitationWorkersListActivity;
 import com.example.tmaadminapp.Views.SanitationMainView;
 
 public class SanitationMain extends AppCompatActivity implements SanitationMainView
@@ -72,18 +72,18 @@ public class SanitationMain extends AppCompatActivity implements SanitationMainV
 
     @Override
     public void onWorkerListCardClick() {
-        startActivity(new Intent(SanitationMain.this , WorkersListActivity.class));
+        startActivity(new Intent(SanitationMain.this , SanitationWorkersListActivity.class));
     }
 
     @Override
     public void onComplaintCardClick() {
-        startActivity(new Intent(SanitationMain.this , Complaints.class));
+        startActivity(new Intent(SanitationMain.this , SanitationComplaints.class));
     }
 
     @Override
     public void onFeedBackCardClick()
     {
-      startActivity(new Intent(SanitationMain.this , FeedbackWorkActivity.class));
+      startActivity(new Intent(SanitationMain.this , SanitationFeedbackWorkActivity.class));
     }
 
 

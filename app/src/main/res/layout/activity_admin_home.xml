@@ -5,7 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_home"
     tools:context=".AppModules.Administration.AdminHome.AdminHome">
 
     <include layout="@layout/app_tool_bar"
@@ -17,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="@dimen/card_view"
-        android:layout_marginTop="@dimen/margin_top_card_news_feed"
+        android:layout_marginTop="@dimen/edit_text_margin"
         android:id="@+id/scrollView"
         android:layout_below="@+id/administration_tool_bar"
         >
@@ -27,7 +26,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:id="@+id/parentLayout"
-            android:layout_marginTop="@dimen/margin_login_card_view"
+            android:layout_marginTop="@dimen/edit_text_margin"
             >
 
 
@@ -36,8 +35,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:weightSum="2"
-                android:layout_marginTop="@dimen/margin_login_card_view"
-                android:layout_marginBottom="@dimen/card_view"
+                android:layout_marginTop="@dimen/edit_text_margin"
                 >
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
@@ -145,7 +143,7 @@
                 android:orientation="horizontal"
                 android:weightSum="2"
                 android:layout_marginBottom="@dimen/card_view"
-                android:layout_marginTop="@dimen/edit_text_margin"
+                android:layout_marginTop="@dimen/card_elevation"
                 >
 
                 <androidx.cardview.widget.CardView
@@ -252,6 +250,8 @@
 
 
         </LinearLayout>
+
+
     </ScrollView>
 
 

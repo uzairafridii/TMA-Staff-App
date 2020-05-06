@@ -60,17 +60,6 @@
                 android:layout_marginTop="@dimen/recycler_view_margin"
                 />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/totalReviews"
-                android:text="(0)"
-                android:textSize="12sp"
-                android:layout_below="@id/workerNameInItemDesign"
-                android:layout_toRightOf="@+id/workerRatingInItemDesign"
-                android:layout_marginTop="@dimen/recycler_view_margin"
-                android:layout_marginLeft="@dimen/recycler_view_margin"
-                />
 
             <TextView
                 android:layout_width="wrap_content"

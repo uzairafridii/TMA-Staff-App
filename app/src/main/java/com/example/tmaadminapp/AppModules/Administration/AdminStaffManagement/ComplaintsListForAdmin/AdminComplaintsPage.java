@@ -47,7 +47,7 @@ public class AdminComplaintsPage extends AppCompatActivity implements AdminCompa
         // tool bar
         mToolbar = findViewById(R.id.adminTotalComplaintToolbar);
         setSupportActionBar(mToolbar);
-        setTitle("Total Complaints");
+        setTitle("Total SanitationComplaints");
 
         noItemFoundTextView = findViewById(R.id.noItemFoundTextView);
 
@@ -58,7 +58,7 @@ public class AdminComplaintsPage extends AppCompatActivity implements AdminCompa
         layoutManager.setReverseLayout(true);
         totalComplaintRecyclerView.setLayoutManager(layoutManager);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("Complaints");
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("SanitationComplaints");
 
 
     }

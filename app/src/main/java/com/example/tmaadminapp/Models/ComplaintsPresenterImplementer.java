@@ -33,7 +33,7 @@ public class ComplaintsPresenterImplementer implements ComplaintsPresenter
     {
         if(dbRef != null)
         {
-            // query to get only sanitation complaints
+            // query to get complaints of current field
             Query query = dbRef.orderByChild("field").equalTo(field);
 
             query.addChildEventListener(new ChildEventListener() {

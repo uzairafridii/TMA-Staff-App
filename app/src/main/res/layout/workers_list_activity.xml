@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AppModules.WorkersListAndDetails.WorkersListActivity">
+    tools:context=".AppModules.WorkersListAndDetails.SanitationWorkersListActivity">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
     <include layout="@layout/app_tool_bar"
     android:id="@+id/sanitation_worker_list_tool_bar"/>
@@ -21,24 +18,21 @@
         android:layout_below="@+id/sanitation_worker_list_tool_bar"
         />
 
-    </RelativeLayout>
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/fab_add_worker"
             android:onClick="fabAddWorkerClick"
-            android:layout_gravity="bottom|end"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
             android:layout_marginBottom="@dimen/margin_login_card_view"
             android:layout_marginRight="@dimen/fab_margin_right"
             android:backgroundTint="@color/sign_in_txt_color"
             android:src="@drawable/ic_add_black_24dp"
-            app:pressedTranslationZ="@dimen/margin_login_card_view"
+            app:borderWidth="0dp"
             />
 
 
 
-
-
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</RelativeLayout>
