@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/nocCardInDesign"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/card_elevation"
+        android:layout_marginBottom="@dimen/recycler_view_margin"
+        app:cardElevation="@dimen/card_elevation"
+        app:cardCornerRadius="@dimen/card_elevation"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/card_elevation"
+            >
+
+           <de.hdodenhof.circleimageview.CircleImageView
+               android:layout_width="40dp"
+               android:layout_height="40dp"
+               android:id="@+id/userImageInNocDesign"
+               android:src="@drawable/avatar"
+               android:layout_marginLeft="@dimen/card_elevation"
+               android:layout_marginTop="@dimen/card_elevation"
+               />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/userNameInNocDesign"
+                android:text="User Name"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:layout_toRightOf="@+id/userImageInNocDesign"
+                android:layout_marginTop="@dimen/card_elevation"
+                android:layout_marginLeft="@dimen/recycler_view_margin"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/dateInNocDesign"
+                android:text="date"
+                android:textSize="10sp"
+                android:layout_below="@+id/userNameInNocDesign"
+                android:layout_toRightOf="@id/userImageInNocDesign"
+                android:layout_marginLeft="@dimen/recycler_view_margin"
+                />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/titleOfNocInDesign"
+                android:text="Title"
+                android:layout_below="@id/userImageInNocDesign"
+                android:layout_marginLeft="@dimen/card_elevation"
+                android:layout_marginTop="@dimen/card_elevation"
+                />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:id="@+id/nocImageInDesign"
+                android:layout_below="@+id/titleOfNocInDesign"
+                android:layout_marginTop="@dimen/card_elevation"
+                android:src="@drawable/ic_launcher_background"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/statusInNocDesign"
+                android:text="Unregister"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/card_elevation"
+                android:layout_marginTop="@dimen/card_elevation"
+                />
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>

@@ -76,7 +76,7 @@ public class AdapterForComplaintRv extends
             public void onClick(View view) {
 
                 final PopupMenu popupMenu = new PopupMenu(ctx, holder.optionMenuBtn);
-                popupMenu.inflate(R.menu.option_menu_for_sanitation_complaints);
+                popupMenu.inflate(R.menu.option_menu_for_complaints);
 
                 // current post data base reference
                 dbRef = FirebaseDatabase.getInstance().getReference().child("Complaints").child(model.getPushKey());
