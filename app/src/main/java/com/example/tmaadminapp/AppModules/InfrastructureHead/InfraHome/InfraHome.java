@@ -13,6 +13,7 @@ import android.widget.Button;
 import com.example.tmaadminapp.AppModules.Complaints.InfraComplaints;
 import com.example.tmaadminapp.AppModules.FeedbackWorks.InfraFeedbackWorksActivity;
 import com.example.tmaadminapp.AppModules.InfrastructureHead.BuildingNoc.BuildingNocActivity;
+import com.example.tmaadminapp.AppModules.InfrastructureHead.FireFighting.FireFightingActivity;
 import com.example.tmaadminapp.AppModules.NewsFeed.NewsFeedActivity.NewsFeedActivity;
 import com.example.tmaadminapp.AppModules.WorkersListAndDetails.InfraWorkersListActivity;
 import com.example.tmaadminapp.AppModules.WorkersListAndDetails.SanitationWorkersListActivity;
@@ -67,25 +68,7 @@ public class InfraHome extends AppCompatActivity  implements InfraHomeView
 
     public void clickOnFireFightingCard(View view)
     {
-        // inflate edit worker layout
-        View myView = LayoutInflater.from(this).inflate(R.layout.add_fire_fighting_details, null);
-        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
-        alertBuilder.setView(myView);
-
-        final AlertDialog dialog = alertBuilder.create();
-        dialog.setCanceledOnTouchOutside(false);
-        dialog.setCancelable(false);
-
-        Button btn = myView.findViewById(R.id.add_driver_btn_fire_layout);
-        // click on update button in update layout
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                dialog.cancel();
-            }
-        });
-        dialog.show();
+        infraHomePresenter.clickOnFireFightingCard();
     }
 
     public void clickOnBuildingNoc(View view)
@@ -124,8 +107,9 @@ public class InfraHome extends AppCompatActivity  implements InfraHomeView
     }
 
     @Override
-    public void onFireFightingClick() {
-
+    public void onFireFightingClick()
+    {
+     startActivity(new Intent(this, FireFightingActivity.class));
     }
 
 

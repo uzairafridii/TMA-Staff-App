@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AppModules.FeedbackWorks.InfraFeedbackWorksActivity"></activity>
+        <activity android:name=".AppModules.InfrastructureHead.FireFighting.FireFightingActivity"></activity>
+        <activity android:name=".AppModules.FeedbackWorks.InfraFeedbackWorksActivity" />
         <activity android:name=".AppModules.WorkersListAndDetails.InfraWorkersListActivity" />
         <activity android:name=".AppModules.Complaints.InfraComplaints" />
         <activity android:name=".AppModules.FeedbackWorks.SanitationFeedbackWorkActivity" />

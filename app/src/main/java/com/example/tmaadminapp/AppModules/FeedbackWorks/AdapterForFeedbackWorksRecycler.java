@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,6 +27,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdapterForFeedbackWorksRecycler extends RecyclerView.Adapter<AdapterForFeedbackWorksRecycler.MyFeedbackViewHolder>
@@ -60,7 +62,7 @@ public class AdapterForFeedbackWorksRecycler extends RecyclerView.Adapter<Adapte
           @Override
           public void onClick(View view) {
 
-             holder.getRatingOfCurrentComplaint(feedbackWorks.getPushKey());
+             holder.getRatingOfCurrentComplaint(feedbackWorks.getPushKey() , feedbackWorks.getImageUrl());
 
           }
       });
@@ -118,7 +120,7 @@ public class AdapterForFeedbackWorksRecycler extends RecyclerView.Adapter<Adapte
         }
 
         // get rating of current complaint
-        public void getRatingOfCurrentComplaint(String pushKey)
+        public void getRatingOfCurrentComplaint(String pushKey, final List<String> imageUrl)
         {
             DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference().child("Ratings");
 
@@ -128,11 +130,12 @@ public class AdapterForFeedbackWorksRecycler extends RecyclerView.Adapter<Adapte
                 @Override
                 public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s)
                 {
-                    String comment = dataSnapshot.child("comment").getValue().toString();
-                    String rating = dataSnapshot.child("user_rating").getValue().toString();
-                    Log.d("commentSection", "onChildAdded: "+comment);
+                         String comment = dataSnapshot.child("comment").getValue().toString();
+                         String rating = dataSnapshot.child("user_rating").getValue().toString();
+                         Log.d("commentSection", "onChildAdded: " + comment);
 
-                    showCustomRatingDialog(comment , rating);
+                         showCustomRatingDialog(comment, rating, imageUrl.get(0));
+
                 }
 
                 @Override
@@ -148,7 +151,7 @@ public class AdapterForFeedbackWorksRecycler extends RecyclerView.Adapter<Adapte
         }
 
         // show custom dialog of rating
-        private void showCustomRatingDialog(String comment , String rating)
+        private void showCustomRatingDialog(String comment , String rating , String imageUrl)
         {
             View ratingView = LayoutInflater.from(context).inflate(R.layout.complaint_rating_dialog_design, null);
             final AlertDialog.Builder alert = new AlertDialog.Builder(context);
@@ -164,6 +167,13 @@ public class AdapterForFeedbackWorksRecycler extends RecyclerView.Adapter<Adapte
 
             RatingBar ratingBar = ratingView.findViewById(R.id.feedbackRatingbar);
             ratingBar.setRating(Float.parseFloat(rating));
+
+            ImageView imageView = ratingView.findViewById(R.id.complaintRatingImage);
+            Glide.with(context)
+                    .load(imageUrl)
+                    .centerCrop()
+                    .placeholder(R.drawable.tma_logo)
+                    .into(imageView);
 
             ratingView.findViewById(R.id.closeFeedbackRatingBtn)
                     .setOnClickListener(new View.OnClickListener() {
