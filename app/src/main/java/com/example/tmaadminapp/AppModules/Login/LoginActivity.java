@@ -57,7 +57,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView
     }
 
 
-    // login butto click
+    // login button click
     public void loginBtnClick(View view)
     {
         String email = userEmail.getEditText().getText().toString();

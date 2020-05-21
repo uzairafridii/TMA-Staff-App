@@ -38,6 +38,7 @@ public class LoginPresenterImplementer implements LoginPresenter {
         if (mAuth != null && !email.isEmpty() && !password.isEmpty()) {
             loginView.showProgressBar();
 
+            // login with email and password method
             mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
@@ -45,7 +46,7 @@ public class LoginPresenterImplementer implements LoginPresenter {
                     if (task.isSuccessful())
                     {
                         loginView.showMessage("onComplete method called");
-                        if (email.equals("admin@gmail.com"))
+                        if (email.equals("admin@gmail.com")) // if admin then move to admin home page
                         {
                             loginView.moveToMainPage();
                             loginView.hideProgressBar();
@@ -53,17 +54,21 @@ public class LoginPresenterImplementer implements LoginPresenter {
                         }
                         else
                             {
-                            String currentUser = mAuth.getCurrentUser().getUid();
+                            String currentUser = mAuth.getCurrentUser().getUid(); // get the worker head current id
                             Query query = dbRef.child(currentUser);
 
+                            // get the worker head role or department
                             query.addValueEventListener(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
+                                    // get the department of worker head
                                     String role = dataSnapshot.child("department").getValue().toString();
                                     Log.d("roleOfUser", "onDataChange: " + role);
 
-
+                                    /**
+                                     * check department and move to his home page
+                                     */
                                     if (role.equals("Sanitation")) {
                                         loginView.goToSanitationHomePage();
                                         loginView.hideProgressBar();
@@ -75,16 +80,19 @@ public class LoginPresenterImplementer implements LoginPresenter {
                                         loginView.hideProgressBar();
                                         loginView.showMessage("Successfully login");
                                     }
+                                    else if(role.equals("Union Council"))
+                                    {
+                                        loginView.goToUnionCouncilHomePage();
+                                        loginView.hideProgressBar();
+                                        loginView.showMessage("Successfully login");
+                                    }
 
 
                                 }
 
                                 @Override
-                                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                                }
+                                public void onCancelled(@NonNull DatabaseError databaseError) {}
                             });
-
 
                         }
 
@@ -92,6 +100,7 @@ public class LoginPresenterImplementer implements LoginPresenter {
                     else
                     {
                         loginView.showMessage(String.valueOf(task.getException()));
+                        loginView.hideProgressBar();
                     }
 
                 }
@@ -106,6 +115,7 @@ public class LoginPresenterImplementer implements LoginPresenter {
 
     @Override
     public void savePassword(String userEmail, String userPassword) {
+        // save password in shared pref
         saveUserNameAndPassword = context.getSharedPreferences(DB_KEY, Context.MODE_PRIVATE);
         editor = saveUserNameAndPassword.edit();
 
@@ -118,6 +128,7 @@ public class LoginPresenterImplementer implements LoginPresenter {
     @Override
     public void getUserNameAndPasswordFromSharedPref()
     {
+        // get user name and password from share pref
         saveUserNameAndPassword = context.getSharedPreferences(DB_KEY, Context.MODE_PRIVATE);
         String saveEmail = saveUserNameAndPassword.getString(USER_EMAIL_KEY, "");
         String savePassword = saveUserNameAndPassword.getString(USER_PASSWORD_KEY, "");

@@ -45,4 +45,5 @@
     <string name="show_location">Show location</string>
     <string name="inComplete">Mark as incomplete</string>
     <string name="worker_department">Worker Department</string>
+    <string name="certificate_details">Certificate Details</string>
 </resources>

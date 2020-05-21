@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AppModules.InfrastructureHead.FireFighting.FireFightingActivity"></activity>
+        <activity android:name=".AppModules.UnionCouncilHead.CertificatesDetailsActivity"></activity>
+        <activity android:name=".AppModules.InfrastructureHead.FireFighting.FireFightingActivity" />
         <activity android:name=".AppModules.FeedbackWorks.InfraFeedbackWorksActivity" />
         <activity android:name=".AppModules.WorkersListAndDetails.InfraWorkersListActivity" />
         <activity android:name=".AppModules.Complaints.InfraComplaints" />
@@ -22,7 +23,6 @@
         <activity android:name=".AppModules.ComplaintDetailAndMap.ComplaintDetails" />
         <activity android:name=".AppModules.AddComplaintCompletedWork.AddCompletedWorkActivity" />
         <activity android:name=".AppModules.Administration.AdminStaffManagement.ComplaintsListForAdmin.AdminComplaintsPage" />
-        <activity android:name=".AppModules.UnionCouncilHead.UcMain" />
         <activity android:name=".AppModules.UnionCouncilHead.UnionCouncil" />
         <activity android:name=".AppModules.Administration.NewsFeedForAdmin.NewsFeedForAdmin" />
         <activity android:name=".AppModules.Administration.AdminStaffManagement.RegulationInStaffManagment.RegulationInStaffManagement" />

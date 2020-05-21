@@ -1,54 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:paddingBottom="@dimen/card_elevation"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:id="@+id/userImageInFireFighting"
-        android:src="@drawable/avatar"
-        android:layout_marginLeft="@dimen/card_elevation"
-        android:layout_marginTop="@dimen/recycler_view_margin"
-        />
 
-    <TextView
-        android:layout_width="wrap_content"
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/usernameInFireFighting"
-        android:text="User Name"
-        android:textStyle="bold"
-        android:layout_toRightOf="@id/userImageInFireFighting"
-        android:layout_marginLeft="@dimen/recycler_view_margin"
-        android:layout_marginTop="@dimen/recycler_view_margin"
-        />
+        android:layout_marginBottom="@dimen/card_elevation"
+        android:layout_marginTop="@dimen/card_elevation"
+        app:cardCornerRadius="@dimen/card_elevation"
+        app:cardElevation="@dimen/card_elevation"
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/dateInFireFighting"
-        android:text="Date"
-        android:textSize="12sp"
-        android:layout_below="@id/usernameInFireFighting"
-        android:layout_toRightOf="@id/userImageInFireFighting"
-        android:layout_marginLeft="@dimen/recycler_view_margin"
-        />
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/recycler_view_margin"
+            android:paddingBottom="@dimen/card_elevation"
+            >
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:id="@+id/userImageInFireFighting"
+                android:src="@drawable/avatar"
+                android:layout_marginLeft="@dimen/card_elevation"
+                android:layout_marginTop="@dimen/recycler_view_margin"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/usernameInFireFighting"
+                android:text="User Name"
+                android:textStyle="bold"
+                android:layout_toRightOf="@id/userImageInFireFighting"
+                android:layout_marginLeft="@dimen/recycler_view_margin"
+                android:layout_marginTop="@dimen/recycler_view_margin"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/dateInFireFighting"
+                android:text="Date"
+                android:textSize="12sp"
+                android:layout_below="@id/usernameInFireFighting"
+                android:layout_toRightOf="@id/userImageInFireFighting"
+                android:layout_marginLeft="@dimen/recycler_view_margin"
+                />
 
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/locationButton"
-        android:clickable="true"
-        android:foreground="?android:attr/selectableItemBackground"
-        android:background="@null"
-        android:src="@drawable/ic_location_on_black_24dp"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="@dimen/card_elevation"
-        android:layout_marginTop="@dimen/recycler_view_margin"
-        />
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/locationButton"
+                android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:background="@null"
+                android:src="@drawable/ic_location_on_black_24dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/card_elevation"
+                android:layout_marginTop="@dimen/recycler_view_margin"
+                />
+
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
 
 </RelativeLayout>

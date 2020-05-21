@@ -20,8 +20,7 @@ public class ModelForTotalComplaints
     }
 
     public String getUid() {
-        return uid;
-    }
+         return uid; }
 
     public String getTitle() {
         return title;

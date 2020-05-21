@@ -1,0 +1,565 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AppModules.UnionCouncilHead.CertificatesDetailsActivity">
+
+
+
+    <include
+        android:id="@+id/certificateDetailsToolbar"
+        layout="@layout/app_tool_bar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/certificateDetailsToolbar"
+
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/card_elevation"
+            >
+
+            <TextView
+                android:id="@+id/applicantNameTextInDetals"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/edit_text_margin"
+                android:layout_marginTop="@dimen/card_elevation"
+                android:layout_marginRight="@dimen/edit_text_margin"
+                android:text="Applicant Name :"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/applicantNameValueInDetals"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/applicantNameTextInDetals"
+                android:layout_marginLeft="@dimen/edit_text_margin"
+                android:layout_marginTop="@dimen/card_elevation"
+                android:layout_marginRight="@dimen/edit_text_margin"
+                android:background="@drawable/edit_text_bg"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/edit_text_margin"
+                android:text="Applicant Name" />
+
+            <TextView
+                android:id="@+id/applicantCnicTextInDetals"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/applicantNameValueInDetals"
+                android:layout_marginLeft="@dimen/edit_text_margin"
+                android:layout_marginTop="@dimen/card_elevation"
+                android:layout_marginRight="@dimen/edit_text_margin"
+                android:text="Applicant Cnic :"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/applicantCnicValueInDetals"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/applicantCnicTextInDetals"
+                android:layout_marginLeft="@dimen/edit_text_margin"
+                android:layout_marginTop="@dimen/card_elevation"
+                android:layout_marginRight="@dimen/edit_text_margin"
+                android:background="@drawable/edit_text_bg"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/edit_text_margin"
+                android:text="Applicant Cnic" />
+
+            <TextView
+                android:id="@+id/fatherNameTextInDetals"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/applicantCnicValueInDetals"
+                android:layout_marginLeft="@dimen/edit_text_margin"
+                android:layout_marginTop="@dimen/card_elevation"
+                android:layout_marginRight="@dimen/edit_text_margin"
+                android:text="Father Name :"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/fatherNameValueInDetals"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/fatherNameTextInDetals"
+                android:layout_marginLeft="@dimen/edit_text_margin"
+                android:layout_marginTop="@dimen/card_elevation"
+                android:layout_marginRight="@dimen/edit_text_margin"
+                android:background="@drawable/edit_text_bg"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/edit_text_margin"
+                android:text="Father Name"
+                />
+
+            <TextView
+                android:id="@+id/fatherCnicTextInDetals"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/fatherNameValueInDetals"
+                android:layout_marginLeft="@dimen/edit_text_margin"
+                android:layout_marginTop="@dimen/card_elevation"
+                android:layout_marginRight="@dimen/edit_text_margin"
+                android:text="Father Cnic :"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/fatherCnicValueInDetals"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/fatherCnicTextInDetals"
+                android:layout_marginLeft="@dimen/edit_text_margin"
+                android:layout_marginTop="@dimen/card_elevation"
+                android:layout_marginRight="@dimen/edit_text_margin"
+                android:background="@drawable/edit_text_bg"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/edit_text_margin"
+                android:text="Father Cnic"
+                />
+
+            <TextView
+                android:id="@+id/motherNameTextInDetals"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/fatherCnicValueInDetals"
+                android:layout_marginLeft="@dimen/edit_text_margin"
+                android:layout_marginTop="@dimen/card_elevation"
+                android:layout_marginRight="@dimen/edit_text_margin"
+                android:text="Mother Name :"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/motherNameValueInDetals"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/motherNameTextInDetals"
+                android:layout_marginLeft="@dimen/edit_text_margin"
+                android:layout_marginTop="@dimen/card_elevation"
+                android:layout_marginRight="@dimen/edit_text_margin"
+                android:background="@drawable/edit_text_bg"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/edit_text_margin"
+                android:text="Mother Name"/>
+
+            <TextView
+                android:id="@+id/motherCnicTextInDetals"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/motherNameValueInDetals"
+                android:layout_marginLeft="@dimen/edit_text_margin"
+                android:layout_marginTop="@dimen/card_elevation"
+                android:layout_marginRight="@dimen/edit_text_margin"
+                android:text="Mother Cnic :"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/motherCnicValueInDetals"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/motherCnicTextInDetals"
+                android:layout_marginLeft="@dimen/edit_text_margin"
+                android:layout_marginTop="@dimen/card_elevation"
+                android:layout_marginRight="@dimen/edit_text_margin"
+                android:background="@drawable/edit_text_bg"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/edit_text_margin"
+                android:text="Mother Cnic"
+                />
+
+            <TextView
+                android:id="@+id/grandFatherNameTextInDetals"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/motherCnicValueInDetals"
+                android:layout_marginLeft="@dimen/edit_text_margin"
+                android:layout_marginTop="@dimen/card_elevation"
+                android:layout_marginRight="@dimen/edit_text_margin"
+                android:text="Grand Father Name :"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/grandFatherNameValueInDetals"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/grandFatherNameTextInDetals"
+                android:layout_marginLeft="@dimen/edit_text_margin"
+                android:layout_marginTop="@dimen/card_elevation"
+                android:layout_marginRight="@dimen/edit_text_margin"
+                android:background="@drawable/edit_text_bg"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/edit_text_margin"
+                android:text="Grand Father Name"
+                />
+
+            <TextView
+                android:id="@+id/grandFatherCnicTextInDetals"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/grandFatherNameValueInDetals"
+                android:layout_marginLeft="@dimen/edit_text_margin"
+                android:layout_marginTop="@dimen/card_elevation"
+                android:layout_marginRight="@dimen/edit_text_margin"
+                android:text="Grand Father Cnic :"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/grandFatherCnicValueInDetals"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/grandFatherCnicTextInDetals"
+                android:layout_marginLeft="@dimen/edit_text_margin"
+                android:layout_marginTop="@dimen/card_elevation"
+                android:layout_marginRight="@dimen/edit_text_margin"
+                android:background="@drawable/edit_text_bg"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/edit_text_margin"
+                android:text="Grand Father Cnic" />
+
+            <TextView
+                android:id="@+id/childNameTextInDetals"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/grandFatherCnicValueInDetals"
+                android:layout_marginLeft="@dimen/edit_text_margin"
+                android:layout_marginTop="@dimen/card_elevation"
+                android:layout_marginRight="@dimen/edit_text_margin"
+                android:text="Child Name :"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/childNameValueInDetals"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/childNameTextInDetals"
+                android:layout_marginLeft="@dimen/edit_text_margin"
+                android:layout_marginTop="@dimen/card_elevation"
+                android:layout_marginRight="@dimen/edit_text_margin"
+                android:background="@drawable/edit_text_bg"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/edit_text_margin"
+                android:text="Child Name"
+                />
+
+            <TextView
+                android:id="@+id/dateOfBirthTextInDetals"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/childNameValueInDetals"
+                android:layout_marginLeft="@dimen/edit_text_margin"
+                android:layout_marginTop="@dimen/card_elevation"
+                android:layout_marginRight="@dimen/edit_text_margin"
+                android:text="Date Of Birth :"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/dateOfBirthValueInDetals"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/dateOfBirthTextInDetals"
+                android:layout_marginLeft="@dimen/edit_text_margin"
+                android:layout_marginTop="@dimen/card_elevation"
+                android:layout_marginRight="@dimen/edit_text_margin"
+                android:background="@drawable/edit_text_bg"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/edit_text_margin"
+                android:text="Date Of Birth"
+                />
+
+            <TextView
+                android:id="@+id/religionTextInDetals"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dateOfBirthValueInDetals"
+                android:layout_marginLeft="@dimen/edit_text_margin"
+                android:layout_marginTop="@dimen/card_elevation"
+                android:layout_marginRight="@dimen/edit_text_margin"
+                android:text="Religion :"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/religionValueInDetals"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/religionTextInDetals"
+                android:layout_marginLeft="@dimen/edit_text_margin"
+                android:layout_marginTop="@dimen/card_elevation"
+                android:layout_marginRight="@dimen/edit_text_margin"
+                android:background="@drawable/edit_text_bg"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/edit_text_margin"
+                android:text="Religion"
+                 />
+
+            <TextView
+                android:id="@+id/relationTextInDetals"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/religionValueInDetals"
+                android:layout_marginLeft="@dimen/edit_text_margin"
+                android:layout_marginTop="@dimen/card_elevation"
+                android:layout_marginRight="@dimen/edit_text_margin"
+                android:text="Religion :"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/relationValueInDetals"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/relationTextInDetals"
+                android:layout_marginLeft="@dimen/edit_text_margin"
+                android:layout_marginTop="@dimen/card_elevation"
+                android:layout_marginRight="@dimen/edit_text_margin"
+                android:background="@drawable/edit_text_bg"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/edit_text_margin"
+                android:text="Relation"
+                />
+
+            <TextView
+                android:id="@+id/vaccinatedTextInDetals"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/relationValueInDetals"
+                android:layout_marginLeft="@dimen/edit_text_margin"
+                android:layout_marginTop="@dimen/card_elevation"
+                android:layout_marginRight="@dimen/edit_text_margin"
+                android:text="Vaccinated :"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/vaccinatedValueInDetals"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/vaccinatedTextInDetals"
+                android:layout_marginLeft="@dimen/edit_text_margin"
+                android:layout_marginTop="@dimen/card_elevation"
+                android:layout_marginRight="@dimen/edit_text_margin"
+                android:background="@drawable/edit_text_bg"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/edit_text_margin"
+                android:text="Vaccinated"
+                />
+
+            <TextView
+                android:id="@+id/placeOfBirthTextInDetals"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/vaccinatedValueInDetals"
+                android:layout_marginLeft="@dimen/edit_text_margin"
+                android:layout_marginTop="@dimen/card_elevation"
+                android:layout_marginRight="@dimen/edit_text_margin"
+                android:text="Place Of Birth :"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/placeOfBirthValueInDetals"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/placeOfBirthTextInDetals"
+                android:layout_marginLeft="@dimen/edit_text_margin"
+                android:layout_marginTop="@dimen/card_elevation"
+                android:layout_marginRight="@dimen/edit_text_margin"
+                android:background="@drawable/edit_text_bg"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/edit_text_margin"
+                android:text="Place of birth"
+                />
+
+            <TextView
+                android:id="@+id/disabilityTextInDetals"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/placeOfBirthValueInDetals"
+                android:layout_marginLeft="@dimen/edit_text_margin"
+                android:layout_marginTop="@dimen/card_elevation"
+                android:layout_marginRight="@dimen/edit_text_margin"
+                android:text="Disability :"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/disabilityValueInDetals"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/disabilityTextInDetals"
+                android:layout_marginLeft="@dimen/edit_text_margin"
+                android:layout_marginTop="@dimen/card_elevation"
+                android:layout_marginRight="@dimen/edit_text_margin"
+                android:background="@drawable/edit_text_bg"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/edit_text_margin"
+                android:text="Disability"
+                />
+
+            <TextView
+                android:id="@+id/doctorOrMidewifeTextInDetals"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/disabilityValueInDetals"
+                android:layout_marginLeft="@dimen/edit_text_margin"
+                android:layout_marginTop="@dimen/card_elevation"
+                android:layout_marginRight="@dimen/edit_text_margin"
+                android:text="Doctor or MidWife :"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/doctorOrMidewifeValueInDetals"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/doctorOrMidewifeTextInDetals"
+                android:layout_marginLeft="@dimen/edit_text_margin"
+                android:layout_marginTop="@dimen/card_elevation"
+                android:layout_marginRight="@dimen/edit_text_margin"
+                android:background="@drawable/edit_text_bg"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/edit_text_margin"
+                android:text="Doctor or midewife"
+                />
+
+            <TextView
+                android:id="@+id/districtOfBirthTextInDetals"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/doctorOrMidewifeValueInDetals"
+                android:layout_marginLeft="@dimen/edit_text_margin"
+                android:layout_marginTop="@dimen/card_elevation"
+                android:layout_marginRight="@dimen/edit_text_margin"
+                android:text="District Of Birth :"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/districtOfBirthValueInDetals"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/districtOfBirthTextInDetals"
+                android:layout_marginLeft="@dimen/edit_text_margin"
+                android:layout_marginTop="@dimen/card_elevation"
+                android:layout_marginRight="@dimen/edit_text_margin"
+                android:background="@drawable/edit_text_bg"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/edit_text_margin"
+                android:text="District of birth"
+                />
+
+            <TextView
+                android:id="@+id/addressTextInDetals"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/districtOfBirthValueInDetals"
+                android:layout_marginLeft="@dimen/edit_text_margin"
+                android:layout_marginTop="@dimen/card_elevation"
+                android:layout_marginRight="@dimen/edit_text_margin"
+                android:text="Address :"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/addressValueInDetals"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/addressTextInDetals"
+                android:layout_marginLeft="@dimen/edit_text_margin"
+                android:layout_marginTop="@dimen/card_elevation"
+                android:layout_marginRight="@dimen/edit_text_margin"
+                android:background="@drawable/edit_text_bg"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/edit_text_margin"
+                android:text="Address"
+                />
+
+            <TextView
+                android:id="@+id/ucTextInDetals"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/addressValueInDetals"
+                android:layout_marginLeft="@dimen/edit_text_margin"
+                android:layout_marginTop="@dimen/card_elevation"
+                android:layout_marginRight="@dimen/edit_text_margin"
+                android:text="Union Council :"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/ucValueInDetals"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/ucTextInDetals"
+                android:layout_marginLeft="@dimen/edit_text_margin"
+                android:layout_marginTop="@dimen/card_elevation"
+                android:layout_marginRight="@dimen/edit_text_margin"
+                android:background="@drawable/edit_text_bg"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/edit_text_margin"
+                android:text="Union Coucil"
+                />
+
+            <TextView
+                android:id="@+id/genderTextInDetals"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ucValueInDetals"
+                android:layout_marginLeft="@dimen/edit_text_margin"
+                android:layout_marginTop="@dimen/card_elevation"
+                android:layout_marginRight="@dimen/edit_text_margin"
+                android:text="Gender :"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/genderValueInDetals"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/genderTextInDetals"
+                android:layout_marginLeft="@dimen/edit_text_margin"
+                android:layout_marginTop="@dimen/card_elevation"
+                android:layout_marginRight="@dimen/edit_text_margin"
+                android:background="@drawable/edit_text_bg"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/edit_text_margin"
+                android:text="Gender"
+                />
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearlayout"
+                android:layout_below="@+id/ucValueInDetals"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                >
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:layout_weight="1"
+                    android:id="@+id/cnicFront"
+                    android:src="@drawable/tma_logo"
+                    android:layout_marginLeft="@dimen/card_elevation"
+                    android:layout_marginRight="@dimen/recycler_view_margin"
+                    />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:layout_weight="1"
+                    android:id="@+id/cnicBack"
+                    android:src="@drawable/tma_logo"
+                    android:layout_marginRight="@dimen/card_elevation"
+                    android:layout_marginLeft="@dimen/recycler_view_margin"
+                    />
+
+
+            </LinearLayout>
+
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+
+</RelativeLayout>
