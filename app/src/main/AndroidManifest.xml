@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -13,42 +14,50 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AppModules.UnionCouncilHead.CertificatesDetailsActivity"></activity>
-        <activity android:name=".AppModules.InfrastructureHead.FireFighting.FireFightingActivity" />
-        <activity android:name=".AppModules.FeedbackWorks.InfraFeedbackWorksActivity" />
-        <activity android:name=".AppModules.WorkersListAndDetails.InfraWorkersListActivity" />
-        <activity android:name=".AppModules.Complaints.InfraComplaints" />
-        <activity android:name=".AppModules.FeedbackWorks.SanitationFeedbackWorkActivity" />
-        <activity android:name=".AppModules.ComplaintDetailAndMap.MapActivity" />
-        <activity android:name=".AppModules.ComplaintDetailAndMap.ComplaintDetails" />
-        <activity android:name=".AppModules.AddComplaintCompletedWork.AddCompletedWorkActivity" />
-        <activity android:name=".AppModules.Administration.AdminStaffManagement.ComplaintsListForAdmin.AdminComplaintsPage" />
-        <activity android:name=".AppModules.UnionCouncilHead.UnionCouncil" />
-        <activity android:name=".AppModules.Administration.NewsFeedForAdmin.NewsFeedForAdmin" />
-        <activity android:name=".AppModules.Administration.AdminStaffManagement.RegulationInStaffManagment.RegulationInStaffManagement" />
-        <activity android:name=".AppModules.Administration.AdminStaffManagement.AppointAndRetireInStaffManagement.AppointAndRetireDetails" />
-        <activity android:name=".AppModules.Administration.AdminStaffManagement.StaffManagementHome.StaffManagementHome" />
-        <activity android:name=".AppModules.Administration.AdminStaffManagement.WorkerListInAdminPage.WorkersListActivityInAdmin" />
-        <activity android:name=".AppModules.Administration.AdminStaffManagement.WorkerHeadList.WorkerHeadList" />
-        <activity android:name=".AppModules.Administration.AdminHome.AdminHome" />
-        <activity android:name=".AppModules.InfrastructureHead.BuildingNoc.BuildingNocActivity" />
-        <activity android:name=".SplashScreen">
+        <activity android:name=".AppModules.UnionCouncilHead.CertificatesDetailsActivity"
+            android:parentActivityName=".AppModules.UnionCouncilHead.UnionCouncil" android:screenOrientation="portrait"></activity>
+        <activity android:name=".AppModules.InfrastructureHead.FireFighting.FireFightingActivity"
+            android:parentActivityName=".AppModules.InfrastructureHead.InfraHome.InfraHome" android:screenOrientation="portrait"/>
+        <activity android:name=".AppModules.FeedbackWorks.InfraFeedbackWorksActivity"
+            android:parentActivityName=".AppModules.InfrastructureHead.InfraHome.InfraHome" android:screenOrientation="portrait"/>
+        <activity android:name=".AppModules.WorkersListAndDetails.InfraWorkersListActivity"
+            android:parentActivityName=".AppModules.InfrastructureHead.InfraHome.InfraHome" android:screenOrientation="portrait"/>
+        <activity android:name=".AppModules.Complaints.InfraComplaints"
+            android:parentActivityName=".AppModules.InfrastructureHead.InfraHome.InfraHome" android:screenOrientation="portrait"/>
+        <activity android:name=".AppModules.FeedbackWorks.SanitationFeedbackWorkActivity"
+            android:parentActivityName=".AppModules.SanitationHead.SanitationHome.SanitationMain" android:screenOrientation="portrait"/>
+        <activity android:name=".AppModules.ComplaintDetailAndMap.MapActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".AppModules.ComplaintDetailAndMap.ComplaintDetails" android:screenOrientation="portrait" />
+        <activity android:name=".AppModules.AddComplaintCompletedWork.AddCompletedWorkActivity" android:screenOrientation="portrait" />
+        <activity android:name=".AppModules.Administration.AdminStaffManagement.ComplaintsListForAdmin.AdminComplaintsPage"
+            android:parentActivityName=".AppModules.Administration.AdminStaffManagement.StaffManagementHome.StaffManagementHome"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".AppModules.UnionCouncilHead.UnionCouncil" android:screenOrientation="portrait" />
+        <activity android:name=".AppModules.Administration.NewsFeedForAdmin.NewsFeedForAdmin" android:screenOrientation="portrait" />
+        <activity android:name=".AppModules.Administration.AdminStaffManagement.StaffManagementHome.StaffManagementHome"
+            android:screenOrientation="portrait" />
+        <activity android:name=".AppModules.Administration.AdminStaffManagement.WorkerListInAdminPage.WorkersListActivityInAdmin"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".AppModules.Administration.AdminStaffManagement.WorkerHeadList.WorkerHeadList"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".AppModules.Administration.AdminHome.AdminHome"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".AppModules.InfrastructureHead.BuildingNoc.BuildingNocActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".SplashScreen" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AppModules.InfrastructureHead.InfraComplaints.InfraComplaints" />
-        <activity android:name=".AppModules.InfrastructureHead.InfraWorkerList.WorkersListActivity" />
-        <activity android:name=".AppModules.InfrastructureHead.InfraHome.InfraHome" />
-        <activity android:name=".AppModules.Complaints.SanitationComplaints" />
-        <activity android:name=".AppModules.WorkersListAndDetails.WorkerDetailActivity" />
-        <activity android:name=".AppModules.WorkersListAndDetails.SanitationWorkersListActivity" />
-        <activity android:name=".AppModules.NewsFeed.NewsFeedActivity.NewsFeedActivity" />
-        <activity android:name=".AppModules.SanitationHead.SanitationHome.SanitationMain" />
-        <activity android:name=".AppModules.Login.LoginActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".AppModules.InfrastructureHead.InfraHome.InfraHome" android:screenOrientation="portrait"/>
+        <activity android:name=".AppModules.Complaints.SanitationComplaints" android:screenOrientation="portrait" />
+        <activity android:name=".AppModules.WorkersListAndDetails.WorkerDetailActivity" android:screenOrientation="portrait" />
+        <activity android:name=".AppModules.WorkersListAndDetails.SanitationWorkersListActivity" android:screenOrientation="portrait" />
+        <activity android:name=".AppModules.NewsFeed.NewsFeedActivity.NewsFeedActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".AppModules.SanitationHead.SanitationHome.SanitationMain" android:screenOrientation="portrait" />
+        <activity android:name=".AppModules.Login.LoginActivity" android:screenOrientation="portrait" />
 
         <meta-data
             android:name="com.google.android.gms.version"

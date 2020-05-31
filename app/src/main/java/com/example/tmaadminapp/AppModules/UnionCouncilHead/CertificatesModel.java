@@ -9,7 +9,7 @@ public class CertificatesModel
     gender , grandFatherCnic , grandFatherName , motherCnic , motherName ,placeOfBirth , pushKey ,
     religion , relation , status , uid , unionCouncil , vaccinated;
 
-    private String deceasedCnic,deceasedDateOfBirth ,deceasedName , gravyard, hubandCnic , husbandName;
+    private String deceasedCnic,deceasedDateOfBirth ,deceasedName , gravyard, husbandCnic , husbandName;
     private List<String> cnicImages;
 
 
@@ -18,6 +18,10 @@ public class CertificatesModel
 
     public String getDeceasedDateOfBirth() {
         return deceasedDateOfBirth;
+    }
+
+    public String getHusbandCnic() {
+        return husbandCnic;
     }
 
     public List<String> getCnicImages() {
@@ -136,9 +140,7 @@ public class CertificatesModel
         return gravyard;
     }
 
-    public String getHubandCnic() {
-        return hubandCnic;
-    }
+
 
     public String getHusbandName() {
         return husbandName;

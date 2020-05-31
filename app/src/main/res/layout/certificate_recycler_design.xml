@@ -16,143 +16,180 @@
         android:elevation="@dimen/card_elevation"
         >
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/recycler_view_margin"
-            android:layout_marginBottom="@dimen/recycler_view_margin"
+            android:orientation="horizontal"
+            android:weightSum="2"
             >
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_weight=".9"
+                android:layout_width="0dp"
+                android:orientation="vertical"
                 android:layout_height="wrap_content"
-                android:id="@+id/name"
-                android:text="Applicant Name   :  "
-                android:textStyle="bold"
-                android:layout_marginLeft="@dimen/card_elevation"
-                android:layout_marginTop="@dimen/card_elevation"
-                android:textColor="@color/sign_in_txt_color"
-                />
+                android:paddingBottom="@dimen/recycler_view_margin"
+                android:layout_marginBottom="@dimen/recycler_view_margin"
+                >
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/applicantName"
-                android:text="Applicant Name"
-                android:layout_marginLeft="@dimen/card_elevation"
-                android:layout_marginTop="@dimen/card_elevation"
-                android:textColor="@color/sign_in_txt_color"
-                android:layout_toRightOf="@+id/name"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/certificateType"
-                android:text="Certificate Type   :  "
-                android:textStyle="bold"
-                android:layout_marginLeft="@dimen/card_elevation"
-                android:layout_marginTop="@dimen/recycler_view_margin"
-                android:textColor="@color/sign_in_txt_color"
-                android:layout_below="@id/name"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/certificateTypeValue"
-                android:text="Certificate Type  "
-                android:layout_marginLeft="@dimen/card_elevation"
-                android:layout_marginTop="@dimen/recycler_view_margin"
-                android:textColor="@color/sign_in_txt_color"
-                android:layout_toRightOf="@+id/certificateType"
-                android:layout_below="@+id/name"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/ucText"
-                android:text="Union Council       :  "
-                android:textStyle="bold"
-                android:layout_marginLeft="@dimen/card_elevation"
-                android:layout_marginTop="@dimen/recycler_view_margin"
-                android:textColor="@color/sign_in_txt_color"
-                android:layout_below="@id/certificateType"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/ucValues"
-                android:text="Uc value  "
-                android:layout_marginLeft="@dimen/card_elevation"
-                android:layout_marginTop="@dimen/recycler_view_margin"
-                android:textColor="@color/sign_in_txt_color"
-                android:layout_toRightOf="@+id/ucText"
-                android:layout_below="@+id/certificateType"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/certificateStatusText"
-                android:text="Status                    : "
-                android:textStyle="bold"
-                android:layout_marginLeft="@dimen/card_elevation"
-                android:layout_marginTop="@dimen/recycler_view_margin"
-                android:textColor="@color/sign_in_txt_color"
-                android:layout_below="@id/ucText"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/certificateStatus"
-                android:text="Status "
-                android:layout_marginLeft="@dimen/card_elevation"
-                android:layout_marginTop="@dimen/recycler_view_margin"
-                android:textColor="@color/sign_in_txt_color"
-                android:layout_toRightOf="@+id/certificateStatusText"
-                android:layout_below="@+id/ucText"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/dateOfApply"
-                android:text="Date                        :  "
-                android:textStyle="bold"
-                android:layout_marginLeft="@dimen/card_elevation"
-                android:layout_marginTop="@dimen/recycler_view_margin"
-                android:textColor="@color/sign_in_txt_color"
-                android:layout_below="@id/certificateStatusText"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/dateInCertificate"
-                android:text="Date "
-                android:layout_marginLeft="@dimen/card_elevation"
-                android:layout_marginTop="@dimen/recycler_view_margin"
-                android:textColor="@color/sign_in_txt_color"
-                android:layout_toRightOf="@+id/certificateStatusText"
-                android:layout_below="@+id/certificateStatusText"
-                />
-
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/moreButtonInCertificate"
-                android:src="@drawable/ic_more_vert_black_24dp"
-                android:background="@null"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="@dimen/recycler_view_margin"
-                android:layout_marginTop="@dimen/recycler_view_margin"
-                />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/name"
+                    android:text="Applicant  Name"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="@dimen/card_elevation"
+                    android:layout_marginTop="@dimen/card_elevation"
+                    android:textColor="@color/sign_in_txt_color"
+                    />
 
 
-        </RelativeLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/certificateType"
+                    android:text="Certificate Type"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="@dimen/card_elevation"
+                    android:layout_marginTop="@dimen/recycler_view_margin"
+                    android:textColor="@color/sign_in_txt_color"
+                    android:layout_below="@id/name"
+                    />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/ucText"
+                    android:text="Union  Council"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="@dimen/card_elevation"
+                    android:layout_marginTop="@dimen/recycler_view_margin"
+                    android:textColor="@color/sign_in_txt_color"
+                    android:layout_below="@id/certificateType"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/certificateStatusText"
+                    android:text="Status"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="@dimen/card_elevation"
+                    android:layout_marginTop="@dimen/recycler_view_margin"
+                    android:textColor="@color/sign_in_txt_color"
+                    android:layout_below="@id/ucText"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/dateOfApply"
+                    android:text="Date"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="@dimen/card_elevation"
+                    android:layout_marginTop="@dimen/recycler_view_margin"
+                    android:textColor="@color/sign_in_txt_color"
+                    android:layout_below="@id/certificateStatusText"
+                    />
+
+
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/darker_gray"
+                />
+
+            <RelativeLayout
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:orientation="vertical"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/recycler_view_margin"
+                android:layout_marginBottom="@dimen/recycler_view_margin"
+                >
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/applicantName"
+                    android:text="Applicant Name"
+                    android:layout_marginLeft="@dimen/card_elevation"
+                    android:layout_marginTop="@dimen/card_elevation"
+                    android:textColor="@color/sign_in_txt_color"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/certificateTypeValue"
+                    android:text="Certificate Type  "
+                    android:layout_marginLeft="@dimen/card_elevation"
+                    android:layout_marginTop="@dimen/recycler_view_margin"
+                    android:textColor="@color/sign_in_txt_color"
+                    android:layout_below="@+id/applicantName"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/ucValues"
+                    android:text="Uc value  "
+                    android:layout_marginLeft="@dimen/card_elevation"
+                    android:layout_marginTop="@dimen/recycler_view_margin"
+                    android:textColor="@color/sign_in_txt_color"
+                    android:layout_below="@+id/certificateTypeValue"
+                    />
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/certificateStatus"
+                    android:text="Status "
+                    android:layout_marginLeft="@dimen/card_elevation"
+                    android:layout_marginTop="@dimen/recycler_view_margin"
+                    android:textColor="@color/sign_in_txt_color"
+                    android:layout_below="@+id/ucValues"
+                    />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/dateInCertificate"
+                    android:text="Date "
+                    android:layout_marginLeft="@dimen/card_elevation"
+                    android:layout_marginTop="@dimen/recycler_view_margin"
+                    android:textColor="@color/sign_in_txt_color"
+                    android:layout_below="@+id/certificateStatus"
+                    />
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/moreButtonInCertificate"
+                    android:src="@drawable/ic_more_vert_black_24dp"
+                    android:background="@null"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/recycler_view_margin"
+                    android:layout_marginTop="@dimen/recycler_view_margin"
+                    />
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+
+
     </androidx.cardview.widget.CardView>
 
 

@@ -1,5 +1,7 @@
 package com.example.tmaadminapp.Models;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -11,6 +13,7 @@ import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 
 public class CertificateDetailsPresenterImplementer implements CertificateDetailsPresenter
 {
@@ -24,45 +27,27 @@ public class CertificateDetailsPresenterImplementer implements CertificateDetail
     @Override
     public void onGetCertificateDetails(DatabaseReference dbRef, String refKey)
     {
-        if(dbRef != null && !refKey.isEmpty())
-        {
+        if(dbRef != null && !refKey.isEmpty()) {
 
-            dbRef.child("Certificates").addChildEventListener(new ChildEventListener() {
+            // get the certificate details
+            dbRef.child("Certificates").child(refKey).addValueEventListener(new ValueEventListener() {
                 @Override
-                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                     CertificatesModel value = dataSnapshot.getValue(CertificatesModel.class);
 
-                    if(value.getCertificateType().equals("Birth"))
-                    {
-                        certificateDetailsView.showBirthCertificateData(value.getApplicantName(), value.getApplicantCnic(),
-                                value.getFatherName(), value.getFatherCnic(), value.getMotherName(), value.getMotherCnic() ,
-                                value.getGrandFatherName(), value.getGrandFatherCnic(), value.getDateOfBirth() ,
-                                value.getDoctorOrMideWife(), value.getGender(), value.getRelation(), value.getReligion(),
-                                value.getUnionCouncil(), value.getVaccinated(), value.getPlaceOfBirth(), value.getDisability(),
-                                value.getDistrictOfBirth(), value.getAddress(), value.getChildName(), value.getCnicImages().get(0),
-                                value.getCnicImages().get(1));
-                    }
-                    else
-                    {
-                        //certificateDetailsView.showDeathCertificateData();
-                    }
+                    if (value.getCertificateType().equals("Birth")) {
+                        certificateDetailsView.showBirthCertificateData(value);
 
-
+                    } else if (value.getCertificateType().equals("Death")) {
+                        certificateDetailsView.showDeathCertificateData(value);
+                    }
                 }
-                @Override
-                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {}
-                @Override
-                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {}
-                @Override
-                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {}
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {}
             });
 
-
         }
-
 
     }
 }
