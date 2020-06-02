@@ -13,7 +13,6 @@
         android:layout_marginLeft="@dimen/recycler_view_margin"
         android:layout_marginRight="@dimen/recycler_view_margin"
         app:cardElevation="4dp"
-        app:cardUseCompatPadding="true"
         app:cardCornerRadius="8dp"
         >
 

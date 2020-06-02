@@ -16,8 +16,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
@@ -33,6 +31,7 @@ public class AddCompletedWorkPresenterImplementer implements AddCompletedWorkPre
     private AddCompletedWorkView workView;
     private int counter = 0;
     private List<String> imageUrls = new ArrayList<>();
+    private List<String> workersNameList = new ArrayList<>();
 
     public AddCompletedWorkPresenterImplementer(AddCompletedWorkView workView) {
         this.workView = workView;
@@ -109,6 +108,36 @@ public class AddCompletedWorkPresenterImplementer implements AddCompletedWorkPre
        workView.onSetAdapter();
     }
 
+    @Override
+    public void getWorkersList(DatabaseReference dbRef, String department)
+    {
+        if(dbRef != null && !department.isEmpty())
+        {
+            dbRef.child("Worker List").orderByChild("field").equalTo(department)
+                    .addChildEventListener(new ChildEventListener() {
+                        @Override
+                        public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s)
+                        {
+                               String name = dataSnapshot.child("nameOfWorker").getValue().toString();
+                               workersNameList.add(name);
+
+                               workView.onSetWorkerListSpinnerAdapter(workersNameList);
+
+
+                        }
+                        @Override
+                        public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {}
+                        @Override
+                        public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {}
+                        @Override
+                        public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {}
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {}
+                    });
+        }
+
+    }
+
 
     // method to add data to firebase database
     private void addDataToFirebase(DatabaseReference mDatabaseReference, FirebaseAuth userAuth, final String pushKey,
@@ -125,7 +154,7 @@ public class AddCompletedWorkPresenterImplementer implements AddCompletedWorkPre
         dataOfComplaint.put("uid", userAuth.getCurrentUser().getUid());
         dataOfComplaint.put("pushKey", pushKey);
 
-        mDatabaseReference.child(pushKey)
+        mDatabaseReference.child("Feedback Work").child(pushKey)
                 .setValue(dataOfComplaint)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override

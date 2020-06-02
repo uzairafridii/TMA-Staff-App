@@ -45,7 +45,6 @@ public class LoginPresenterImplementer implements LoginPresenter {
 
                     if (task.isSuccessful())
                     {
-                        loginView.showMessage("onComplete method called");
                         if (email.equals("admin@gmail.com")) // if admin then move to admin home page
                         {
                             loginView.moveToMainPage();
@@ -54,7 +53,7 @@ public class LoginPresenterImplementer implements LoginPresenter {
                         }
                         else
                             {
-                            String currentUser = mAuth.getCurrentUser().getUid(); // get the worker head current id
+                            String currentUser = mAuth.getCurrentUser().getUid(); // get the current worker head id
                             Query query = dbRef.child(currentUser);
 
                             // get the worker head role or department
@@ -83,6 +82,12 @@ public class LoginPresenterImplementer implements LoginPresenter {
                                     else if(role.equals("Union Council"))
                                     {
                                         loginView.goToUnionCouncilHomePage();
+                                        loginView.hideProgressBar();
+                                        loginView.showMessage("Successfully login");
+                                    }
+                                    else if(role.equals("Regulation"))
+                                    {
+                                        loginView.goToRegulationHomePage();
                                         loginView.hideProgressBar();
                                         loginView.showMessage("Successfully login");
                                     }

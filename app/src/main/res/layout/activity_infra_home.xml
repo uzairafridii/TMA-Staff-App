@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="@dimen/card_view"
-        android:layout_marginTop="@dimen/edit_text_margin"
+        android:layout_marginTop="@dimen/recycler_view_margin"
         android:id="@+id/scrollView"
         android:layout_below="@+id/infra_tool_bar"
         >
@@ -34,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:weightSum="2"
-                android:layout_marginTop="@dimen/margin_login_card_view"
+                android:layout_marginTop="@dimen/recycler_view_margin"
                 android:id="@+id/firstLayout"
                 android:layout_below="@+id/infra_tool_bar"
                 >
@@ -66,7 +66,7 @@
 
                         <ImageView
                             android:layout_width="120dp"
-                            android:layout_height="120dp"
+                            android:layout_height="110dp"
                             android:id="@+id/newsFeedImage"
                             android:src="@drawable/newsfeed"
                             android:layout_centerHorizontal="true"
@@ -113,7 +113,7 @@
 
                         <ImageView
                             android:layout_width="120dp"
-                            android:layout_height="120dp"
+                            android:layout_height="110dp"
                             android:layout_centerHorizontal="true"
                             android:id="@+id/complaintImage"
                             android:src="@drawable/newsfeed"
@@ -175,7 +175,7 @@
                         <ImageView
                             android:id="@+id/workerListImageInfra"
                             android:layout_width="120dp"
-                            android:layout_height="120dp"
+                            android:layout_height="110dp"
                             android:layout_centerHorizontal="true"
                             android:src="@drawable/newsfeed" />
 
@@ -224,7 +224,7 @@
                         <ImageView
                             android:id="@+id/nocImageInfra"
                             android:layout_width="120dp"
-                            android:layout_height="120dp"
+                            android:layout_height="110dp"
                             android:layout_centerHorizontal="true"
                             android:src="@drawable/newsfeed" />
 
@@ -285,7 +285,7 @@
                         <ImageView
                             android:id="@+id/feedbackImageInfra"
                             android:layout_width="120dp"
-                            android:layout_height="120dp"
+                            android:layout_height="110dp"
                             android:layout_centerHorizontal="true"
                             android:src="@drawable/newsfeed" />
 
@@ -297,7 +297,7 @@
                             android:text="Complaints FeedBack"
                             android:textSize="16sp"
                             android:layout_centerHorizontal="true"
-                            android:layout_marginBottom="4dp"
+                            android:gravity="center_horizontal"
                             android:textStyle="bold"
                             />
 
@@ -333,7 +333,7 @@
                         <ImageView
                             android:id="@+id/firebrigadeImageInfra"
                             android:layout_width="120dp"
-                            android:layout_height="120dp"
+                            android:layout_height="110dp"
                             android:layout_centerHorizontal="true"
                             android:src="@drawable/newsfeed" />
 

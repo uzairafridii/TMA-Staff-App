@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.example.tmaadminapp.AppModules.Administration.AdminHome.AdminHome;
 import com.example.tmaadminapp.AppModules.InfrastructureHead.InfraHome.InfraHome;
+import com.example.tmaadminapp.AppModules.Regulation.RegulationHome;
 import com.example.tmaadminapp.AppModules.SanitationHead.SanitationHome.SanitationMain;
 import com.example.tmaadminapp.AppModules.UnionCouncilHead.UnionCouncil;
 import com.example.tmaadminapp.Models.LoginPresenterImplementer;
@@ -104,31 +105,38 @@ public class LoginActivity extends AppCompatActivity implements LoginView
     @Override
     public void moveToMainPage()
     {
-         startActivity(new Intent(this , AdminHome.class));
-    }
+        Intent intent = new Intent(this,AdminHome.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);    }
 
     @Override
     public void goToSanitationHomePage() {
 
-        startActivity(new Intent(this , SanitationMain.class));
+        Intent intent = new Intent(this,SanitationMain.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 
     @Override
     public void goToInfraHomePage() {
-
-        startActivity(new Intent(this , InfraHome.class));
+        Intent intent = new Intent(this,InfraHome.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 
     @Override
     public void goToRegulationHomePage() {
-        Toast.makeText(this, "Not you work", Toast.LENGTH_SHORT).show();
 
-    }
+        Intent intent = new Intent(this,RegulationHome.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);    }
 
     @Override
     public void goToUnionCouncilHomePage() {
 
-        startActivity(new Intent(this , UnionCouncil.class));
+        Intent intent = new Intent(this,UnionCouncil.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 
     @Override

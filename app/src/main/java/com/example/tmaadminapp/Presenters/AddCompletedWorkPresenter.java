@@ -16,4 +16,6 @@ public interface AddCompletedWorkPresenter
     void selectImage();
 
     void setRecyclerAdapter();
+
+    void getWorkersList(DatabaseReference dbRef, String department);
 }

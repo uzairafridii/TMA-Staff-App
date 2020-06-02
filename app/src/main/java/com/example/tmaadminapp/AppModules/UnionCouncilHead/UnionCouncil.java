@@ -47,7 +47,6 @@ public class UnionCouncil extends AppCompatActivity implements CertificatesView
         presenter = new CertificatePresenterImplementer(this);
         mToolbar = findViewById(R.id.union_council_tool_bar);
         setSupportActionBar(mToolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
         noCertificateText = findViewById(R.id.noCertificateText);

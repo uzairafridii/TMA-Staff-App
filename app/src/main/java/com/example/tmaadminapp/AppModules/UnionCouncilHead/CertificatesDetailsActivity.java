@@ -139,6 +139,9 @@ public class CertificatesDetailsActivity extends AppCompatActivity implements Ce
         disabilityText.setText("Husband/Wife Name : ");
         doctOrMideWifeValue.setText(deathCertificate.getHusbandCnic());
         doctOrMideWifeText.setText("Husband/Wife Cnic : ");
+
+        Glide.with(this).load(deathCertificate.getCnicImages().get(0)).into(frontImage);
+        Glide.with(this).load(deathCertificate.getCnicImages().get(1)).into(backImage);
     }
 
     @Override

@@ -42,7 +42,7 @@ public class AdminComplaintPresenterImplementer
                     final ModelForTotalComplaints totalComplaints = dataSnapshot.getValue(ModelForTotalComplaints.class);
 
                     // users ref to get username who complaint
-                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("TMA Lachi").child("Users")
+                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Users")
                             .child(totalComplaints.getUid());
 
                     ref.addValueEventListener(new ValueEventListener() {

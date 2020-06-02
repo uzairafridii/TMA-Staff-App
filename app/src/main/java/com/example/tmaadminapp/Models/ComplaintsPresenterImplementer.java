@@ -45,7 +45,7 @@ public class ComplaintsPresenterImplementer implements ComplaintsPresenter
                     final ModelForComplaints complaints = dataSnapshot.getValue(ModelForComplaints.class);
 
                     // users ref to get username who complaint
-                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("TMA Lachi").child("Users")
+                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Users")
                             .child(complaints.getUid());
 
                     ref.addValueEventListener(new ValueEventListener() {

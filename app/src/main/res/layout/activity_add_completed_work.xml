@@ -15,11 +15,12 @@
         <include layout="@layout/app_tool_bar"
             android:id="@+id/completedWorkToolbar"/>
 
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/workerFirst"
-            android:text="Enter First Worker Name : "
+            android:id="@+id/selectWorkers"
+            android:text="Select First Worker Name : "
             android:textSize="14sp"
             android:textColor="@android:color/black"
             android:textStyle="bold"
@@ -27,46 +28,45 @@
             android:layout_marginTop="@dimen/edit_text_margin"
             android:layout_below="@id/completedWorkToolbar"
             />
-        <EditText
+        <androidx.appcompat.widget.AppCompatSpinner
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:id="@+id/firstWorkerName"
-            android:hint="First worker"
-            android:layout_below="@id/workerFirst"
-            android:background="@drawable/edit_text_bg"
-            android:paddingLeft="@dimen/edit_text_margin"
+            android:id="@+id/workerListSpinner"
+            android:layout_below="@+id/selectWorkers"
+            android:hint="Select"
             android:layout_marginLeft="@dimen/edit_text_margin"
             android:layout_marginRight="@dimen/edit_text_margin"
             android:layout_marginTop="@dimen/recycler_view_margin"
-            android:inputType="text"
+            android:spinnerMode="dropdown"
+            android:background="@android:drawable/btn_dropdown"
+
             />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/workerSecond"
-            android:text="Enter Second Worker Name : "
+            android:id="@+id/workerFirst"
+            android:text="Select Second Worker Name : "
             android:textSize="14sp"
             android:textColor="@android:color/black"
             android:textStyle="bold"
-            android:layout_below="@id/firstWorkerName"
             android:layout_marginLeft="@dimen/edit_text_margin"
-            android:layout_marginTop="@dimen/edit_text_margin"
+            android:layout_marginTop="@dimen/card_elevation"
+            android:layout_below="@id/workerListSpinner"
             />
-
-        <EditText
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:layout_below="@id/workerFirst"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:id="@+id/secondWorkerName"
-            android:hint="Second worker"
-            android:layout_below="@+id/workerSecond"
-            android:background="@drawable/edit_text_bg"
-            android:paddingLeft="@dimen/edit_text_margin"
+            android:id="@+id/workerNameSecondSpinner"
+            android:hint="Select"
             android:layout_marginLeft="@dimen/edit_text_margin"
             android:layout_marginRight="@dimen/edit_text_margin"
             android:layout_marginTop="@dimen/recycler_view_margin"
-            android:inputType="text"
+            android:spinnerMode="dropdown"
+            android:background="@android:drawable/btn_dropdown"
             />
+
 
         <Button
             android:onClick="uploadWorkImages"
@@ -76,7 +76,7 @@
             android:text="Select Image"
             android:backgroundTint="@color/sign_in_txt_color"
             android:textAllCaps="false"
-            android:layout_below="@+id/secondWorkerName"
+            android:layout_below="@+id/workerNameSecondSpinner"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="@dimen/edit_text_margin"
             android:layout_marginTop="@dimen/edit_text_margin"
@@ -90,7 +90,7 @@
             android:text="Submit"
             android:textAllCaps="false"
             android:backgroundTint="@color/sign_in_txt_color"
-            android:layout_below="@+id/secondWorkerName"
+            android:layout_below="@+id/workerNameSecondSpinner"
             android:layout_alignParentRight="true"
             android:layout_marginRight="@dimen/edit_text_margin"
             android:layout_marginTop="@dimen/edit_text_margin"

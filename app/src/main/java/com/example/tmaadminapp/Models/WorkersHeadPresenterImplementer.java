@@ -5,7 +5,10 @@ import android.content.DialogInterface;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -30,11 +33,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class WorkersHeadPresenterImplementer implements WorkersHeadPresenter
+public class WorkersHeadPresenterImplementer implements WorkersHeadPresenter , AdapterView.OnItemSelectedListener
 {
     private WorkerHeadView workerHeadView;
     private Context context;
     private List<ModelForWorkerHead> workerHeadList = new ArrayList<>();
+    private String department;
 
     public WorkersHeadPresenterImplementer(WorkerHeadView workerHeadView , Context context)
     {
@@ -86,17 +90,23 @@ public class WorkersHeadPresenterImplementer implements WorkersHeadPresenter
     // custom signup dialog method
     private void signUpFormDialog(final DatabaseReference dbRef , final FirebaseAuth mAuth)
     {
+        String[] departmentList = {"Sanitation", "Regulation", "Infrastructure","Union Council" , "Finance", "Head Clerk"};
         View customView = LayoutInflater.from(context).inflate(R.layout.workers_head_sign_up, null);
         final AlertDialog.Builder alert = new AlertDialog.Builder(context);
         alert.setView(customView);
 
         // initialize edittext fields
-         final EditText name , phone , email, department , password;
+         final EditText name , phone , email , password;
         name = customView.findViewById(R.id.worker_head_name);
         phone = customView.findViewById(R.id.worker_head_phone_no);
         email = customView.findViewById(R.id.worker_head_email);
-        department = customView.findViewById(R.id.worker_head_dept);
         password = customView.findViewById(R.id.worker_head_password);
+
+        Spinner spinner = customView.findViewById(R.id.worker_head_dept);
+        ArrayAdapter adapter  = new ArrayAdapter(context, android.R.layout.simple_list_item_1, departmentList);
+        spinner.setOnItemSelectedListener(this);
+        spinner.setAdapter(adapter);
+
 
         // set click on register button
         customView.findViewById(R.id.registerWorkerHeadButton)
@@ -106,7 +116,7 @@ public class WorkersHeadPresenterImplementer implements WorkersHeadPresenter
 
 
                         if (dbRef != null && mAuth != null && !name.getText().toString().isEmpty() &&
-                                !phone.getText().toString().isEmpty() && !department.getText().toString().isEmpty() &&
+                                !phone.getText().toString().isEmpty() && !department.isEmpty() &&
                                 !email.getText().toString().isEmpty() && !password.getText().toString().isEmpty())
                         {
 
@@ -134,7 +144,7 @@ public class WorkersHeadPresenterImplementer implements WorkersHeadPresenter
                                             final Map<String, String> workerHeadData = new HashMap<>();
                                             workerHeadData.put("name_worker_head", name.getText().toString());
                                             workerHeadData.put("phone", phone.getText().toString());
-                                            workerHeadData.put("department", department.getText().toString());
+                                            workerHeadData.put("department", department);
                                             workerHeadData.put("password", password.getText().toString());
                                             workerHeadData.put("email", email.getText().toString());
                                             workerHeadData.put("token", "null for this time");
@@ -151,17 +161,9 @@ public class WorkersHeadPresenterImplementer implements WorkersHeadPresenter
 
                                                 }
                                             });
-
-
                                         }
                                     });
-
-
-
-                                }
-                            });
-
-
+                                }});
 
 
                         } else {
@@ -192,4 +194,15 @@ public class WorkersHeadPresenterImplementer implements WorkersHeadPresenter
 
         alert.show();
     }
+
+
+    // spinner item click listener
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l)
+    {
+       department = adapterView.getItemAtPosition(i).toString();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {}
 }

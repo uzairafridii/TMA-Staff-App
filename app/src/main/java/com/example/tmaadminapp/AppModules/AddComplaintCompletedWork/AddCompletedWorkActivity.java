@@ -14,7 +14,10 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.tmaadminapp.Models.AddCompletedWorkPresenterImplementer;
@@ -30,17 +33,17 @@ import com.google.firebase.storage.StorageReference;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AddCompletedWorkActivity extends AppCompatActivity implements AddCompletedWorkView
+public class AddCompletedWorkActivity extends AppCompatActivity implements AddCompletedWorkView,
+        AdapterView.OnItemSelectedListener
 {
     public static final int REQUEST_CODE = 1;
-    private String title , pushKey , uid;
+    private String title , pushKey , uid, department , firstWorker,secondWorker;
     private RecyclerView recyclerView;
     private GridLayoutManager layoutManager;
     private AdapterForSelectedImageRv adapter;
     private Toolbar mToolbar;
-    private EditText editTextFirstWorker, editTextSecondWorker;
+    private Spinner firstWorkerSpinner , secondWorkerSpinner;
     private List<Uri> imageUriList;
-    private List<String> workerList;
     private AddCompletedWorkPresenter workPresenter;
     private ProgressDialog progressDialog;
     private DatabaseReference dbRef;
@@ -54,6 +57,7 @@ public class AddCompletedWorkActivity extends AppCompatActivity implements AddCo
         setContentView(R.layout.activity_add_completed_work);
 
         initViews();
+        workPresenter.getWorkersList(dbRef, department);
 
     }
 
@@ -64,28 +68,31 @@ public class AddCompletedWorkActivity extends AppCompatActivity implements AddCo
         title = getIntent().getStringExtra("title");
         uid = getIntent().getStringExtra("uid");
         pushKey = getIntent().getStringExtra("pushKey");
+        department = getIntent().getStringExtra("department");
 
         Log.d("ComplaintData", "initViews: "+title+"\n"+uid+"\n"+pushKey);
+
+        firstWorkerSpinner = findViewById(R.id.workerListSpinner);
+        firstWorkerSpinner.setOnItemSelectedListener(this);
+        secondWorkerSpinner = findViewById(R.id.workerNameSecondSpinner);
+        secondWorkerSpinner.setOnItemSelectedListener(this);
 
         recyclerView = findViewById(R.id.selectedImagesRv);
         layoutManager = new GridLayoutManager(this , 3);
         recyclerView.setLayoutManager(layoutManager);
 
         imageUriList = new ArrayList<>();
-        workerList = new ArrayList<>();
 
         mToolbar = findViewById(R.id.completedWorkToolbar);
         setSupportActionBar(mToolbar);
         setTitle("Add Completed Work");
 
-        editTextFirstWorker = findViewById(R.id.firstWorkerName);
-        editTextSecondWorker = findViewById(R.id.secondWorkerName);
 
         progressDialog = new ProgressDialog(this , R.style.MyAlertDialogStyle);
 
 
         userAuth = FirebaseAuth.getInstance();
-        dbRef = FirebaseDatabase.getInstance().getReference().child("Feedback Work");
+        dbRef = FirebaseDatabase.getInstance().getReference();
         storageRef = FirebaseStorage.getInstance().getReference().child("Complaints").child("Completed Work Images");
 
     }
@@ -99,9 +106,6 @@ public class AddCompletedWorkActivity extends AppCompatActivity implements AddCo
     // click on submit work
     public void submitWork(View view)
     {
-       String firstWorker = editTextFirstWorker.getText().toString();
-       String secondWorker =  editTextSecondWorker.getText().toString();
-
        workPresenter.submitData(dbRef ,storageRef , userAuth , pushKey,
                title ,firstWorker , secondWorker , imageUriList);
 
@@ -160,10 +164,7 @@ public class AddCompletedWorkActivity extends AppCompatActivity implements AddCo
     @Override
     public void clearAllFields()
     {
-        editTextFirstWorker.setText("");
-        editTextSecondWorker.setText("");
         imageUriList.clear();
-        workerList.clear();
     }
 
     @Override
@@ -184,4 +185,31 @@ public class AddCompletedWorkActivity extends AppCompatActivity implements AddCo
          adapter = new AdapterForSelectedImageRv(imageUriList , this);
          recyclerView.setAdapter(adapter);
     }
+
+    @Override
+    public void onSetWorkerListSpinnerAdapter(List<String> workerList)
+    {
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, workerList);
+        firstWorkerSpinner.setAdapter(adapter);
+        secondWorkerSpinner.setAdapter(adapter);
+    }
+
+
+    // spinner callbacks method
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l)
+    {
+       if(adapterView.getId() == R.id.workerListSpinner)
+       {
+           firstWorker = adapterView.getItemAtPosition(i).toString();
+       }
+       else if(adapterView.getId()  == R.id.workerNameSecondSpinner)
+       {
+           secondWorker = adapterView.getItemAtPosition(i).toString();
+       }
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {}
 }

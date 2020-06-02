@@ -39,7 +39,7 @@ public class NocPresenterImplementer implements NocPresenter
                     final ModelForNoc nocModel = dataSnapshot.getValue(ModelForNoc.class);
 
                     // get user name
-                    DatabaseReference userNameRef = dbRef.child("TMA Lachi").child("Users").child(nocModel.getUid());
+                    DatabaseReference userNameRef = dbRef.child("Users").child(nocModel.getUid());
                     userNameRef.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot)

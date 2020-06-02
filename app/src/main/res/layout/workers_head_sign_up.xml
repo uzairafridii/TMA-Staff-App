@@ -54,7 +54,7 @@
                 android:id="@+id/worker_head_phone_no"
                 android:background="@drawable/edit_text_bg"
                 android:hint="@string/phone_no"
-                android:layout_marginTop="@dimen/margin_login_card_view"
+                android:layout_marginTop="@dimen/edit_text_margin"
                 android:layout_marginLeft="@dimen/margin_login_card_view"
                 android:layout_marginRight="@dimen/margin_login_card_view"
                 android:paddingLeft="@dimen/recycler_view_margin"
@@ -63,20 +63,6 @@
                 android:inputType="phone"
                 />
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:id="@+id/worker_head_dept"
-                android:background="@drawable/edit_text_bg"
-                android:hint="Enter department"
-                android:layout_marginTop="@dimen/margin_login_card_view"
-                android:layout_marginLeft="@dimen/margin_login_card_view"
-                android:layout_marginRight="@dimen/margin_login_card_view"
-                android:paddingLeft="@dimen/recycler_view_margin"
-                android:drawableLeft="@drawable/ic_accessibility_black_24dp"
-                android:drawablePadding="@dimen/recycler_view_margin"
-                android:inputType="text"
-                />
 
             <EditText
                 android:layout_width="match_parent"
@@ -84,7 +70,7 @@
                 android:id="@+id/worker_head_email"
                 android:background="@drawable/edit_text_bg"
                 android:hint="Enter email"
-                android:layout_marginTop="@dimen/margin_login_card_view"
+                android:layout_marginTop="@dimen/edit_text_margin"
                 android:layout_marginLeft="@dimen/margin_login_card_view"
                 android:layout_marginRight="@dimen/margin_login_card_view"
                 android:paddingLeft="@dimen/recycler_view_margin"
@@ -101,7 +87,7 @@
                 android:background="@drawable/edit_text_bg"
                 android:hint="Enter password"
                 android:paddingLeft="@dimen/recycler_view_margin"
-                android:layout_marginTop="@dimen/margin_login_card_view"
+                android:layout_marginTop="@dimen/edit_text_margin"
                 android:layout_marginLeft="@dimen/margin_login_card_view"
                 android:layout_marginRight="@dimen/margin_login_card_view"
                 android:drawableLeft="@drawable/ic_visibility_black_24dp"
@@ -109,13 +95,26 @@
                 android:inputType="textPassword"
                 />
 
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:id="@+id/worker_head_dept"
+                android:background="@android:drawable/btn_dropdown"
+                android:hint="Enter department"
+                android:layout_marginTop="@dimen/edit_text_margin"
+                android:layout_marginLeft="@dimen/margin_login_card_view"
+                android:layout_marginRight="@dimen/margin_login_card_view"
+                android:paddingLeft="@dimen/recycler_view_margin"
+
+                />
+
             <Button
                 style="@style/Widget.MaterialComponents.Button"
-                android:layout_width="wrap_content"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/registerWorkerHeadButton"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/margin_top_login_card_view"
+                android:layout_marginTop="@dimen/margin_login_card_view"
                 android:layout_marginBottom="@dimen/margin_login_card_view"
                 android:text="Register"
                 android:backgroundTint="@color/sign_in_txt_color"

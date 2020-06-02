@@ -92,7 +92,8 @@ public class AdapterForComplaintRv extends
                             }
 
                             case R.id.completed: {
-                                holder.markAsCompleted(model.getTitle(), model.getPushKey(), model.getUid());
+                                holder.markAsCompleted(model.getTitle(), model.getPushKey(),
+                                        model.getUid(), model.getField() , model.getStatus());
                                 break;
                             }
 
@@ -215,13 +216,21 @@ public class AdapterForComplaintRv extends
             });
         }
 
-        public void markAsCompleted(final String title, final String pushKey, final String uid)
+        public void markAsCompleted(final String title, final String pushKey,
+                                    final String uid, final String depart , final String status)
         {
-            Intent dataIntent = new Intent(ctx, AddCompletedWorkActivity.class);
-            dataIntent.putExtra("title", title);
-            dataIntent.putExtra("pushKey", pushKey);
-            dataIntent.putExtra("uid", uid);
-            ctx.startActivity(dataIntent);
+            if(status.equals("Pending")) {
+                Intent dataIntent = new Intent(ctx, AddCompletedWorkActivity.class);
+                dataIntent.putExtra("title", title);
+                dataIntent.putExtra("pushKey", pushKey);
+                dataIntent.putExtra("uid", uid);
+                dataIntent.putExtra("department", depart);
+                ctx.startActivity(dataIntent);
+            }
+            else
+            {
+                Toast.makeText(ctx, "Already Completed", Toast.LENGTH_SHORT).show();
+            }
         }
 
 
