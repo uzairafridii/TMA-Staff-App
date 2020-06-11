@@ -14,7 +14,9 @@ public interface AddCompletedWorkView
 
     void onSelectImage();
 
-    void onSetAdapter();
+    void onSetSelectedImageRecyclerAdapter();
 
     void onSetWorkerListSpinnerAdapter(List<String> workerList);
+
+    void closeActivity();
 }

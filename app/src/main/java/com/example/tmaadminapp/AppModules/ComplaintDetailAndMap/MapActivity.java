@@ -10,7 +10,6 @@ import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.location.Location;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -22,27 +21,15 @@ import com.example.tmaadminapp.Models.MapPresenterImplementer;
 import com.example.tmaadminapp.Presenters.MapPresenter;
 import com.example.tmaadminapp.R;
 import com.example.tmaadminapp.Views.MapView;
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.maps.CameraUpdate;
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.PolylineOptions;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-
-import static com.google.android.gms.maps.model.BitmapDescriptorFactory.defaultMarker;
 
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback , MapView
 {
     public static final int REQUEST_CODE = 3;
-    private double lat , lng , currentLat , currentLng;
+    private double lat , lng;
     private GoogleMap mMap;
-    private FusedLocationProviderClient mLocationService;
     private MapPresenter mapPresenter;
 
     @Override
@@ -56,13 +43,12 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
     private void initViews()
     {
-        mapPresenter = new MapPresenterImplementer(this);
-        mLocationService = new FusedLocationProviderClient(this);
-
+        mapPresenter = new MapPresenterImplementer(this, this);
         mapPresenter.initMap();
 
     }
 
+    // google map callback method
     @Override
     public void onMapReady(GoogleMap googleMap)
     {
@@ -78,39 +64,22 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             {
 
             mMap = googleMap;
-            showMarker(lat, lng, "Complaint location");
+           mapPresenter.showMarker(mMap,lat, lng, "Complaint location");
         }
 
 
     }
 
-    private void showMarker(double lat , double lng , String title)
-    {
-        LatLng latLng = new LatLng(lat, lng);
-        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 15);
-        mMap.animateCamera(cameraUpdate);
-        MarkerOptions markerOptions = new MarkerOptions()
-                .title(title)
-                .icon(defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
-                .position(latLng);
-
-        if(title.equals("Complaint location"))
-        {
-            markerOptions.icon(defaultMarker(BitmapDescriptorFactory.HUE_RED));
-        }
-
-
-        mMap.addMarker(markerOptions);
-    }
-
+    // button show direction click listener
     @RequiresApi(api = Build.VERSION_CODES.M)
     public void showDirection(View view)
     {
-        mapPresenter.getCurrentLocation();
-        findViewById(R.id.directionButton).setVisibility(View.INVISIBLE);
+       // mapPresenter.getCurrentLocation();
+        mapPresenter.drawDirection(mMap ,lat , lng);
 
     }
 
+    // check location permission
     @Override
     public boolean onCheckPermission()
     {
@@ -118,6 +87,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED;
     }
 
+    // request location permission
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onRequestPermission()
@@ -130,6 +100,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
     }
 
+    // check gps is enable or not
     @Override
     public boolean gpsEnabled() {
 
@@ -144,7 +115,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         else {
             AlertDialog.Builder alertDialog = new AlertDialog.Builder(this)
                     .setTitle("GPS Enable")
-                    .setMessage("GPS is required for this app to work .Pleas enable GPS")
+                    .setMessage("GPS is required for to see complaint location .Pleas enable GPS")
                     .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
@@ -164,58 +135,13 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         return false;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
-    @Override
-    public void onGetCurrentLocation()
-    {
-        if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED  &&
-                checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED)
-        {
-            return;
-        }
-
-
-        mLocationService.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
-            @RequiresApi(api = Build.VERSION_CODES.M)
-            @Override
-            public void onComplete(@NonNull Task<Location> task) {
-
-                if (task.getResult() != null)
-                {
-                    Location location = task.getResult();
-                    currentLat = location.getLatitude();
-                    currentLng = location.getLongitude();
-
-                    drawPolyLine(currentLat , currentLng);
-                }
-                else
-                {
-                    Toast.makeText(MapActivity.this, "No current location found", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
-    }
-
+    // initmap
     @Override
     public void onInitMap()
     {
         SupportMapFragment supportMapFragment  = (SupportMapFragment)
                 getSupportFragmentManager().findFragmentById(R.id.map);
         supportMapFragment.getMapAsync(this);
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.M)
-    private void drawPolyLine(double currentLat , double currentLng)
-    {
-        showMarker(currentLat , currentLng , "Your current location");
-
-        PolylineOptions polylineOptions = new PolylineOptions();
-        polylineOptions.add(new LatLng(lat , lng) , new LatLng(currentLat , currentLng));
-        polylineOptions.color(getColor(R.color.sign_in_txt_color));
-        mMap.addPolyline(polylineOptions);
     }
 
     // check where the permission is granted or not after request
@@ -229,4 +155,11 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         }
     }
 
+
+    // get current location in onresume method
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mapPresenter.getCurrentLocation();
+    }
 }

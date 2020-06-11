@@ -17,6 +17,7 @@ import com.example.tmaadminapp.Views.WorkerDetailsView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class WorkerDetailActivity extends AppCompatActivity implements WorkerDetailsView
@@ -80,10 +81,11 @@ public class WorkerDetailActivity extends AppCompatActivity implements WorkerDet
     {
         super.onStart();
 
-        float rating = Float.parseFloat(avgRating);
+        double number = Float.parseFloat(avgRating);
+        double rating = (double)(Math.round( number * 100))/100.0;
         workerName.setText(name);
-        workerAverageRating.setText("("+avgRating+")");
-        ratingBar.setRating(rating);
+        workerAverageRating.setText("("+rating+")");
+        ratingBar.setRating((float) rating);
 
         if(rating > 1 && rating <=2.5)
         {

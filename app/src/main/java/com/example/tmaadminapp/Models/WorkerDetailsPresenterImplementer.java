@@ -43,7 +43,7 @@ public class WorkerDetailsPresenterImplementer implements WorkerDetailsPresenter
 
                     // getting user name who add rating
                    String userKey = workersRating.getUser_id();
-                   DatabaseReference userRef = dbRef.child("TMA Lachi").child("Users").child(userKey);
+                   DatabaseReference userRef = dbRef.child("Users").child(userKey);
                    userRef.addValueEventListener(new ValueEventListener() {
                        @Override
                        public void onDataChange(@NonNull DataSnapshot dataSnapshot)

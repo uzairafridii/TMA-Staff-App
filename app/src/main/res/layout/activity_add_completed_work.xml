@@ -16,6 +16,19 @@
             android:id="@+id/completedWorkToolbar"/>
 
 
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/workerCheckBox"
+            android:text="Select two workers ?"
+            android:layout_below="@+id/completedWorkToolbar"
+            android:gravity="center"
+            android:checked="true"
+            android:buttonTint="@color/sign_in_txt_color"
+            android:layout_marginLeft="@dimen/edit_text_margin"
+            android:layout_marginTop="@dimen/recycler_view_margin"
+            />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -25,8 +38,8 @@
             android:textColor="@android:color/black"
             android:textStyle="bold"
             android:layout_marginLeft="@dimen/edit_text_margin"
-            android:layout_marginTop="@dimen/edit_text_margin"
-            android:layout_below="@id/completedWorkToolbar"
+            android:layout_marginTop="@dimen/card_elevation"
+            android:layout_below="@id/workerCheckBox"
             />
         <androidx.appcompat.widget.AppCompatSpinner
             android:layout_width="match_parent"

@@ -58,7 +58,7 @@ public class BottomSheetWorkerHeadDetails extends BottomSheetDialogFragment impl
     {
 
         detailBottomSheetPresenter = new DetailBottomSheetPresenterImplementer(this);
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("Workers Head");
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("WorkersHead");
 
         workerHeadName = myView.findViewById(R.id.nameInBottomSheet);
         workerHeadPhone = myView.findViewById(R.id.phoneInBottomSheet);

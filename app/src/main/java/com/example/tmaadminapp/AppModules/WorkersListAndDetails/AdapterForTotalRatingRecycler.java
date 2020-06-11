@@ -103,6 +103,7 @@ public class AdapterForTotalRatingRecycler extends RecyclerView.Adapter<AdapterF
             {
                 Glide.with(context)
                         .load(imageUrl)
+                        .placeholder(R.drawable.ic_launcher_background)
                         .into(commentImage);
             }
 

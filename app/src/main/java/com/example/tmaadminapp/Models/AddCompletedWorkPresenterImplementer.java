@@ -1,9 +1,13 @@
 package com.example.tmaadminapp.Models;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.net.Uri;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 
 import com.example.tmaadminapp.Presenters.AddCompletedWorkPresenter;
 import com.example.tmaadminapp.Views.AddCompletedWorkView;
@@ -16,6 +20,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
@@ -30,69 +35,77 @@ public class AddCompletedWorkPresenterImplementer implements AddCompletedWorkPre
 {
     private AddCompletedWorkView workView;
     private int counter = 0;
+    private Context context;
     private List<String> imageUrls = new ArrayList<>();
     private List<String> workersNameList = new ArrayList<>();
 
-    public AddCompletedWorkPresenterImplementer(AddCompletedWorkView workView) {
+    public AddCompletedWorkPresenterImplementer(AddCompletedWorkView workView, Context context) {
         this.workView = workView;
+        this.context = context;
     }
 
     @Override
     public void submitData(final DatabaseReference dbRef, StorageReference storageRef, final FirebaseAuth auth,
                            final String pushKey , final String title, final String firstWorker, final String secondWorker,
-                           final List<Uri> imagesUri)
+                           final List<Uri> imagesUri , final String complaintUserId)
     {
 
-        if(dbRef != null && storageRef !=null && auth != null &&
-                !title.isEmpty() && !firstWorker.isEmpty() && !secondWorker.isEmpty() && !imagesUri.isEmpty())
+        try
         {
-            workView.showProgressBar();
-
-            // get download urls of all images
-            for (int uploadsImage = 0; uploadsImage < imagesUri.size(); uploadsImage++)
+            if(dbRef != null && storageRef !=null && auth != null && !title.isEmpty()
+                    && !firstWorker.isEmpty() && !imagesUri.isEmpty() && !complaintUserId.isEmpty())
             {
+                workView.showProgressBar();
 
-                Uri image = imagesUri.get(uploadsImage);
+                // get download urls of all images
+                for (int uploadsImage = 0; uploadsImage < imagesUri.size(); uploadsImage++)
+                {
 
-                final StorageReference imagePath = storageRef.child(image.getLastPathSegment());
+                    Uri image = imagesUri.get(uploadsImage);
 
-                imagePath.putFile(imagesUri.get(uploadsImage))
-                        .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot)
-                    {
-                        // to get download url
-                        imagePath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>()
-                        {
-                            @Override
-                            public void onSuccess(Uri uri)
-                            {
-                                counter = counter + 1;
-                                // cast uri to string
-                                String url = String.valueOf(uri);
-                                imageUrls.add(url);
+                    final StorageReference imagePath = storageRef.child(image.getLastPathSegment());
 
-                                // urls completed then upload data
-                                if(counter == imagesUri.size())
+                    imagePath.putFile(imagesUri.get(uploadsImage))
+                            .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                @Override
+                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot)
                                 {
-                                    // add urls and data to firebase
-                                    addDataToFirebase(dbRef , auth, pushKey ,imageUrls ,firstWorker , secondWorker, title);
-                                }
+                                    // to get download url
+                                    imagePath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>()
+                                    {
+                                        @Override
+                                        public void onSuccess(Uri uri)
+                                        {
+                                            counter = counter + 1;
+                                            // cast uri to string
+                                            String url = String.valueOf(uri);
+                                            imageUrls.add(url);
 
-                            }
-                        });
-                    }
-                });
+                                            // urls completed then upload data
+                                            if(counter == imagesUri.size())
+                                            {
+                                                // add urls and data to firebase
+                                                addDataToFirebase(dbRef , auth, pushKey ,imageUrls,
+                                                        firstWorker , secondWorker, title , complaintUserId);
+                                            }
+
+                                        }
+                                    });
+                                }
+                            });
+
+                }
 
             }
-
+            else
+            {
+                workView.showMessage("Please images and all fields are require");
+            }
         }
-        else
+        catch(Exception e)
         {
-            workView.showMessage("Please images and all fields are require");
+            workView.showMessage(e.getMessage());
         }
-
-
 
     }
 
@@ -105,7 +118,7 @@ public class AddCompletedWorkPresenterImplementer implements AddCompletedWorkPre
     @Override
     public void setRecyclerAdapter()
     {
-       workView.onSetAdapter();
+       workView.onSetSelectedImageRecyclerAdapter();
     }
 
     @Override
@@ -113,37 +126,56 @@ public class AddCompletedWorkPresenterImplementer implements AddCompletedWorkPre
     {
         if(dbRef != null && !department.isEmpty())
         {
-            dbRef.child("Worker List").orderByChild("field").equalTo(department)
-                    .addChildEventListener(new ChildEventListener() {
-                        @Override
-                        public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s)
-                        {
-                               String name = dataSnapshot.child("nameOfWorker").getValue().toString();
-                               workersNameList.add(name);
+            Query query = dbRef.child("Worker List").orderByChild("field").equalTo(department);
+                query.addChildEventListener(new ChildEventListener() {
+                    @Override
+                    public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
-                               workView.onSetWorkerListSpinnerAdapter(workersNameList);
-
+                        if (dataSnapshot.hasChildren()) {
+                            String name = dataSnapshot.child("nameOfWorker").getValue().toString();
+                            Log.d("workerName", "onChildAdded: " + name);
+                            workersNameList.add(name);
+                            workView.onSetWorkerListSpinnerAdapter(workersNameList);
+                            workView.showMessage("Call Child added method" + workersNameList.size());
+                        } else {
+                            workView.showMessage("No child found");
 
                         }
-                        @Override
-                        public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {}
-                        @Override
-                        public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {}
-                        @Override
-                        public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {}
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {}
-                    });
+
+                    }
+
+                    @Override
+                    public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                    }
+
+                    @Override
+                    public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+                    }
+
+                    @Override
+                    public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                    }
+                });
+
+
+        }
+        else
+        {
+            workView.showMessage("no worker list found");
         }
 
     }
 
-
     // method to add data to firebase database
-    private void addDataToFirebase(DatabaseReference mDatabaseReference, FirebaseAuth userAuth, final String pushKey,
-                                   List<String> urls, String firstWorker , String secondWorker, String title)
+    private void addDataToFirebase(final DatabaseReference mDatabaseReference, final FirebaseAuth userAuth, final String pushKey,
+                                   List<String> urls, String firstWorker , String secondWorker, String title , final String complaintUserId)
     {
         String date = DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
+        final String currentUserId = userAuth.getCurrentUser().getUid();
 
         final Map dataOfComplaint = new HashMap<>();
         dataOfComplaint.put("imageUrl", urls);
@@ -151,7 +183,7 @@ public class AddCompletedWorkPresenterImplementer implements AddCompletedWorkPre
         dataOfComplaint.put("firstWorker", firstWorker);
         dataOfComplaint.put("secondWorker", secondWorker);
         dataOfComplaint.put("title", title);
-        dataOfComplaint.put("uid", userAuth.getCurrentUser().getUid());
+        dataOfComplaint.put("uid",currentUserId );
         dataOfComplaint.put("pushKey", pushKey);
 
         mDatabaseReference.child("Feedback Work").child(pushKey)
@@ -163,6 +195,7 @@ public class AddCompletedWorkPresenterImplementer implements AddCompletedWorkPre
                         if (task.isSuccessful())
                         {
                             markAsCompleted(pushKey);
+                            storeNotificationData(mDatabaseReference, currentUserId , complaintUserId);
                             workView.hideProgressBar();
                             workView.clearAllFields();
                             workView.showMessage("Successfully uploaded");
@@ -176,7 +209,6 @@ public class AddCompletedWorkPresenterImplementer implements AddCompletedWorkPre
                 });
     }
 
-
     // method to change complaint status
     private void markAsCompleted(String pushKey)
     {
@@ -186,6 +218,16 @@ public class AddCompletedWorkPresenterImplementer implements AddCompletedWorkPre
         dbRef.updateChildren(statusUpdate);
     }
 
+    // store notification data in database
+    private void storeNotificationData(DatabaseReference dbRef, String userId , String complaintUserId)
+    {
+        Map<String , String> notificationData = new HashMap<>();
+        notificationData.put("completedBy", userId);
+
+        dbRef.child("Notifications").child("CompletedWork")
+                .child(complaintUserId).push()
+                .setValue(notificationData);
+    }
 
 
     }

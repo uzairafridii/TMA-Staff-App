@@ -1,7 +1,5 @@
 package com.example.tmaadminapp.Views;
 
-import android.location.Location;
-
 public interface MapView
 {
 
@@ -10,8 +8,6 @@ public interface MapView
     void onRequestPermission();
 
     boolean gpsEnabled();
-
-    void onGetCurrentLocation();
 
     void onInitMap();
 

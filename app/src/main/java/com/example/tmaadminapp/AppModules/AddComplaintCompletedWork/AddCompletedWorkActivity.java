@@ -16,6 +16,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,22 +36,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AddCompletedWorkActivity extends AppCompatActivity implements AddCompletedWorkView,
-        AdapterView.OnItemSelectedListener
-{
+        AdapterView.OnItemSelectedListener {
+
     public static final int REQUEST_CODE = 1;
-    private String title , pushKey , uid, department , firstWorker,secondWorker;
+    private boolean isChecked = true;
+    private String title, pushKey, uid, department, firstWorker, secondWorker;
     private RecyclerView recyclerView;
     private GridLayoutManager layoutManager;
     private AdapterForSelectedImageRv adapter;
     private Toolbar mToolbar;
-    private Spinner firstWorkerSpinner , secondWorkerSpinner;
+    private Spinner firstWorkerSpinner, secondWorkerSpinner;
+    private TextView tvSecondWorker;
+    private CheckBox selectTwoWokers;
     private List<Uri> imageUriList;
     private AddCompletedWorkPresenter workPresenter;
     private ProgressDialog progressDialog;
     private DatabaseReference dbRef;
     private StorageReference storageRef;
     private FirebaseAuth userAuth;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,26 +63,44 @@ public class AddCompletedWorkActivity extends AppCompatActivity implements AddCo
         initViews();
         workPresenter.getWorkersList(dbRef, department);
 
+        selectTwoWokers.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
+
+                if (checked) {
+                    tvSecondWorker.setVisibility(View.VISIBLE);
+                    secondWorkerSpinner.setVisibility(View.VISIBLE);
+                    isChecked = true;
+                } else {
+                    tvSecondWorker.setVisibility(View.GONE);
+                    secondWorkerSpinner.setVisibility(View.GONE);
+                    isChecked = false;
+                }
+            }
+        });
+
     }
 
-    private void initViews()
-    {
-        workPresenter = new AddCompletedWorkPresenterImplementer(this);
+    private void initViews() {
+        workPresenter = new AddCompletedWorkPresenterImplementer(this, this);
 
         title = getIntent().getStringExtra("title");
         uid = getIntent().getStringExtra("uid");
         pushKey = getIntent().getStringExtra("pushKey");
         department = getIntent().getStringExtra("department");
 
-        Log.d("ComplaintData", "initViews: "+title+"\n"+uid+"\n"+pushKey);
+        Log.d("ComplaintData", "initViews: " + title + "\n" + uid + "\n" + pushKey);
 
         firstWorkerSpinner = findViewById(R.id.workerListSpinner);
         firstWorkerSpinner.setOnItemSelectedListener(this);
         secondWorkerSpinner = findViewById(R.id.workerNameSecondSpinner);
         secondWorkerSpinner.setOnItemSelectedListener(this);
 
+        selectTwoWokers = findViewById(R.id.workerCheckBox);
+        tvSecondWorker = findViewById(R.id.workerFirst);
+
         recyclerView = findViewById(R.id.selectedImagesRv);
-        layoutManager = new GridLayoutManager(this , 3);
+        layoutManager = new GridLayoutManager(this, 3);
         recyclerView.setLayoutManager(layoutManager);
 
         imageUriList = new ArrayList<>();
@@ -88,7 +110,7 @@ public class AddCompletedWorkActivity extends AppCompatActivity implements AddCo
         setTitle("Add Completed Work");
 
 
-        progressDialog = new ProgressDialog(this , R.style.MyAlertDialogStyle);
+        progressDialog = new ProgressDialog(this, R.style.MyAlertDialogStyle);
 
 
         userAuth = FirebaseAuth.getInstance();
@@ -97,20 +119,15 @@ public class AddCompletedWorkActivity extends AppCompatActivity implements AddCo
 
     }
 
-    // click on upload image
-    public void uploadWorkImages(View view)
-    {
+    // click on upload image button
+    public void uploadWorkImages(View view) {
         workPresenter.selectImage();
     }
 
-    // click on submit work
-    public void submitWork(View view)
-    {
-       workPresenter.submitData(dbRef ,storageRef , userAuth , pushKey,
-               title ,firstWorker , secondWorker , imageUriList);
-
-       // TODO : Send notification to complaint user
-
+    // click on submit work button
+    public void submitWork(View view) {
+        workPresenter.submitData(dbRef, storageRef, userAuth, pushKey,
+                title, firstWorker, secondWorker, imageUriList, uid);
     }
 
     @Override
@@ -129,9 +146,7 @@ public class AddCompletedWorkActivity extends AppCompatActivity implements AddCo
 
                 }
 
-            }
-            else
-                {
+            } else {
                 Uri uri = data.getData();
                 imageUriList.add(uri);
                 workPresenter.setRecyclerAdapter();
@@ -141,35 +156,30 @@ public class AddCompletedWorkActivity extends AppCompatActivity implements AddCo
 
     // add completed work view call backs methods
     @Override
-    public void showProgressBar()
-    {
-      progressDialog.setMessage("Please wait...");
-      progressDialog.setCancelable(false);
-      progressDialog.setCanceledOnTouchOutside(false);
-      progressDialog.show();
+    public void showProgressBar() {
+        progressDialog.setMessage("Please wait...");
+        progressDialog.setCancelable(false);
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.show();
     }
 
     @Override
-    public void hideProgressBar()
-    {
-      progressDialog.dismiss();
+    public void hideProgressBar() {
+        progressDialog.dismiss();
     }
 
     @Override
-    public void showMessage(String message)
-    {
+    public void showMessage(String message) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 
     @Override
-    public void clearAllFields()
-    {
+    public void clearAllFields() {
         imageUriList.clear();
     }
 
     @Override
-    public void onSelectImage()
-    {
+    public void onSelectImage() {
         imageUriList.clear();
         Intent intent = new Intent();
         intent.setType("image/*");
@@ -180,36 +190,51 @@ public class AddCompletedWorkActivity extends AppCompatActivity implements AddCo
     }
 
     @Override
-    public void onSetAdapter()
-    {
-         adapter = new AdapterForSelectedImageRv(imageUriList , this);
-         recyclerView.setAdapter(adapter);
+    public void onSetSelectedImageRecyclerAdapter() {
+        adapter = new AdapterForSelectedImageRv(imageUriList, this);
+        recyclerView.setAdapter(adapter);
     }
 
     @Override
-    public void onSetWorkerListSpinnerAdapter(List<String> workerList)
-    {
+    public void onSetWorkerListSpinnerAdapter(List<String> workerList) {
+
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, workerList);
         firstWorkerSpinner.setAdapter(adapter);
         secondWorkerSpinner.setAdapter(adapter);
+
+    }
+
+    @Override
+    public void closeActivity() {
+
+        AddCompletedWorkActivity.this.finish();
+
     }
 
 
     // spinner callbacks method
     @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l)
-    {
-       if(adapterView.getId() == R.id.workerListSpinner)
-       {
-           firstWorker = adapterView.getItemAtPosition(i).toString();
-       }
-       else if(adapterView.getId()  == R.id.workerNameSecondSpinner)
-       {
-           secondWorker = adapterView.getItemAtPosition(i).toString();
-       }
+    public void onItemSelected(final AdapterView<?> adapterView, View view, final int i, long l) {
+        // if check box is checked and want to select two workers
+            if (isChecked) {
+
+                if (adapterView.getId() == R.id.workerListSpinner) {
+                    firstWorker = adapterView.getItemAtPosition(i).toString();
+                } else if (adapterView.getId() == R.id.workerNameSecondSpinner) {
+                    secondWorker = adapterView.getItemAtPosition(i).toString();
+                }
+            } else {
+
+                if (adapterView.getId() == R.id.workerListSpinner) {
+                    firstWorker = adapterView.getItemAtPosition(i).toString();
+                    secondWorker = "";
+                }
+
+            }
 
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {}
+
 }

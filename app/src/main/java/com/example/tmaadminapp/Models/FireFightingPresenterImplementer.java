@@ -51,6 +51,7 @@ public class FireFightingPresenterImplementer implements FireFightingPresenter
                 @Override
                 public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s)
                 {
+
                     final ModelForFireFighting fireFighting = dataSnapshot.getValue(ModelForFireFighting.class);
 
                     // get the user name who request for fire fighting
@@ -97,12 +98,19 @@ public class FireFightingPresenterImplementer implements FireFightingPresenter
                           @Override
                           public void onDataChange(@NonNull DataSnapshot dataSnapshot)
                           {
-                             String driverName = dataSnapshot.child("driverName").getValue().toString();
-                             String driverPhone = dataSnapshot.child("driverPhone").getValue().toString();
-                             String driverCnic = dataSnapshot.child("driverCnic").getValue().toString();
+                              if(dataSnapshot.hasChildren()) {
 
-                             // set name and phone no in textviews
-                             fireFightingView.setDriverDetails(driverName, driverPhone , driverCnic);
+                                  String driverName = dataSnapshot.child("driverName").getValue().toString();
+                                  String driverPhone = dataSnapshot.child("driverPhone").getValue().toString();
+                                  String driverCnic = dataSnapshot.child("driverCnic").getValue().toString();
+
+                                  // set name and phone no in textviews
+                                  fireFightingView.setDriverDetails(driverName, driverPhone, driverCnic);
+                              }
+                              else
+                              {
+                                  fireFightingView.showMessage("No driver record found");
+                              }
                           }
                           @Override
                           public void onCancelled(@NonNull DatabaseError databaseError) {}

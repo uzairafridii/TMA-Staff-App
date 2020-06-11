@@ -60,7 +60,7 @@ public class WorkersHeadPresenterImplementer implements WorkersHeadPresenter , A
     public void getAllWorkersHead(final DatabaseReference databaseReference) {
 
 
-        databaseReference.child("Workers Head").addChildEventListener(new ChildEventListener() {
+        databaseReference.child("WorkersHead").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
@@ -151,7 +151,7 @@ public class WorkersHeadPresenterImplementer implements WorkersHeadPresenter , A
                                             workerHeadData.put("uid", mAuth.getCurrentUser().getUid());
 
                                             // store data in firebase database
-                                            dbRef.child("Workers Head").child(mAuth.getCurrentUser().getUid())
+                                            dbRef.child("WorkersHead").child(mAuth.getCurrentUser().getUid())
                                                     .setValue(workerHeadData).addOnSuccessListener(new OnSuccessListener<Void>() {
                                                 @Override
                                                 public void onSuccess(Void aVoid) {

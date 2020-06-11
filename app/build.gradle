@@ -44,6 +44,7 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.0.1' // circle image view
     implementation 'com.facebook.shimmer:shimmer:0.1.0@aar' // blinking items
     implementation 'com.github.bumptech.glide:glide:4.11.0' // for image
+    implementation 'com.android.volley:volley:1.1.1'
 
 
 }

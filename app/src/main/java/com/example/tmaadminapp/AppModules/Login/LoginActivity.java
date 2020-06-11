@@ -51,10 +51,9 @@ public class LoginActivity extends AppCompatActivity implements LoginView
         rememberMe   = findViewById(R.id.remember_me);
 
         mAuth = FirebaseAuth.getInstance();
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("Workers Head");
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("WorkersHead");
 
         progressBar  = new ProgressDialog(this , R.style.MyAlertDialogStyle);
-
     }
 
 

@@ -57,22 +57,24 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".AppModules.Administration.NewsFeedForAdmin.NewsFeedForAdmin"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait" android:parentActivityName=".AppModules.Administration.AdminHome.AdminHome"/>
         <activity
             android:name=".AppModules.Administration.AdminStaffManagement.StaffManagementHome.StaffManagementHome"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait" android:parentActivityName=".AppModules.Administration.AdminHome.AdminHome" />
         <activity
             android:name=".AppModules.Administration.AdminStaffManagement.WorkerListInAdminPage.WorkersListActivityInAdmin"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:parentActivityName=".AppModules.Administration.AdminStaffManagement.StaffManagementHome.StaffManagementHome" />
         <activity
             android:name=".AppModules.Administration.AdminStaffManagement.WorkerHeadList.WorkerHeadList"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:parentActivityName=".AppModules.Administration.AdminStaffManagement.StaffManagementHome.StaffManagementHome" />
         <activity
             android:name=".AppModules.Administration.AdminHome.AdminHome"
             android:screenOrientation="portrait" />
         <activity
             android:name=".AppModules.InfrastructureHead.BuildingNoc.BuildingNocActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait" android:parentActivityName=".AppModules.InfrastructureHead.InfraHome.InfraHome" />
         <activity
             android:name=".SplashScreen"
             android:screenOrientation="portrait">

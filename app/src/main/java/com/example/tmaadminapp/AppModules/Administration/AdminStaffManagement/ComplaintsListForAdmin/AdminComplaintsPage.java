@@ -48,6 +48,7 @@ public class AdminComplaintsPage extends AppCompatActivity implements AdminCompa
         mToolbar = findViewById(R.id.adminTotalComplaintToolbar);
         setSupportActionBar(mToolbar);
         setTitle("Complaints");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         noItemFoundTextView = findViewById(R.id.noItemFoundTextView);
 

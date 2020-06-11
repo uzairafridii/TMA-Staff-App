@@ -11,7 +11,8 @@ import java.util.List;
 public interface AddCompletedWorkPresenter
 {
     void submitData(DatabaseReference dbRef, StorageReference storageRef, FirebaseAuth auth,
-                    String pushKey, String title, String firstWorker , String secondWorker, List<Uri> imagesUri);
+                    String pushKey, String title, String firstWorker ,
+                    String secondWorker, List<Uri> imagesUri, String complaintUserId);
 
     void selectImage();
 

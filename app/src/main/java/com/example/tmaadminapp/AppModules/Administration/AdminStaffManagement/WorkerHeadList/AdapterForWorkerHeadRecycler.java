@@ -159,7 +159,7 @@ public class AdapterForWorkerHeadRecycler extends RecyclerView.Adapter<AdapterFo
                 public void onClick(final DialogInterface dialogInterface, int i)
                 {
 
-                    Query query = databaseReference.child("Workers Head").orderByChild("uid").equalTo(key);
+                    Query query = databaseReference.child("WorkersHead").orderByChild("uid").equalTo(key);
 
                     query.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -246,7 +246,7 @@ public class AdapterForWorkerHeadRecycler extends RecyclerView.Adapter<AdapterFo
                         updateData.put("department", department.getText().toString());
 
                         //store update data in firebase
-                        databaseReference.child("Workers Head").child(uid).updateChildren(updateData)
+                        databaseReference.child("WorkersHead").child(uid).updateChildren(updateData)
                                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
