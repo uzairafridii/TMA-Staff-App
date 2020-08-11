@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_home"
-    tools:context=".AppModules.WorkersListAndDetails.WorkerDetailActivity">
+    tools:context=".AppModules.WorkersListAndDetails.Activities.WorkerDetailActivity">
 
     <include
          layout="@layout/app_tool_bar"

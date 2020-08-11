@@ -28,7 +28,7 @@
             android:parentActivityName=".AppModules.InfrastructureHead.InfraHome.InfraHome"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".AppModules.WorkersListAndDetails.InfraWorkersListActivity"
+            android:name=".AppModules.WorkersListAndDetails.Activities.InfraWorkersListActivity"
             android:parentActivityName=".AppModules.InfrastructureHead.InfraHome.InfraHome"
             android:screenOrientation="portrait" />
         <activity
@@ -91,10 +91,10 @@
             android:name=".AppModules.Complaints.SanitationComplaints"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".AppModules.WorkersListAndDetails.WorkerDetailActivity"
+            android:name=".AppModules.WorkersListAndDetails.Activities.WorkerDetailActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".AppModules.WorkersListAndDetails.SanitationWorkersListActivity"
+            android:name=".AppModules.WorkersListAndDetails.Activities.SanitationWorkersListActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".AppModules.NewsFeed.NewsFeedActivity.NewsFeedActivity"
@@ -112,6 +112,18 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/map_api_key" />
+
+        <service
+            android:name=".AppModules.FirebaseMessagingService.FirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+
+
+
     </application>
 
 </manifest>

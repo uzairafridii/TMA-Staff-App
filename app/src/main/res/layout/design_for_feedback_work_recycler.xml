@@ -15,11 +15,11 @@
         android:layout_marginRight="@dimen/card_elevation"
         android:layout_marginBottom="@dimen/recycler_view_margin"
         android:layout_marginTop="@dimen/recycler_view_margin"
-        app:cardCornerRadius="@dimen/card_elevation"
-        app:cardElevation="@dimen/card_elevation"
+        app:cardElevation="@dimen/recycler_view_margin"
         >
 
         <RelativeLayout
+            android:id="@+id/feedbackLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/recycler_view_margin"
@@ -42,12 +42,14 @@
                 android:id="@+id/completedComplaintdate"
                 android:text="date"
                 android:textSize="10sp"
+                android:drawablePadding="@dimen/recycler_view_margin"
+                android:drawableLeft="@drawable/ic_access_alarm_black_24dp"
                 android:layout_below="@+id/completedComplaintTitle"
                 />
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="220dp"
+                android:layout_height="200dp"
                 android:id="@+id/completedComplaintImage"
                 android:src="@drawable/ic_launcher_background"
                 android:layout_below="@+id/completedComplaintdate"
@@ -97,6 +99,7 @@
                 android:text="And SecondWorker"
                 android:layout_below="@id/view"
                 android:layout_toRightOf="@id/workerFirst"
+                android:layout_toLeftOf="@+id/toggleImage"
                 android:textSize="14dp"
                 android:textStyle="bold"
                 android:textColor="@android:color/black"
@@ -104,7 +107,81 @@
                 android:layout_marginLeft="@dimen/recycler_view_margin"
                 />
 
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/toggleImage"
+                android:layout_below="@+id/view"
+                android:background="@null"
+                android:src="@drawable/ic_keyboard_arrow_down_black_24dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/recycler_view_margin"
+                />
+
+            <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/expandedLayout"
+                android:layout_marginTop="@dimen/edit_text_margin"
+                android:layout_below="@+id/toggleImage"
+                android:layout_centerHorizontal="true"
+                app:ael_expanded="false"
+                app:ael_duration="100"
+                app:ael_interpolator="fastOutSlowIn"
+                app:ael_orientation="vertical"
+                >
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:orientation="vertical"
+                    >
+
+                  <TextView
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:id="@+id/feedbackComment"
+                      android:text="Not add review yet"
+                      android:textStyle="bold"
+                      android:layout_centerHorizontal="true"
+                      android:gravity="center_horizontal"
+                      />
+
+                    <RatingBar
+                        android:id="@+id/complaintRating"
+                        style="@style/Widget.AppCompat.RatingBar.Small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_below="@+id/feedbackComment"
+                        android:layout_marginTop="@dimen/recycler_view_margin"
+                        android:progress="3"
+                        android:progressTint="#FFCD42" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/rating"
+                        android:text="(0)"
+                        android:textSize="12dp"
+                        android:layout_marginLeft="@dimen/recycler_view_margin"
+                        android:layout_marginTop="@dimen/recycler_view_margin"
+                        android:layout_below="@id/feedbackComment"
+                        android:layout_toRightOf="@+id/complaintRating"
+                        />
+
+
+                </RelativeLayout>
+
+
+            </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+
         </RelativeLayout>
+
+
+
     </androidx.cardview.widget.CardView>
 
 

@@ -17,6 +17,13 @@
         android:layout_margin="@dimen/recycler_view_margin"
         android:layout_below="@id/feedbackWorkToolbar"
         />
+    <include
+        layout="@layout/no_item_found_layout"
+        android:id="@+id/noItemFoundLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        />
 
 
 </RelativeLayout>

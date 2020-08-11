@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.LinearLayout;
 
 import com.example.tmaadminapp.Models.NocPresenterImplementer;
 import com.example.tmaadminapp.Presenters.NocPresenter;
@@ -20,6 +22,7 @@ public class BuildingNocActivity extends AppCompatActivity implements NocView
 {
 
     private Toolbar mToolbar;
+    private LinearLayout noItemFoundLayout;
     private RecyclerView nocRecyclerList;
     private LinearLayoutManager layoutManager;
     private AdapterForNocRv adapter;
@@ -50,6 +53,7 @@ public class BuildingNocActivity extends AppCompatActivity implements NocView
         layoutManager.setStackFromEnd(true);
         nocRecyclerList.setLayoutManager(layoutManager);
 
+        noItemFoundLayout = findViewById(R.id.noItemFoundLayout);
 
         dbRef = FirebaseDatabase.getInstance().getReference();
     }
@@ -58,7 +62,17 @@ public class BuildingNocActivity extends AppCompatActivity implements NocView
     @Override
     public void onSetNocRecyclerAdapter(List<ModelForNoc> nocList)
     {
-        adapter = new AdapterForNocRv(nocList , this);
+        adapter = new AdapterForNocRv(nocList , this, this);
         nocRecyclerList.setAdapter(adapter);
+    }
+
+    @Override
+    public void hideNoItemFoundLayout() {
+        noItemFoundLayout.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showNoItemFoundLayout() {
+        noItemFoundLayout.setVisibility(View.VISIBLE);
     }
 }

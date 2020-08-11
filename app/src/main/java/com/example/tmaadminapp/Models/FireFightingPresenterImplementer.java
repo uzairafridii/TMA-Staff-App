@@ -56,7 +56,7 @@ public class FireFightingPresenterImplementer implements FireFightingPresenter
 
                     // get the user name who request for fire fighting
                     DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference()
-                            .child("TMA Lachi").child("Users").child(fireFighting.getUid());
+                            .child("Users").child(fireFighting.getUid());
                     dbRef.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot)

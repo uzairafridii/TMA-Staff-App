@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="margin_top_login_card_view">80dp</dimen>
+    <dimen name="margin_top_login_card_view">40dp</dimen>
     <dimen name="margin_login_card_view">32dp</dimen>
     <dimen name="edit_text_margin">16dp</dimen>
     <dimen name="margin_top_card_news_feed">120dp</dimen>

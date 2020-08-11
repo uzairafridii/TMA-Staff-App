@@ -1,4 +1,4 @@
-package com.example.tmaadminapp.AppModules.WorkersListAndDetails;
+package com.example.tmaadminapp.AppModules.WorkersListAndDetails.Models;
 
 public class ModelForWorkerList
 {

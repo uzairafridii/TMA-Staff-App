@@ -9,10 +9,22 @@
 
 
     <ImageView
+        android:id="@+id/splashLogo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/tma_logo"
         android:layout_centerInParent="true"
         />
+
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/spin_kit"
+        style="@style/SpinKitView.Large.FadingCircle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/card_elevation"
+        android:layout_centerHorizontal="true"
+        app:SpinKit_Color="@color/sign_in_txt_color"
+        android:layout_below="@+id/splashLogo"/>
+
 
 </RelativeLayout>

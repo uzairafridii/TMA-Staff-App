@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.tmaadminapp.Models.WorkersHeadPresenterImplementer;
@@ -30,7 +31,7 @@ public class WorkerHeadList extends AppCompatActivity implements WorkerHeadView
 {
 
     private Toolbar mToolbar;
-
+    private LinearLayout noWorkerFound;
     private RecyclerView mRecyclerView;
     private AdapterForWorkerHeadRecycler adapter;
     private ProgressDialog progressDialog;
@@ -68,6 +69,8 @@ public class WorkerHeadList extends AppCompatActivity implements WorkerHeadView
         mRecyclerView = findViewById(R.id.workerHeadRecycler);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        noWorkerFound  = findViewById(R.id.noItemFoundLayout);
+
         /// firebase
         databaseReference = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
@@ -99,6 +102,16 @@ public class WorkerHeadList extends AppCompatActivity implements WorkerHeadView
     public void showMessage(String message) {
 
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void hideNotFoundLayout() {
+        noWorkerFound.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showNotFoundLayout() {
+        noWorkerFound.setVisibility(View.VISIBLE);
     }
 
 

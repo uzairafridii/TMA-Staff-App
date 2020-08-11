@@ -115,7 +115,17 @@ public class AdapterForWorkerHeadRecycler extends RecyclerView.Adapter<AdapterFo
 
     @Override
     public int getItemCount() {
-        return arrayList.size();
+
+        if(arrayList.size() > 0)
+        {
+            workerHeadView.hideNotFoundLayout();
+            return arrayList.size();
+        }
+        else
+        {
+            workerHeadView.showNotFoundLayout();
+            return arrayList.size();
+        }
     }
 
     public class MyHeadViewHolder extends RecyclerView.ViewHolder

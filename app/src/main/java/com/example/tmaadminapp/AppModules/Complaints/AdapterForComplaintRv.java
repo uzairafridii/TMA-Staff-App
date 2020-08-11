@@ -1,6 +1,8 @@
 package com.example.tmaadminapp.AppModules.Complaints;
 
+
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.util.Log;
@@ -15,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -192,28 +195,51 @@ public class AdapterForComplaintRv extends
 
         }
 
-        public void changeComplaintType(String type)
+        public void changeComplaintType(final String type)
         {
-            Map<String, Object> changeType = new HashMap<>();
-            if(type.equals("Sanitation"))
-            {
-                changeType.put("field", "Infrastructure");
-            }
-            else
-            {
-                changeType.put("field", "Sanitation");
-            }
 
-            dbRef.updateChildren(changeType).addOnCompleteListener(new OnCompleteListener<Void>() {
+            AlertDialog.Builder alert = new AlertDialog.Builder(ctx);
+            alert.setTitle("Changing Department");
+            alert.setMessage("Do you want to change the complaint department");
+            alert.setCancelable(false);
+            alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                 @Override
-                public void onComplete(@NonNull Task<Void> task) {
+                public void onClick(final DialogInterface dialog, int which) {
 
-                    if (task.isSuccessful()) {
-                        Toast.makeText(ctx, "Complaint type is successfully change", Toast.LENGTH_SHORT).show();
+                    Map<String, Object> changeType = new HashMap<>();
+                    if(type.equals("Sanitation"))
+                    {
+                        changeType.put("field", "Infrastructure");
+                    }
+                    else
+                    {
+                        changeType.put("field", "Sanitation");
                     }
 
+                    dbRef.updateChildren(changeType).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+
+                            if (task.isSuccessful()) {
+                                Toast.makeText(ctx, "Complaint type is successfully change", Toast.LENGTH_SHORT).show();
+                                dialog.dismiss();
+                            }
+
+                        }
+                    });
+
+
+                }
+            }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
                 }
             });
+
+            alert.show();
+
+
         }
 
         public void markAsCompleted(final String title, final String pushKey,
@@ -251,5 +277,6 @@ public class AdapterForComplaintRv extends
             ctx.startActivity(dataIntent);
 
         }
+
     }
 }

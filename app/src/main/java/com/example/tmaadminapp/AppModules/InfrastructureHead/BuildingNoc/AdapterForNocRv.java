@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.tmaadminapp.R;
+import com.example.tmaadminapp.Views.NocView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
@@ -31,10 +32,12 @@ public class AdapterForNocRv extends RecyclerView.Adapter<AdapterForNocRv.MyNocV
 {
     private List<ModelForNoc> nocList;
     private Context context;
+    private NocView nocView;
 
-    public AdapterForNocRv(List<ModelForNoc> nocList, Context context) {
+    public AdapterForNocRv(List<ModelForNoc> nocList, Context context, NocView nocView) {
         this.nocList = nocList;
         this.context = context;
+        this.nocView = nocView;
     }
 
     @NonNull
@@ -53,9 +56,8 @@ public class AdapterForNocRv extends RecyclerView.Adapter<AdapterForNocRv.MyNocV
         holder.setNocTitle(model.getNocTitle());
         holder.setStatus(model.getStatus());
         holder.setDate(model.getDate());
-        holder.setImage(model.getImageUrl());
 
-        holder.nocCardView.setOnClickListener(new View.OnClickListener() {
+        holder.clickToRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -70,24 +72,40 @@ public class AdapterForNocRv extends RecyclerView.Adapter<AdapterForNocRv.MyNocV
             }
         });
 
+        holder.seeNocMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                holder.showImage(model.getImageUrl());
+            }
+        });
+
      }
 
     @Override
     public int getItemCount() {
-        return nocList.size();
+        if(nocList.size() > 0)
+        {
+            nocView.hideNoItemFoundLayout();
+            return nocList.size();
+        }
+        else
+        {
+            nocView.showNoItemFoundLayout();
+            return nocList.size();
+        }
     }
 
     public class MyNocViewHolder extends RecyclerView.ViewHolder
     {
-        private TextView userName , nocTitle , date , status;
-        private ImageView image;
-        private CardView nocCardView;
+        private TextView userName , nocTitle , date , status, seeNocMap, clickToRegister;
         private View mView;
 
         public MyNocViewHolder(@NonNull View itemView) {
             super(itemView);
             mView = itemView;
-            nocCardView = mView.findViewById(R.id.nocCardInDesign);
+            seeNocMap = mView.findViewById(R.id.seeNoc);
+            clickToRegister = mView.findViewById(R.id.clickToRegisterNoc);
         }
 
         private void setUserName(String name)
@@ -123,31 +141,13 @@ public class AdapterForNocRv extends RecyclerView.Adapter<AdapterForNocRv.MyNocV
             }
         }
 
-        private void setImage(String imageUrl)
-        {
-            image = mView.findViewById(R.id.nocImageInDesign);
-
-            if(imageUrl.equals(""))
-            {
-                int height = 0;
-                int width = 0;
-                RelativeLayout.LayoutParams  params = new RelativeLayout.LayoutParams(width, height);
-                image.setLayoutParams(params);
-            }
-
-            Glide.with(context)
-                    .load(imageUrl)
-                    .placeholder(R.drawable.ic_launcher_background)
-                    .into(image);
-        }
-
-
         public void changeStatus(String pushKey)
         {
             final DatabaseReference changeStatusRef = FirebaseDatabase.getInstance().getReference().child("Noc").child(pushKey);
 
             AlertDialog.Builder alert = new AlertDialog.Builder(context);
             alert.setMessage("Registered this Noc?");
+            alert.setTitle("Building NOC");
 
 
             alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
@@ -176,6 +176,22 @@ public class AdapterForNocRv extends RecyclerView.Adapter<AdapterForNocRv.MyNocV
                     dialogInterface.dismiss();
                 }
             });
+
+            alert.show();
+        }
+
+        public void showImage(String imageUrl)
+        {
+            View myView = LayoutInflater.from(context).inflate(R.layout.complaint_rating_dialog_design, null);
+            AlertDialog.Builder alert = new AlertDialog.Builder(context);
+            alert.setView(myView);
+
+            ImageView imageView = myView.findViewById(R.id.noImageDialog);
+
+            Glide.with(context)
+                    .load(imageUrl)
+                    .placeholder(R.drawable.ic_launcher_background)
+                    .into(imageView);
 
             alert.show();
         }

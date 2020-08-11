@@ -1,23 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AppModules.InfrastructureHead.InfraHome.InfraHome">
 
-    <!-- include tool bar -->
-    <include layout="@layout/app_tool_bar"
-        android:id="@+id/infra_tool_bar"/>
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/main.appbar"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:backgroundTint="@color/sign_in_txt_color"
+        android:theme="@style/Theme.AppCompat.Light"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsingToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:collapsedTitleGravity="center_horizontal"
+            app:expandedTitleGravity="center_horizontal"
+            app:collapsedTitleTextAppearance="@style/Toolbar.TitleText"
+            app:expandedTitleTextAppearance="@style/Toolbar.TitleText"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+            app:title="Infra Home">
 
 
-    <ScrollView
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/infra_tool_bar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/sign_in_txt_color"
+                app:theme="@style/ThemeOverlay.AppCompat.Dark" />
+
+            <FrameLayout
+                android:id="@+id/main.framelayout.title"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                app:layout_collapseParallaxMultiplier="0.3">
+            </FrameLayout>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="@dimen/card_view"
-        android:layout_marginTop="@dimen/recycler_view_margin"
-        android:id="@+id/scrollView"
-        android:layout_below="@+id/infra_tool_bar"
+        android:layout_marginBottom="@dimen/edit_text_margin"
+        android:paddingBottom="@dimen/edit_text_margin"
+        app:behavior_overlapTop="50dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         >
 
         <LinearLayout
@@ -116,7 +154,7 @@
                             android:layout_height="110dp"
                             android:layout_centerHorizontal="true"
                             android:id="@+id/complaintImage"
-                            android:src="@drawable/newsfeed"
+                            android:src="@drawable/complain"
                             />
                         <TextView
                             android:layout_width="wrap_content"
@@ -174,10 +212,10 @@
 
                         <ImageView
                             android:id="@+id/workerListImageInfra"
-                            android:layout_width="120dp"
+                            android:layout_width="80dp"
                             android:layout_height="110dp"
                             android:layout_centerHorizontal="true"
-                            android:src="@drawable/newsfeed" />
+                            android:src="@drawable/ic_group_black_24dp" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -226,7 +264,7 @@
                             android:layout_width="120dp"
                             android:layout_height="110dp"
                             android:layout_centerHorizontal="true"
-                            android:src="@drawable/newsfeed" />
+                            android:src="@drawable/noc" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -284,10 +322,11 @@
 
                         <ImageView
                             android:id="@+id/feedbackImageInfra"
-                            android:layout_width="120dp"
+                            android:layout_width="80dp"
                             android:layout_height="110dp"
+                            android:paddingTop="4dp"
                             android:layout_centerHorizontal="true"
-                            android:src="@drawable/newsfeed" />
+                            android:src="@drawable/ic_feedback_black_24dp" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -335,7 +374,7 @@
                             android:layout_width="120dp"
                             android:layout_height="110dp"
                             android:layout_centerHorizontal="true"
-                            android:src="@drawable/newsfeed" />
+                            android:src="@drawable/fire" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -357,9 +396,12 @@
 
 
         </LinearLayout>
-    </ScrollView>
+
+    </androidx.core.widget.NestedScrollView>
 
 
 
 
-</RelativeLayout>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

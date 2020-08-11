@@ -224,7 +224,7 @@ public class AddCompletedWorkPresenterImplementer implements AddCompletedWorkPre
         Map<String , String> notificationData = new HashMap<>();
         notificationData.put("completedBy", userId);
 
-        dbRef.child("Notifications").child("CompletedWork")
+        dbRef.child("notifications").child("completedWork")
                 .child(complaintUserId).push()
                 .setValue(notificationData);
     }

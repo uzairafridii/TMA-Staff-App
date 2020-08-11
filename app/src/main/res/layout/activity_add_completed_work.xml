@@ -51,7 +51,8 @@
             android:layout_marginRight="@dimen/edit_text_margin"
             android:layout_marginTop="@dimen/recycler_view_margin"
             android:spinnerMode="dropdown"
-            android:background="@android:drawable/btn_dropdown"
+            android:background="@drawable/spinner_bg"
+            android:elevation="@dimen/recycler_view_margin"
 
             />
 
@@ -77,7 +78,8 @@
             android:layout_marginRight="@dimen/edit_text_margin"
             android:layout_marginTop="@dimen/recycler_view_margin"
             android:spinnerMode="dropdown"
-            android:background="@android:drawable/btn_dropdown"
+            android:background="@drawable/spinner_bg"
+            android:elevation="@dimen/recycler_view_margin"
             />
 
 

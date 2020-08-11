@@ -4,7 +4,10 @@ import com.example.tmaadminapp.AppModules.Administration.AdminStaffManagement.Wo
 
 import java.util.List;
 
-public interface AdminWorkersListView
-{
+public interface AdminWorkersListView {
     void getWorkerList(List<ModelForWorkerLIstInAdmin> list);
+
+    void hideNoItemFoundLayout();
+
+    void showNoItemFoundLayout();
 }

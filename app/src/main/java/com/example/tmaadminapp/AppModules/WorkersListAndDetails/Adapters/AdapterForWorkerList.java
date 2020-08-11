@@ -1,4 +1,4 @@
-package com.example.tmaadminapp.AppModules.WorkersListAndDetails;
+package com.example.tmaadminapp.AppModules.WorkersListAndDetails.Adapters;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -19,7 +19,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.tmaadminapp.AppModules.WorkersListAndDetails.Models.ModelForWorkerList;
+import com.example.tmaadminapp.AppModules.WorkersListAndDetails.Activities.WorkerDetailActivity;
 import com.example.tmaadminapp.R;
+import com.example.tmaadminapp.Views.AddWorkerView;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -35,10 +38,12 @@ public class AdapterForWorkerList extends RecyclerView.Adapter<AdapterForWorkerL
 {
     private List<ModelForWorkerList> workersList;
     private Context ctx;
+    private AddWorkerView workerView;
 
-    public AdapterForWorkerList(List<ModelForWorkerList> workersList, Context ctx) {
+    public AdapterForWorkerList(List<ModelForWorkerList> workersList, Context ctx, AddWorkerView workerView) {
         this.workersList = workersList;
         this.ctx = ctx;
+        this.workerView = workerView;
     }
 
     @NonNull
@@ -109,7 +114,17 @@ public class AdapterForWorkerList extends RecyclerView.Adapter<AdapterForWorkerL
 
     @Override
     public int getItemCount() {
-        return workersList.size();
+        if(workersList.size() >0)
+        {
+            workerView.hideLayout();
+            return workersList.size();
+        }
+        else
+        {
+            workerView.showLayout();
+            return workersList.size();
+        }
+
     }
 
     // worker view holder class

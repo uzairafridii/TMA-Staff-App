@@ -4,7 +4,10 @@ import com.example.tmaadminapp.AppModules.InfrastructureHead.BuildingNoc.ModelFo
 
 import java.util.List;
 
-public interface NocView
-{
+public interface NocView {
     void onSetNocRecyclerAdapter(List<ModelForNoc> nocList);
+
+    void hideNoItemFoundLayout();
+
+    void showNoItemFoundLayout();
 }

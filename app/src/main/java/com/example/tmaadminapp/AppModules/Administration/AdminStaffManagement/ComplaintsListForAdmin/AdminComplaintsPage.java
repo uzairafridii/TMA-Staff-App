@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,7 +24,7 @@ public class AdminComplaintsPage extends AppCompatActivity implements AdminCompa
 
     private Toolbar mToolbar;
     private RecyclerView totalComplaintRecyclerView;
-    private TextView noItemFoundTextView;
+    private LinearLayout noItemFoundTextView;
     private LinearLayoutManager layoutManager;
     private AdapterTotalComplaintRv adapterTotalComplaintRv;
     private AdminComplaintPreseneter adminComplaintPreseneter;
@@ -50,7 +51,7 @@ public class AdminComplaintsPage extends AppCompatActivity implements AdminCompa
         setTitle("Complaints");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        noItemFoundTextView = findViewById(R.id.noItemFoundTextView);
+        noItemFoundTextView = findViewById(R.id.noItemFoundLayout);
 
         // recycler view
         totalComplaintRecyclerView = findViewById(R.id.allComplaintsRv);

@@ -48,10 +48,6 @@
         android:layout_below="@+id/titleOfComplaint"
         android:layout_marginLeft="@dimen/edit_text_margin"
         android:text="@string/dummy_text"
-        app:showTrimExpandedText="true"
-        app:trimMode="trimModeLength"
-        app:trimLength="100"
-        app:colorClickableText="@color/sign_in_txt_color"
         />
 
 

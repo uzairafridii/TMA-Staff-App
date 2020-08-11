@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,7 +25,7 @@ public class UnionCouncil extends AppCompatActivity implements CertificatesView
 {
 
     private Toolbar mToolbar;
-    private TextView noCertificateText;
+    private LinearLayout noCertificateText;
     private RecyclerView certificateRecycler;
     private LinearLayoutManager layoutManager;
     private AdapterForCertificatesRecycler adapter;
@@ -49,7 +50,7 @@ public class UnionCouncil extends AppCompatActivity implements CertificatesView
         setSupportActionBar(mToolbar);
 
 
-        noCertificateText = findViewById(R.id.noCertificateText);
+        noCertificateText = findViewById(R.id.noItemFoundLayout);
         certificateRecycler = findViewById(R.id.certificateRecycler);
         layoutManager  = new LinearLayoutManager(this);
         layoutManager.setStackFromEnd(true);

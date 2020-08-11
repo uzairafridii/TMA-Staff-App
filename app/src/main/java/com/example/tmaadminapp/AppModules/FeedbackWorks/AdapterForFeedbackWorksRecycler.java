@@ -1,16 +1,14 @@
 package com.example.tmaadminapp.AppModules.FeedbackWorks;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RatingBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,25 +17,28 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.tmaadminapp.R;
+import com.example.tmaadminapp.Views.FeedbackWorkView;
+import com.github.aakira.expandablelayout.ExpandableRelativeLayout;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class AdapterForFeedbackWorksRecycler extends RecyclerView.Adapter<AdapterForFeedbackWorksRecycler.MyFeedbackViewHolder>
 {
     private List<ModelForFeedbackWorks> feedbackWorksList;
     private Context context;
+    private FeedbackWorkView feedbackWorkView;
 
-    public AdapterForFeedbackWorksRecycler(List<ModelForFeedbackWorks> feedbackWorksList, Context context) {
+    public AdapterForFeedbackWorksRecycler(List<ModelForFeedbackWorks> feedbackWorksList,
+                                           Context context, FeedbackWorkView feedbackWorkView) {
         this.feedbackWorksList = feedbackWorksList;
         this.context = context;
+        this.feedbackWorkView = feedbackWorkView;
     }
 
     @NonNull
@@ -51,6 +52,13 @@ public class AdapterForFeedbackWorksRecycler extends RecyclerView.Adapter<Adapte
     @Override
     public void onBindViewHolder(@NonNull final AdapterForFeedbackWorksRecycler.MyFeedbackViewHolder holder, int position)
     {
+
+        //collapse all the layout first
+        for(int i=0; i<feedbackWorksList.size(); i++)
+        {
+            holder.expandableRelativeLayout.collapse();
+        }
+
       final ModelForFeedbackWorks feedbackWorks  = feedbackWorksList.get(position);
       holder.setTitle(feedbackWorks.getTitle());
       holder.setDate(feedbackWorks.getCompletedDate());
@@ -62,7 +70,19 @@ public class AdapterForFeedbackWorksRecycler extends RecyclerView.Adapter<Adapte
           @Override
           public void onClick(View view) {
 
-             holder.getRatingOfCurrentComplaint(feedbackWorks.getPushKey() , feedbackWorks.getImageUrl());
+              // if layout is expanded then collapse it else expand it
+               if(holder.expandableRelativeLayout.isExpanded())
+               {
+                   holder.toggleImage.setImageResource(R.drawable.ic_keyboard_arrow_down_black_24dp);
+                   holder.expandableRelativeLayout.toggle();
+               }
+               else
+               {
+                   holder.toggleImage.setImageResource(R.drawable.ic_keyboard_arrow_up_black_24dp);
+                   holder.expandableRelativeLayout.toggle();
+                   holder.getRatingOfCurrentComplaint(feedbackWorks.getPushKey());
+               }
+
 
           }
       });
@@ -70,26 +90,54 @@ public class AdapterForFeedbackWorksRecycler extends RecyclerView.Adapter<Adapte
 
     @Override
     public int getItemCount() {
-        return feedbackWorksList.size();
+        if(feedbackWorksList.size() > 0)
+        {
+            feedbackWorkView.hideLayout();
+            return feedbackWorksList.size();
+        }
+        else
+        {
+            feedbackWorkView.showLayout();
+            return feedbackWorksList.size();
+        }
+
     }
 
     public class MyFeedbackViewHolder extends RecyclerView.ViewHolder
     {
-        private TextView title , date , firstWorker ,secondWorker;
-        private ImageView image;
+        private TextView title , date , firstWorker ,secondWorker, feedbackComplaintComment, rating;
+        private ImageView image, toggleImage;
         private View mView;
         private CardView cardView;
+        private RatingBar complaintFeedbackRating;
+        private ExpandableRelativeLayout expandableRelativeLayout;
 
         public MyFeedbackViewHolder(@NonNull View itemView) {
             super(itemView);
             mView = itemView;
             cardView = mView.findViewById(R.id.feedbackCard);
+            expandableRelativeLayout = mView.findViewById(R.id.expandedLayout);
+            toggleImage = mView.findViewById(R.id.toggleImage);
+        }
+
+        private void setComplaintFeedbackRating(float rating)
+        {
+            complaintFeedbackRating = mView.findViewById(R.id.complaintRating);
+            complaintFeedbackRating.setRating(rating);
+        }
+
+        private void setFeedbackComplaintComment(String comment)
+        {
+            feedbackComplaintComment = mView.findViewById(R.id.feedbackComment);
+            feedbackComplaintComment.setText(comment);
+
         }
 
         private void setTitle(String complaintTitle)
         {
             title = mView.findViewById(R.id.completedComplaintTitle);
             title.setText(complaintTitle);
+
         }
 
         private void setDate(String completedDate)
@@ -113,14 +161,28 @@ public class AdapterForFeedbackWorksRecycler extends RecyclerView.Adapter<Adapte
         private void setImage(List<String> imageUrl)
         {
             image = mView.findViewById(R.id.completedComplaintImage);
-            Glide.with(context)
-                    .load(imageUrl.get(0))
-                    .centerCrop()
-                    .into(image);
+
+            if(imageUrl.equals("") || imageUrl.isEmpty())
+            {
+                image.setLayoutParams(new RelativeLayout.LayoutParams(0,0));
+            }
+            else {
+                Glide.with(context)
+                        .load(imageUrl.get(0))
+                        .centerCrop()
+                        .into(image);
+            }
+        }
+
+        private void setRating(String complaintRating)
+        {
+            rating = mView.findViewById(R.id.rating);
+            rating.setText(complaintRating);
+
         }
 
         // get rating of current complaint
-        public void getRatingOfCurrentComplaint(String pushKey, final List<String> imageUrl)
+        public void getRatingOfCurrentComplaint(String pushKey)
         {
             DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference().child("Ratings");
 
@@ -134,7 +196,7 @@ public class AdapterForFeedbackWorksRecycler extends RecyclerView.Adapter<Adapte
                          String rating = dataSnapshot.child("user_rating").getValue().toString();
                          Log.d("commentSection", "onChildAdded: " + comment);
 
-                         showCustomRatingDialog(comment, rating, imageUrl.get(0));
+                         setExpandedLayout(comment, rating);
 
                 }
 
@@ -150,40 +212,12 @@ public class AdapterForFeedbackWorksRecycler extends RecyclerView.Adapter<Adapte
 
         }
 
-        // show custom dialog of rating
-        private void showCustomRatingDialog(String comment , String rating , String imageUrl)
+        // expand layout of rating
+        private void setExpandedLayout(String comment , String rating)
         {
-            View ratingView = LayoutInflater.from(context).inflate(R.layout.complaint_rating_dialog_design, null);
-            final AlertDialog.Builder alert = new AlertDialog.Builder(context);
-            alert.setView(ratingView);
-
-            final AlertDialog dialog = alert.create();
-
-            TextView textView = ratingView.findViewById(R.id.feebackComment);
-            textView.setText(comment);
-
-            TextView ratingValue = ratingView.findViewById(R.id.ratingValue);
-            ratingValue.setText("( "+rating+" )");
-
-            RatingBar ratingBar = ratingView.findViewById(R.id.feedbackRatingbar);
-            ratingBar.setRating(Float.parseFloat(rating));
-
-            ImageView imageView = ratingView.findViewById(R.id.complaintRatingImage);
-            Glide.with(context)
-                    .load(imageUrl)
-                    .centerCrop()
-                    .placeholder(R.drawable.tma_logo)
-                    .into(imageView);
-
-            ratingView.findViewById(R.id.closeFeedbackRatingBtn)
-                    .setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            dialog.dismiss();
-                        }
-                    });
-
-            dialog.show();
+            setFeedbackComplaintComment(comment);
+            setComplaintFeedbackRating(Float.parseFloat(rating));
+            setRating(rating);
 
         }
     }

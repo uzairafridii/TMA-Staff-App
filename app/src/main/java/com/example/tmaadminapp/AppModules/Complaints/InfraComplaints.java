@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.LinearLayout;
 
 import com.example.tmaadminapp.Models.ComplaintsPresenterImplementer;
 import com.example.tmaadminapp.Presenters.ComplaintsPresenter;
@@ -22,7 +22,7 @@ public class InfraComplaints extends AppCompatActivity implements ComplaintsView
 {
 
     private Toolbar mToolbar;
-    private TextView noItemsText;
+    private LinearLayout noItemsLayout;
     private RecyclerView listOfInfraComplaints;
     private AdapterForComplaintRv adapter;
     private LinearLayoutManager layoutManager;
@@ -55,7 +55,7 @@ public class InfraComplaints extends AppCompatActivity implements ComplaintsView
         layoutManager.setStackFromEnd(true);
         listOfInfraComplaints.setLayoutManager(layoutManager);
 
-        noItemsText = findViewById(R.id.infraNoItemText);
+        noItemsLayout = findViewById(R.id.noItemFoundLayout);
 
         dbRef = FirebaseDatabase.getInstance().getReference().child("Complaints");
 
@@ -64,7 +64,7 @@ public class InfraComplaints extends AppCompatActivity implements ComplaintsView
 
     @Override
     public void onHideTextNoItem() {
-        noItemsText.setVisibility(View.INVISIBLE);
+        noItemsLayout.setVisibility(View.GONE);
     }
 
     @Override

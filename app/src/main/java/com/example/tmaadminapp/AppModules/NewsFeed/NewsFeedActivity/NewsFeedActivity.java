@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.LinearLayout;
 
 import com.example.tmaadminapp.AppModules.NewsFeed.AdapterOfNewsFeed.AdapterForNewsFeed;
 import com.example.tmaadminapp.AppModules.NewsFeed.ModelForNewsFeed.NewsFeedModel;
@@ -27,6 +29,7 @@ public class NewsFeedActivity extends AppCompatActivity implements NewsFeedView
 {
     private Toolbar mToolbar;
     private RecyclerView mRecyclerView;
+    private LinearLayout noItemFound;
     private LinearLayoutManager layoutManager;
     private AdapterForNewsFeed adapterForNewsFeed;
     private NewsFeedPresenter presenter;
@@ -57,6 +60,8 @@ public class NewsFeedActivity extends AppCompatActivity implements NewsFeedView
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
+        noItemFound = findViewById(R.id.noItemFoundLayout);
+
         dbRef = FirebaseDatabase.getInstance().getReference().child("NewsFeed");
 
         presenter.getAllNewsFeed(dbRef);
@@ -66,7 +71,17 @@ public class NewsFeedActivity extends AppCompatActivity implements NewsFeedView
     @Override
     public void onSetNewsRecyclerAdapter(List<NewsFeedModel> list)
     {
-       adapterForNewsFeed = new AdapterForNewsFeed(list , this);
+       adapterForNewsFeed = new AdapterForNewsFeed(list , this, this);
        mRecyclerView.setAdapter(adapterForNewsFeed);
+    }
+
+    @Override
+    public void hideLayout() {
+        noItemFound.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showLayout() {
+      noItemFound.setVisibility(View.VISIBLE);
     }
 }

@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.LinearLayout;
 
 import com.example.tmaadminapp.Models.FeedbackWorkPresenterImplementer;
 import com.example.tmaadminapp.Presenters.FeedbackWorkPresenter;
@@ -21,6 +23,7 @@ public class SanitationFeedbackWorkActivity extends AppCompatActivity implements
 {
 
     private Toolbar mToolbar;
+    private LinearLayout noItemFound;
     private RecyclerView feedBackRecyclerView;
     private LinearLayoutManager layoutManager;
     private AdapterForFeedbackWorksRecycler adapter;
@@ -53,6 +56,8 @@ public class SanitationFeedbackWorkActivity extends AppCompatActivity implements
         layoutManager.setStackFromEnd(true);
         feedBackRecyclerView.setLayoutManager(layoutManager);
 
+        noItemFound = findViewById(R.id.noItemFoundLayout);
+
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Feedback Work");
         firebaseAuth = FirebaseAuth.getInstance();
     }
@@ -60,7 +65,17 @@ public class SanitationFeedbackWorkActivity extends AppCompatActivity implements
     @Override
     public void getAllFeedbackWorks(List<ModelForFeedbackWorks> list)
     {
-       adapter = new AdapterForFeedbackWorksRecycler(list , this);
+       adapter = new AdapterForFeedbackWorksRecycler(list , this, this);
        feedBackRecyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public void hideLayout() {
+        noItemFound.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showLayout() {
+       noItemFound.setVisibility(View.VISIBLE);
     }
 }

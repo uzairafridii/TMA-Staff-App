@@ -9,7 +9,7 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.tmaadminapp.AppModules.WorkersListAndDetails.ModelForWorkerList;
+import com.example.tmaadminapp.AppModules.WorkersListAndDetails.Models.ModelForWorkerList;
 import com.example.tmaadminapp.Presenters.AddWorkerPresenter;
 import com.example.tmaadminapp.R;
 import com.example.tmaadminapp.Views.AddWorkerView;

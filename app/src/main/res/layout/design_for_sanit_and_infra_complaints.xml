@@ -17,12 +17,18 @@
         >
 
 
-            <RelativeLayout
+        <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/recycler_view_margin"
                 >
 
+
+            <RelativeLayout
+                android:id="@+id/innerRelativeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
                 <ImageView
                     android:layout_width="74dp"
                     android:layout_height="74dp"
@@ -83,11 +89,13 @@
 
                     />
 
+            </RelativeLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:id="@+id/view"
-                    android:layout_below="@+id/sanitationComplaintsdescription"
+                    android:layout_below="@+id/innerRelativeLayout"
                     android:layout_marginTop="@dimen/card_view"
                     android:background="#000"
                     />

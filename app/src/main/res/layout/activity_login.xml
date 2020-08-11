@@ -12,9 +12,9 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/margin_top_login_card_view"
-        android:paddingBottom="@dimen/margin_login_card_view"
+        android:layout_gravity="center_horizontal|center"
+        android:paddingBottom="@dimen/edit_text_margin"
+        android:layout_marginTop="@dimen/edit_text_margin"
         >
 
         <androidx.cardview.widget.CardView

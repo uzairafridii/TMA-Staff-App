@@ -8,10 +8,8 @@
         android:id="@+id/nocCardInDesign"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/card_elevation"
-        android:layout_marginBottom="@dimen/recycler_view_margin"
-        app:cardElevation="@dimen/card_elevation"
-        app:cardCornerRadius="@dimen/card_elevation"
+        android:layout_margin="@dimen/card_elevation"
+        app:cardElevation="@dimen/recycler_view_margin"
         >
 
         <RelativeLayout
@@ -59,18 +57,13 @@
                 android:id="@+id/titleOfNocInDesign"
                 android:text="Title"
                 android:layout_below="@id/userImageInNocDesign"
+                android:paddingLeft="@dimen/recycler_view_margin"
                 android:layout_marginLeft="@dimen/card_elevation"
                 android:layout_marginTop="@dimen/card_elevation"
+
                 />
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="180dp"
-                android:id="@+id/nocImageInDesign"
-                android:layout_below="@+id/titleOfNocInDesign"
-                android:layout_marginTop="@dimen/card_elevation"
-                android:src="@drawable/ic_launcher_background"
-                />
+
 
             <TextView
                 android:layout_width="wrap_content"
@@ -80,6 +73,46 @@
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="@dimen/card_elevation"
                 android:layout_marginTop="@dimen/card_elevation"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:id="@+id/view"
+                android:background="#55000000"
+                android:layout_marginTop="@dimen/recycler_view_margin"
+                android:layout_below="@id/titleOfNocInDesign"
+                />
+
+            <TextView
+                android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/seeNoc"
+                android:text="Click to see map"
+                android:layout_below="@id/view"
+                android:layout_marginRight="@dimen/card_elevation"
+                android:layout_marginLeft="@dimen/card_elevation"
+                android:layout_marginTop="@dimen/card_elevation"
+                android:textColorLink="@color/sign_in_txt_color"
+                android:textColor="@color/sign_in_txt_color"
+                />
+
+            <TextView
+                android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/clickToRegisterNoc"
+                android:text="Register Now"
+                android:layout_below="@id/view"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/card_elevation"
+                android:layout_marginLeft="@dimen/card_elevation"
+                android:layout_marginTop="@dimen/card_elevation"
+                android:textColorLink="@color/sign_in_txt_color"
+                android:textColor="@color/sign_in_txt_color"
                 />
 
         </RelativeLayout>

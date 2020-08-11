@@ -20,11 +20,11 @@
         android:layout_marginRight="@dimen/card_elevation"
         />
 
-    <TextView
+    <include
+        layout="@layout/no_item_found_layout"
+        android:id="@+id/noItemFoundLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/noCertificateText"
-        android:text="No Certificates"
         android:layout_centerInParent="true"
         />
 

@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -35,10 +36,18 @@ public class AdapterForDetailComplaintImagesRecycler extends
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyImagesViewHolder holder, int position)
+    public void onBindViewHolder(@NonNull final MyImagesViewHolder holder, int position)
     {
-        String imageUrl = imagesList.get(position);
+        final String imageUrl = imagesList.get(position);
         holder.setImageView(imageUrl);
+
+        holder.imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                holder.showImage(imageUrl);
+            }
+        });
     }
 
     @Override
@@ -65,7 +74,22 @@ public class AdapterForDetailComplaintImagesRecycler extends
                     .load(imageUrl)
                     .placeholder(R.drawable.ic_launcher_background)
                     .into(imageView);
+        }
 
+        public void showImage(String imageUrl)
+        {
+            View myView = LayoutInflater.from(context).inflate(R.layout.complaint_rating_dialog_design, null);
+            AlertDialog.Builder alert = new AlertDialog.Builder(context);
+            alert.setView(myView);
+
+            ImageView imageView = myView.findViewById(R.id.noImageDialog);
+
+            Glide.with(context)
+                    .load(imageUrl)
+                    .placeholder(R.drawable.ic_launcher_background)
+                    .into(imageView);
+
+            alert.show();
         }
     }
 }

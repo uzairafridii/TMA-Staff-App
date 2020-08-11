@@ -11,6 +11,7 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,13 +19,11 @@ import com.example.tmaadminapp.AppModules.NewsFeed.ModelForNewsFeed.NewsFeedMode
 import com.example.tmaadminapp.Models.AdminNewsFeedPresenterImplementer;
 import com.example.tmaadminapp.R;
 import com.example.tmaadminapp.Views.AdminNewsView;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.DateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -32,6 +31,7 @@ public class NewsFeedForAdmin extends AppCompatActivity implements AdminNewsView
 {
     private RecyclerView mRecyclerView;
     private Toolbar mToolbar;
+    private LinearLayout noItemFoundLayout;
     private LinearLayoutManager layoutManager;
     private AdapterForAdminNewsFeedRecycler adapterForNewsFeed;
     private ProgressDialog progressDialog;
@@ -72,6 +72,7 @@ public class NewsFeedForAdmin extends AppCompatActivity implements AdminNewsView
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
+        noItemFoundLayout = findViewById(R.id.noItemFoundLayout);
 
         progressDialog = new ProgressDialog(this , R.style.MyAlertDialogStyle);
 
@@ -110,6 +111,17 @@ public class NewsFeedForAdmin extends AppCompatActivity implements AdminNewsView
     }
 
     @Override
+    public void hideLayout() {
+        noItemFoundLayout.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showLayout() {
+
+        noItemFoundLayout.setVisibility(View.VISIBLE);
+    }
+
+    @Override
     public void onGetAllNews(List<NewsFeedModel> newsFeedModelList) {
 
         adapterForNewsFeed  = new AdapterForAdminNewsFeedRecycler(newsFeedModelList ,getApplicationContext() ,
@@ -123,6 +135,9 @@ public class NewsFeedForAdmin extends AppCompatActivity implements AdminNewsView
         super.onStart();
         newsFeedPresenterImplementer.getAllNews(databaseReference);
     }
+
+
+
 
     // news posting form dialog
     private void showPostDialog()

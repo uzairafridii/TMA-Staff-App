@@ -14,6 +14,9 @@ public interface AdminNewsView
     // post news callback
     void showPostinNewsForm();
 
+    void hideLayout();
+    void showLayout();
+
     void onGetAllNews(List<NewsFeedModel> newsFeedModelList);
 
 }

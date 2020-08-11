@@ -130,6 +130,8 @@ public class AddCompletedWorkActivity extends AppCompatActivity implements AddCo
                 title, firstWorker, secondWorker, imageUriList, uid);
     }
 
+
+    // get camera result
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -184,8 +186,6 @@ public class AddCompletedWorkActivity extends AppCompatActivity implements AddCo
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        intent.setData(MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(intent, REQUEST_CODE);
     }
 

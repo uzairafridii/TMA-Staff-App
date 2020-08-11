@@ -12,6 +12,10 @@ public interface WorkerHeadView {
 
     void showMessage(String message);
 
+    void hideNotFoundLayout();
+
+    void showNotFoundLayout();
+
     void onGetAllWorkerHeadDetails(List<ModelForWorkerHead> workerHeadList);
 
 

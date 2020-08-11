@@ -4,7 +4,10 @@ import com.example.tmaadminapp.AppModules.NewsFeed.ModelForNewsFeed.NewsFeedMode
 
 import java.util.List;
 
-public interface NewsFeedView
-{
+public interface NewsFeedView {
     void onSetNewsRecyclerAdapter(List<NewsFeedModel> list);
+
+    void hideLayout();
+
+    void showLayout();
 }

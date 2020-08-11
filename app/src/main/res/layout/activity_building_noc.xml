@@ -18,5 +18,13 @@
         android:layout_below="@id/noc_tool_bar"
         />
 
+    <include
+         layout="@layout/no_item_found_layout"
+        android:id="@+id/noItemFoundLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        />
+
 
 </RelativeLayout>

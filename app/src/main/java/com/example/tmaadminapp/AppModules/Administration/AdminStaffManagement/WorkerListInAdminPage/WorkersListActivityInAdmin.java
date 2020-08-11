@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.LinearLayout;
 
 import com.example.tmaadminapp.Models.AdminWorkersListPresenterImplementer;
 import com.example.tmaadminapp.Presenters.AdminWorkerListPresenter;
@@ -22,6 +24,7 @@ public class WorkersListActivityInAdmin extends AppCompatActivity implements Adm
 
     private RecyclerView mRecyclerView;
     private Toolbar mToolbar;
+    private LinearLayout noItemFound;
     private AdapterForWorkerListRecyclerInAdmin adapter;
     private AdminWorkerListPresenter workerListPresenter;
     private DatabaseReference databaseReference;
@@ -49,6 +52,8 @@ public class WorkersListActivityInAdmin extends AppCompatActivity implements Adm
         setTitle("Worker List");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        noItemFound = findViewById(R.id.noItemFoundLayout);
+
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Worker List");
 
     }
@@ -56,7 +61,17 @@ public class WorkersListActivityInAdmin extends AppCompatActivity implements Adm
     @Override
     public void getWorkerList(List<ModelForWorkerLIstInAdmin> list)
     {
-      adapter = new AdapterForWorkerListRecyclerInAdmin(list, this);
+      adapter = new AdapterForWorkerListRecyclerInAdmin(list, this, this);
       mRecyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public void hideNoItemFoundLayout() {
+        noItemFound.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showNoItemFoundLayout() {
+         noItemFound.setVisibility(View.VISIBLE);
     }
 }

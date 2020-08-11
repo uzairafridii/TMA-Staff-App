@@ -1,4 +1,4 @@
-package com.example.tmaadminapp.AppModules.WorkersListAndDetails;
+package com.example.tmaadminapp.AppModules.WorkersListAndDetails.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -6,10 +6,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.widget.Adapter;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.example.tmaadminapp.AppModules.WorkersListAndDetails.Adapters.AdapterForTotalRatingRecycler;
+import com.example.tmaadminapp.AppModules.WorkersListAndDetails.Models.ModelForWorkersRating;
 import com.example.tmaadminapp.Models.WorkerDetailsPresenterImplementer;
 import com.example.tmaadminapp.Presenters.WorkerDetailsPresenter;
 import com.example.tmaadminapp.R;
@@ -17,7 +18,6 @@ import com.example.tmaadminapp.Views.WorkerDetailsView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.text.DecimalFormat;
 import java.util.List;
 
 public class WorkerDetailActivity extends AppCompatActivity implements WorkerDetailsView

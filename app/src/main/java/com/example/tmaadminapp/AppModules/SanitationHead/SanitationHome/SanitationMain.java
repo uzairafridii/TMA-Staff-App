@@ -13,7 +13,7 @@ import com.example.tmaadminapp.AppModules.NewsFeed.NewsFeedActivity.NewsFeedActi
 import com.example.tmaadminapp.Models.SanitationMainPresenterImplementer;
 import com.example.tmaadminapp.Presenters.SanitationMainPresenter;
 import com.example.tmaadminapp.R;
-import com.example.tmaadminapp.AppModules.WorkersListAndDetails.SanitationWorkersListActivity;
+import com.example.tmaadminapp.AppModules.WorkersListAndDetails.Activities.SanitationWorkersListActivity;
 import com.example.tmaadminapp.Views.SanitationMainView;
 
 public class SanitationMain extends AppCompatActivity implements SanitationMainView

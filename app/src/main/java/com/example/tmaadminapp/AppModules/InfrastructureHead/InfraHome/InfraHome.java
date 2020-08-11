@@ -3,20 +3,16 @@ package com.example.tmaadminapp.AppModules.InfrastructureHead.InfraHome;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 
 import com.example.tmaadminapp.AppModules.Complaints.InfraComplaints;
 import com.example.tmaadminapp.AppModules.FeedbackWorks.InfraFeedbackWorksActivity;
 import com.example.tmaadminapp.AppModules.InfrastructureHead.BuildingNoc.BuildingNocActivity;
 import com.example.tmaadminapp.AppModules.InfrastructureHead.FireFighting.FireFightingActivity;
 import com.example.tmaadminapp.AppModules.NewsFeed.NewsFeedActivity.NewsFeedActivity;
-import com.example.tmaadminapp.AppModules.WorkersListAndDetails.InfraWorkersListActivity;
-import com.example.tmaadminapp.AppModules.WorkersListAndDetails.SanitationWorkersListActivity;
+import com.example.tmaadminapp.AppModules.WorkersListAndDetails.Activities.InfraWorkersListActivity;
 import com.example.tmaadminapp.Models.InfraHomePresenterImplementer;
 import com.example.tmaadminapp.Presenters.InfraHomePresenter;
 import com.example.tmaadminapp.R;

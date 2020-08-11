@@ -1,6 +1,6 @@
 package com.example.tmaadminapp.Views;
 
-import com.example.tmaadminapp.AppModules.WorkersListAndDetails.ModelForWorkersRating;
+import com.example.tmaadminapp.AppModules.WorkersListAndDetails.Models.ModelForWorkersRating;
 
 import java.util.List;
 

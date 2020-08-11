@@ -48,7 +48,7 @@ public class ComplaintDetails extends AppCompatActivity implements ComplaintDeta
         list = getIntent().getStringArrayListExtra("imageUrls");
 
         recyclerView = findViewById(R.id.complaintDetailRv);
-        layoutManager = new GridLayoutManager(this , 1);
+        layoutManager = new GridLayoutManager(this , 2);
         recyclerView.setLayoutManager(layoutManager);
 
         tvTitle = findViewById(R.id.titleOfComplaint);

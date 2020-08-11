@@ -95,7 +95,7 @@ public class MapPresenterImplementer implements MapPresenter {
         String url = makeURL(currentLat, currentLng, toLatitude, toLongitude);
 
         //Showing a dialog till we get the route
-        final ProgressDialog loading = ProgressDialog.show(context, "Getting Route", "Please wait...", false, false);
+        final ProgressDialog loading = ProgressDialog.show(context,"Getting Route", "Please wait...", false, false);
 
         //Creating a string request
         StringRequest stringRequest = new StringRequest(url, new Response.Listener<String>() {
@@ -169,7 +169,7 @@ public class MapPresenterImplementer implements MapPresenter {
         urlString.append(",");
         urlString.append(Double.toString(destlog));
         urlString.append("&sensor=false&mode=driving&alternatives=true");
-        urlString.append("&key=Your key");
+        urlString.append("&key=AIzaSyC25fz7R_AYrRD5v6spK89aW9yt2Oiafl4");
         return urlString.toString();
     }
 
@@ -177,8 +177,9 @@ public class MapPresenterImplementer implements MapPresenter {
     public void drawPath(String result , GoogleMap mMap , double toLat , double tolng) {
 
         // show marker on destination and on source points
-        showMakerOnMap(new LatLng(currentLat, currentLng), mMap , "Your Current Location");
         showMakerOnMap(new LatLng(toLat, tolng),mMap, "Complaint Location");
+        showMakerOnMap(new LatLng(currentLat, currentLng), mMap , "Your Current Location");
+
 
         try {
             //Parsing json

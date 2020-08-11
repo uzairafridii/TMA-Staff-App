@@ -99,13 +99,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:id="@+id/worker_head_dept"
-                android:background="@android:drawable/btn_dropdown"
                 android:hint="Enter department"
                 android:layout_marginTop="@dimen/edit_text_margin"
                 android:layout_marginLeft="@dimen/margin_login_card_view"
                 android:layout_marginRight="@dimen/margin_login_card_view"
                 android:paddingLeft="@dimen/recycler_view_margin"
-
+                android:background="@drawable/spinner_bg"
+                android:elevation="@dimen/recycler_view_margin"
                 />
 
             <Button

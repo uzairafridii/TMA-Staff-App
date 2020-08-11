@@ -13,20 +13,24 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tmaadminapp.R;
-import com.example.tmaadminapp.AppModules.WorkersListAndDetails.WorkerDetailActivity;
+import com.example.tmaadminapp.AppModules.WorkersListAndDetails.Activities.WorkerDetailActivity;
+import com.example.tmaadminapp.Views.AdminWorkersListView;
 import com.google.android.material.card.MaterialCardView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class AdapterForWorkerListRecyclerInAdmin extends RecyclerView.Adapter<AdapterForWorkerListRecyclerInAdmin.MyViewHolder>
 {
     private List<ModelForWorkerLIstInAdmin> arrayList;
     private Context context;
+    private AdminWorkersListView workersListView;
 
-    public AdapterForWorkerListRecyclerInAdmin(List<ModelForWorkerLIstInAdmin> arrayList, Context context) {
+
+    public AdapterForWorkerListRecyclerInAdmin(List<ModelForWorkerLIstInAdmin> arrayList, Context context,
+                                               AdminWorkersListView workersListView) {
         this.arrayList = arrayList;
         this.context = context;
+        this.workersListView = workersListView;
     }
 
     @NonNull
@@ -67,7 +71,17 @@ public class AdapterForWorkerListRecyclerInAdmin extends RecyclerView.Adapter<Ad
 
     @Override
     public int getItemCount() {
-        return arrayList.size();
+        if(arrayList.size()>0)
+        {
+            workersListView.hideNoItemFoundLayout();
+            return arrayList.size();
+        }
+        else
+        {
+            workersListView.showNoItemFoundLayout();
+            return arrayList.size();
+        }
+
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {

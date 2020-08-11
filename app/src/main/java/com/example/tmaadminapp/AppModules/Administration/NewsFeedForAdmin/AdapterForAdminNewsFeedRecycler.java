@@ -94,7 +94,14 @@ public class AdapterForAdminNewsFeedRecycler extends RecyclerView.Adapter<Adapte
 
     @Override
     public int getItemCount() {
-        return modelArrayList.size();
+        if (modelArrayList.size() > 0) {
+            adminNewsFeedView.hideLayout();
+            return modelArrayList.size();
+
+        } else {
+            adminNewsFeedView.showLayout();
+            return modelArrayList.size();
+        }
     }
 
     public class MyAdminNewsViewHodler extends RecyclerView.ViewHolder {

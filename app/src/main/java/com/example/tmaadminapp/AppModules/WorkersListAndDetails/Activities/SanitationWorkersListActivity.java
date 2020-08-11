@@ -1,4 +1,4 @@
-package com.example.tmaadminapp.AppModules.WorkersListAndDetails;
+package com.example.tmaadminapp.AppModules.WorkersListAndDetails.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -8,8 +8,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.example.tmaadminapp.AppModules.WorkersListAndDetails.Adapters.AdapterForWorkerList;
+import com.example.tmaadminapp.AppModules.WorkersListAndDetails.Models.ModelForWorkerList;
 import com.example.tmaadminapp.Models.AddWorkerPresenterImplementer;
 import com.example.tmaadminapp.Presenters.AddWorkerPresenter;
 import com.example.tmaadminapp.R;
@@ -19,43 +22,45 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
-public class InfraWorkersListActivity extends AppCompatActivity implements AddWorkerView
+public class SanitationWorkersListActivity extends AppCompatActivity implements AddWorkerView
 {
     private Toolbar mToolbar;
-    private RecyclerView infraWorkersList;
+    private LinearLayout noItemFound;
+    private RecyclerView workerListRecycler;
     private AdapterForWorkerList adapter;
     private LinearLayoutManager layoutManager;
     private AddWorkerPresenter presenter;
     private ProgressDialog progressDialog;
     private DatabaseReference dbRef;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_infra_workers_list);
+        setContentView(R.layout.workers_list_activity);
 
         initViews();
 
-        presenter.getAllWorkers(dbRef , "Infrastructure");
+        presenter.getAllWorkers(dbRef , "Sanitation");
 
     }
 
     private void initViews()
     {
-        presenter = new AddWorkerPresenterImplementer(this , this);
+         presenter = new AddWorkerPresenterImplementer(this , this);
 
         //recycler view
-        infraWorkersList = findViewById(R.id.inFraWorkerList);
+        workerListRecycler = findViewById(R.id.sanitationWorkerList);
         layoutManager = new LinearLayoutManager(this);
-        infraWorkersList.setLayoutManager(layoutManager);
+        workerListRecycler.setLayoutManager(layoutManager);
 
         // toolbar
-        mToolbar = findViewById(R.id.infra_worker_list_tool_bar);
+        mToolbar = findViewById(R.id.sanitation_worker_list_tool_bar);
         setSupportActionBar(mToolbar);
         setTitle("Worker List");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         progressDialog = new ProgressDialog(this , R.style.MyAlertDialogStyle);
+
+        noItemFound = findViewById(R.id.noItemFoundLayout);
 
         dbRef = FirebaseDatabase.getInstance().getReference().child("Worker List");
 
@@ -64,23 +69,22 @@ public class InfraWorkersListActivity extends AppCompatActivity implements AddWo
     // fab button click to add worker
     public void fabAddWorkerClick(View view)
     {
-        presenter.fabClick(dbRef , "Infrastructure");
+       presenter.fabClick(dbRef , "Sanitation");
     }
 
-
-      // callbacks method of worker list view
+    // callbacks method of worker list view
     @Override
     public void showProgressBar()
     {
-        progressDialog.setMessage("Registering worker");
-        progressDialog.setCanceledOnTouchOutside(false);
-        progressDialog.show();
+      progressDialog.setMessage("Registering worker");
+      progressDialog.setCanceledOnTouchOutside(false);
+      progressDialog.show();
     }
 
     @Override
     public void hideProgressBar()
     {
-        progressDialog.dismiss();
+       progressDialog.dismiss();
     }
 
     @Override
@@ -93,8 +97,21 @@ public class InfraWorkersListActivity extends AppCompatActivity implements AddWo
     @Override
     public void getWorkersList(List<ModelForWorkerList> workerList)
     {
-        adapter = new AdapterForWorkerList(workerList , this);
-        infraWorkersList.setAdapter(adapter);
+          adapter = new AdapterForWorkerList(workerList , this, this);
+          workerListRecycler.setAdapter(adapter);
+    }
+
+    @Override
+    public void hideLayout() {
+        noItemFound.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showLayout() {
+      noItemFound.setVisibility(View.VISIBLE);
     }
 
 }
+
+
+

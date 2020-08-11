@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.borjabravo.readmoretextview.ReadMoreTextView;
 import com.example.tmaadminapp.AppModules.NewsFeed.ModelForNewsFeed.NewsFeedModel;
 import com.example.tmaadminapp.R;
+import com.example.tmaadminapp.Views.NewsFeedView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,10 +21,12 @@ public class AdapterForNewsFeed extends RecyclerView.Adapter<AdapterForNewsFeed.
 {
     private List<NewsFeedModel> modelArrayList;
     private Context ctx;
+    private NewsFeedView newsFeedView;
 
-    public AdapterForNewsFeed(List<NewsFeedModel> modelArrayList, Context ctx) {
+    public AdapterForNewsFeed(List<NewsFeedModel> modelArrayList, Context ctx, NewsFeedView newsFeedView) {
         this.modelArrayList = modelArrayList;
         this.ctx = ctx;
+        this.newsFeedView = newsFeedView;
     }
 
     @NonNull
@@ -49,7 +52,17 @@ public class AdapterForNewsFeed extends RecyclerView.Adapter<AdapterForNewsFeed.
 
     @Override
     public int getItemCount() {
-        return modelArrayList.size();
+        if(modelArrayList.size() > 0)
+        {
+            newsFeedView.hideLayout();
+            return modelArrayList.size();
+        }
+        else
+        {
+            newsFeedView.showLayout();
+            return modelArrayList.size();
+        }
+
     }
 
     public class MyNewsViewHolder extends RecyclerView.ViewHolder

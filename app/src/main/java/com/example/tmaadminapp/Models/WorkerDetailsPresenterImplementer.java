@@ -3,7 +3,7 @@ package com.example.tmaadminapp.Models;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.tmaadminapp.AppModules.WorkersListAndDetails.ModelForWorkersRating;
+import com.example.tmaadminapp.AppModules.WorkersListAndDetails.Models.ModelForWorkersRating;
 import com.example.tmaadminapp.Presenters.WorkerDetailsPresenter;
 import com.example.tmaadminapp.Views.WorkerDetailsView;
 import com.google.firebase.database.ChildEventListener;
