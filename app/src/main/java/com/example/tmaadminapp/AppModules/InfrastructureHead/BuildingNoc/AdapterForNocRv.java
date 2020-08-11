@@ -180,7 +180,7 @@ public class AdapterForNocRv extends RecyclerView.Adapter<AdapterForNocRv.MyNocV
             alert.show();
         }
 
-        public void showImage(String imageUrl)
+        private void showImage(String imageUrl)
         {
             View myView = LayoutInflater.from(context).inflate(R.layout.complaint_rating_dialog_design, null);
             AlertDialog.Builder alert = new AlertDialog.Builder(context);

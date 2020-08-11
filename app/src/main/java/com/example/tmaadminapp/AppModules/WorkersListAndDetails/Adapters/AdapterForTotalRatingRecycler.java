@@ -9,6 +9,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -36,15 +38,25 @@ public class AdapterForTotalRatingRecycler extends RecyclerView.Adapter<AdapterF
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyRatingViewHolder holder, int position)
+    public void onBindViewHolder(@NonNull final MyRatingViewHolder holder, int position)
     {
-        ModelForWorkersRating workersRating = ratingList.get(position);
+        final ModelForWorkersRating workersRating = ratingList.get(position);
 
         holder.setUserName(workersRating.getUserName());
         holder.setUserRating(workersRating.getUser_rating());
         holder.setDate(workersRating.getDate());
         holder.setUserComment(workersRating.getComment());
-        holder.setCommentImage(workersRating.getImage());
+
+        holder.ratingCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(!workersRating.getImage().equals("") && !workersRating.getImage().isEmpty())
+                holder.showImage(workersRating.getImage());
+            }
+        });
+
+
     }
 
     @Override
@@ -55,13 +67,14 @@ public class AdapterForTotalRatingRecycler extends RecyclerView.Adapter<AdapterF
     public class MyRatingViewHolder extends RecyclerView.ViewHolder
     {
         private TextView userName , userRating , userComment , date;
-        private ImageView commentImage;
+        private CardView ratingCard;
         private View mView;
 
         public MyRatingViewHolder(@NonNull View itemView)
         {
             super(itemView);
             mView = itemView;
+            ratingCard  = mView.findViewById(R.id.userRatingCardView);
         }
 
         private void setUserName(String name)
@@ -88,25 +101,22 @@ public class AdapterForTotalRatingRecycler extends RecyclerView.Adapter<AdapterF
             date.setText(ratingDate);
         }
 
-        private void setCommentImage(String imageUrl)
+
+        public void showImage(String imageUrl)
         {
-            commentImage = mView.findViewById(R.id.commentImage);
+            View myView = LayoutInflater.from(context).inflate(R.layout.complaint_rating_dialog_design, null);
+            AlertDialog.Builder alert = new AlertDialog.Builder(context);
+            alert.setView(myView);
 
-            if(imageUrl.equals(""))
-            {
-                int width = 0;
-                int height = 0;
-                RelativeLayout.LayoutParams parms = new RelativeLayout.LayoutParams(width,height);
-                commentImage.setLayoutParams(parms);
-            }
-            else
-            {
-                Glide.with(context)
-                        .load(imageUrl)
-                        .placeholder(R.drawable.ic_launcher_background)
-                        .into(commentImage);
-            }
+            ImageView imageView = myView.findViewById(R.id.noImageDialog);
 
+            Glide.with(context)
+                    .load(imageUrl)
+                    .placeholder(R.drawable.ic_launcher_background)
+                    .into(imageView);
+
+            alert.show();
         }
+
     }
 }
