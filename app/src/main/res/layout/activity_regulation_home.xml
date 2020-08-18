@@ -1,32 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AppModules.Regulation.RegulationHome">
+    tools:context=".AppModules.Regulation.Activities.RegulationHome">
 
 
-        <LinearLayout
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/main.appbar"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:backgroundTint="@color/sign_in_txt_color"
+        android:theme="@style/Theme.AppCompat.Light"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsingToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:collapsedTitleGravity="center_horizontal"
+            app:expandedTitleGravity="center_horizontal"
+            app:collapsedTitleTextAppearance="@style/Toolbar.TitleText"
+            app:expandedTitleTextAppearance="@style/Toolbar.TitleText"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+            app:title="Regulation Home">
+
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/infra_tool_bar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/sign_in_txt_color"
+                app:theme="@style/ThemeOverlay.AppCompat.Dark" />
+
+            <FrameLayout
+                android:id="@+id/main.framelayout.title"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                app:layout_collapseParallaxMultiplier="0.3">
+            </FrameLayout>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/edit_text_margin"
+        android:paddingBottom="@dimen/edit_text_margin"
+        app:behavior_overlapTop="40dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        >
+
+
+
+    <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:id="@+id/parentLayout"
             >
 
-            <include layout="@layout/app_tool_bar"
-                android:id="@+id/regulationToolbar"/>
-
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:weightSum="2"
-                android:layout_marginTop="@dimen/card_elevation"
                 >
+
+
                 <androidx.cardview.widget.CardView
+                    android:onClick="newFeedCardClick"
                     android:layout_width="0dp"
                     android:layout_height="170dp"
                     android:clickable="true"
@@ -73,6 +124,7 @@
 
 
                 <androidx.cardview.widget.CardView
+                    android:onClick="onWaterBillCardClick"
                     android:layout_width="0dp"
                     android:layout_height="170dp"
                     android:layout_below="@id/administration_tool_bar"
@@ -131,6 +183,7 @@
                 >
 
                 <androidx.cardview.widget.CardView
+                    android:onClick="onTaxesDetailsCardClick"
                     android:layout_width="0dp"
                     android:layout_height="170dp"
                     android:layout_weight="1"
@@ -181,4 +234,6 @@
 
         </LinearLayout>
 
-</ScrollView>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

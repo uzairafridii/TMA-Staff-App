@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import com.example.tmaadminapp.AppModules.Administration.AdminHome.AdminHome;
 import com.example.tmaadminapp.AppModules.InfrastructureHead.InfraHome.InfraHome;
-import com.example.tmaadminapp.AppModules.Regulation.RegulationHome;
+import com.example.tmaadminapp.AppModules.Regulation.Activities.RegulationHome;
 import com.example.tmaadminapp.AppModules.SanitationHead.SanitationHome.SanitationMain;
 import com.example.tmaadminapp.AppModules.UnionCouncilHead.UnionCouncil;
 import com.example.tmaadminapp.Models.LoginPresenterImplementer;

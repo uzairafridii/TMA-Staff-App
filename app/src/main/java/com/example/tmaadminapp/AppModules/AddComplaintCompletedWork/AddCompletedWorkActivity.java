@@ -39,7 +39,7 @@ public class AddCompletedWorkActivity extends AppCompatActivity implements AddCo
         AdapterView.OnItemSelectedListener {
 
     public static final int REQUEST_CODE = 1;
-    private boolean isChecked = true;
+    private boolean isChecked = false;
     private String title, pushKey, uid, department, firstWorker, secondWorker;
     private RecyclerView recyclerView;
     private GridLayoutManager layoutManager;
@@ -186,6 +186,7 @@ public class AddCompletedWorkActivity extends AppCompatActivity implements AddCo
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+        intent.setAction(Intent.ACTION_PICK);
         startActivityForResult(intent, REQUEST_CODE);
     }
 

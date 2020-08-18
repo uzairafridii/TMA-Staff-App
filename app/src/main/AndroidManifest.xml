@@ -14,7 +14,9 @@
         android:roundIcon="@mipmap/ic_launcher_foreground"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AppModules.Regulation.RegulationHome"></activity>
+        <activity android:name=".AppModules.Regulation.Activities.TaxesDetailsActivity"></activity>
+        <activity android:name=".AppModules.Regulation.Activities.WaterBillsAndLocation" />
+        <activity android:name=".AppModules.Regulation.Activities.RegulationHome" />
         <activity
             android:name=".AppModules.UnionCouncilHead.CertificatesDetailsActivity"
             android:parentActivityName=".AppModules.UnionCouncilHead.UnionCouncil"
@@ -57,24 +59,27 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".AppModules.Administration.NewsFeedForAdmin.NewsFeedForAdmin"
-            android:screenOrientation="portrait" android:parentActivityName=".AppModules.Administration.AdminHome.AdminHome"/>
+            android:parentActivityName=".AppModules.Administration.AdminHome.AdminHome"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".AppModules.Administration.AdminStaffManagement.StaffManagementHome.StaffManagementHome"
-            android:screenOrientation="portrait" android:parentActivityName=".AppModules.Administration.AdminHome.AdminHome" />
+            android:parentActivityName=".AppModules.Administration.AdminHome.AdminHome"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".AppModules.Administration.AdminStaffManagement.WorkerListInAdminPage.WorkersListActivityInAdmin"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".AppModules.Administration.AdminStaffManagement.StaffManagementHome.StaffManagementHome" />
+            android:parentActivityName=".AppModules.Administration.AdminStaffManagement.StaffManagementHome.StaffManagementHome"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".AppModules.Administration.AdminStaffManagement.WorkerHeadList.WorkerHeadList"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".AppModules.Administration.AdminStaffManagement.StaffManagementHome.StaffManagementHome" />
+            android:parentActivityName=".AppModules.Administration.AdminStaffManagement.StaffManagementHome.StaffManagementHome"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".AppModules.Administration.AdminHome.AdminHome"
             android:screenOrientation="portrait" />
         <activity
             android:name=".AppModules.InfrastructureHead.BuildingNoc.BuildingNocActivity"
-            android:screenOrientation="portrait" android:parentActivityName=".AppModules.InfrastructureHead.InfraHome.InfraHome" />
+            android:parentActivityName=".AppModules.InfrastructureHead.InfraHome.InfraHome"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".SplashScreen"
             android:screenOrientation="portrait">
@@ -120,10 +125,6 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-
-
-
-
     </application>
 
 </manifest>

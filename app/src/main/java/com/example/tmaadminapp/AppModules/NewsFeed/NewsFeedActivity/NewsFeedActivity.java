@@ -57,8 +57,6 @@ public class NewsFeedActivity extends AppCompatActivity implements NewsFeedView
         mToolbar = findViewById(R.id.newsFeedToolBar);
         setTitle("News Feed");
         setSupportActionBar(mToolbar);
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
 
         noItemFound = findViewById(R.id.noItemFoundLayout);
 
