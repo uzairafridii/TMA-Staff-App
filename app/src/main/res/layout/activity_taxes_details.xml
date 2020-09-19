@@ -14,7 +14,7 @@
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/taxesDetailsLv"
+        android:id="@+id/taxesDetailsListView"
         android:layout_below="@+id/taxesDetailsToolbar"
         />
 
@@ -37,7 +37,9 @@
         android:layout_marginRight="@dimen/edit_text_margin"
         android:backgroundTint="@color/sign_in_txt_color"
         android:src="@drawable/ic_add_black_24dp"
+        app:borderWidth="0dp"
         app:rippleColor="@color/white"
+        android:onClick="addTaxDetailsBtnClick"
         />
 
 

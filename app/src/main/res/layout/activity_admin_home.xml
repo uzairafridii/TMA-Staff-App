@@ -11,7 +11,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/main.appbar"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="130dp"
         android:backgroundTint="@color/sign_in_txt_color"
         android:theme="@style/Theme.AppCompat.Light"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -41,7 +41,7 @@
             <FrameLayout
                 android:id="@+id/main.framelayout.title"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="130dp"
                 app:layout_collapseParallaxMultiplier="0.3">
             </FrameLayout>
 
@@ -53,8 +53,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="@dimen/edit_text_margin"
+        android:layout_marginTop="@dimen/edit_text_margin"
         android:paddingBottom="@dimen/edit_text_margin"
-        app:behavior_overlapTop="40dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         >
 
@@ -71,6 +71,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:weightSum="2"
+                android:paddingBottom="@dimen/recycler_view_margin"
                 >
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
@@ -83,11 +84,8 @@
                     android:id="@+id/newsFeedCardViewOfInfra"
                     android:layout_alignParentLeft="true"
                     android:layout_marginLeft="@dimen/edit_text_margin"
-                    android:layout_marginRight="@dimen/edit_text_margin"
                     android:layout_marginTop="@dimen/card_elevation"
-                    android:layout_marginBottom="@dimen/edit_text_margin"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="@dimen/card_elevation"
+                    android:layout_marginBottom="@dimen/recycler_view_margin"
                     app:strokeColor="@color/sign_in_txt_color"
                     app:strokeWidth="3dp"
                     >
@@ -98,8 +96,8 @@
                         >
 
                         <ImageView
-                            android:layout_width="150dp"
-                            android:layout_height="140dp"
+                            android:layout_width="130dp"
+                            android:layout_height="130dp"
                             android:id="@+id/newsFeedImage"
                             android:src="@drawable/newsfeed"
                             android:layout_centerHorizontal="true"
@@ -131,12 +129,9 @@
                     android:foreground="?android:attr/selectableItemBackground"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="@dimen/edit_text_margin"
-                    android:layout_marginLeft="@dimen/edit_text_margin"
+                    android:layout_marginLeft="@dimen/card_elevation"
                     android:layout_marginTop="@dimen/card_elevation"
-                    android:layout_marginBottom="@dimen/edit_text_margin"
                     android:layout_weight="1"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="@dimen/card_elevation"
                     app:strokeColor="@color/sign_in_txt_color"
                     app:strokeWidth="3dp"
                     >
@@ -147,8 +142,8 @@
                         >
 
                         <ImageView
-                            android:layout_width="150dp"
-                            android:layout_height="140dp"
+                            android:layout_width="130dp"
+                            android:layout_height="130dp"
                             android:layout_centerHorizontal="true"
                             android:id="@+id/complaintImage"
                             android:src="@drawable/ic_group_black_24dp"
@@ -178,7 +173,6 @@
                 android:orientation="horizontal"
                 android:weightSum="2"
                 android:layout_marginBottom="@dimen/card_view"
-                android:layout_marginTop="@dimen/card_elevation"
                 >
 
                 <androidx.cardview.widget.CardView
@@ -192,11 +186,8 @@
                     android:foreground="?android:attr/selectableItemBackground"
                     android:layout_alignParentLeft="true"
                     android:layout_marginLeft="@dimen/edit_text_margin"
-                    android:layout_marginRight="@dimen/edit_text_margin"
                     android:layout_marginTop="@dimen/card_elevation"
                     android:layout_marginBottom="@dimen/edit_text_margin"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="@dimen/card_elevation"
                     app:strokeColor="@color/sign_in_txt_color"
                     app:strokeWidth="3dp"
                     >
@@ -209,8 +200,8 @@
 
                         <ImageView
                             android:id="@+id/workerListImageInfra"
-                            android:layout_width="150dp"
-                            android:layout_height="140dp"
+                            android:layout_width="130dp"
+                            android:layout_height="130dp"
                             android:layout_centerHorizontal="true"
                             android:src="@drawable/newsfeed" />
 
@@ -240,12 +231,10 @@
                     android:onClick="complaintCardClick"
                     android:foreground="?android:attr/selectableItemBackground"
                     android:layout_alignParentRight="true"
-                    android:layout_marginLeft="@dimen/edit_text_margin"
+                    android:layout_marginLeft="@dimen/card_elevation"
                     android:layout_marginRight="@dimen/edit_text_margin"
                     android:layout_marginTop="@dimen/card_elevation"
                     android:layout_marginBottom="@dimen/edit_text_margin"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="@dimen/card_elevation"
                     app:strokeColor="@color/sign_in_txt_color"
                     app:strokeWidth="3dp"
                     >
@@ -258,8 +247,8 @@
 
                         <ImageView
                             android:id="@+id/nocImageInfra"
-                            android:layout_width="150dp"
-                            android:layout_height="140dp"
+                            android:layout_width="130dp"
+                            android:layout_height="130dp"
                             android:layout_centerHorizontal="true"
                             android:src="@drawable/complain" />
 
