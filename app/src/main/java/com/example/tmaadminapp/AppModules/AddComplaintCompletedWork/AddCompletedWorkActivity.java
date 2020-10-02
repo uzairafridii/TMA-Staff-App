@@ -183,10 +183,10 @@ public class AddCompletedWorkActivity extends AppCompatActivity implements AddCo
     @Override
     public void onSelectImage() {
         imageUriList.clear();
-        Intent intent = new Intent();
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("image/*");
         intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
-        intent.setAction(Intent.ACTION_PICK);
+        intent.setData(MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(intent, REQUEST_CODE);
     }
 

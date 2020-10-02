@@ -47,6 +47,7 @@
                 />
 
             <ImageButton
+                android:id="@+id/addTaxLogo"
                 android:clickable="true"
                 android:foreground="?android:attr/selectableItemBackground"
                 android:layout_width="30dp"
@@ -71,6 +72,7 @@
         android:layout_marginLeft="@dimen/edit_text_margin"
         android:layout_marginRight="@dimen/edit_text_margin"
         android:layout_marginTop="@dimen/edit_text_margin"
+        android:inputType="text"
         />
 
     <EditText
@@ -81,6 +83,7 @@
         android:layout_marginLeft="@dimen/edit_text_margin"
         android:layout_marginRight="@dimen/edit_text_margin"
         android:layout_marginTop="@dimen/edit_text_margin"
+        android:inputType="phone"
         />
 
     <Button
@@ -94,6 +97,14 @@
         android:layout_marginRight="@dimen/edit_text_margin"
         android:layout_marginTop="@dimen/edit_text_margin"
         />
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/progressBar"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            />
 
     </LinearLayout>
 
