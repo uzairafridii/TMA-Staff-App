@@ -61,7 +61,7 @@ public class AdapterForAdminNewsFeedRecycler extends RecyclerView.Adapter<Adapte
     @Override
     public void onBindViewHolder(@NonNull final MyAdminNewsViewHodler holder, int position) {
 
-        final NewsFeedModel model = modelArrayList.get(position);
+        NewsFeedModel model = modelArrayList.get(position);
 
         // bind values in views
         holder.setTitleOfNews(model.getTitle());
@@ -69,13 +69,13 @@ public class AdapterForAdminNewsFeedRecycler extends RecyclerView.Adapter<Adapte
         holder.setDateTime(model.getDateAndTime());
         holder.setReadMoreTextView(model.getDescription());
 
+        final String pushKey = model.getPushKey();
         // delete button click
         holder.deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                final String key = model.getPushKey();
-                holder.deleteCurrentValue(key);
+                holder.deleteCurrentValue(pushKey);
 
             }
         });
@@ -85,7 +85,7 @@ public class AdapterForAdminNewsFeedRecycler extends RecyclerView.Adapter<Adapte
             @Override
             public void onClick(View view) {
 
-                holder.updateValueDialog(model.getPushKey());
+                holder.updateValueDialog(pushKey);
 
             }
         });

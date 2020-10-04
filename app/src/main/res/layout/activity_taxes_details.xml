@@ -5,15 +5,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AppModules.Regulation.Activities.TaxesDetailsActivity">
+    tools:context=".AppModules.Regulation.Activities.Tax.TaxesDetailsActivity">
 
 
     <include layout="@layout/app_tool_bar"
         android:id="@+id/taxesDetailsToolbar"/>
 
-    <ListView
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/recycler_view_margin"
         android:id="@+id/taxesDetailsListView"
         android:layout_below="@+id/taxesDetailsToolbar"
         />

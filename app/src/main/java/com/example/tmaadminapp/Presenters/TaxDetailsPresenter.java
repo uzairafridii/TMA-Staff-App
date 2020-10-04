@@ -9,4 +9,6 @@ public interface TaxDetailsPresenter
     void addTaxDetails(DatabaseReference dbRef);
 
     void getDat(Uri imageUri);
+
+    void getAllTaxesDetails();
 }

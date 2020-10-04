@@ -30,8 +30,6 @@ public class AdminNewsFeedPresenterImplementer implements AdminNewsPresenter
     @Override
     public void addNews(DatabaseReference dbAddNewsReference, String title, String description, String author, String date)
     {
-
-        //Todo : UID insertion is left
         if(!title.isEmpty() && !description.isEmpty() && !author.isEmpty() && !date.isEmpty()
                 && dbAddNewsReference != null)
         {

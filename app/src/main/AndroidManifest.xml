@@ -14,8 +14,12 @@
         android:roundIcon="@mipmap/ic_launcher_foreground"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AppModules.Regulation.Activities.TaxesDetailsActivity"></activity>
-        <activity android:name=".AppModules.Regulation.Activities.WaterBillsAndLocation" />
+        <activity android:name=".AppModules.Regulation.Activities.Tax.TaxesDetailsActivity"
+            android:parentActivityName=".AppModules.Regulation.Activities.RegulationHome">
+
+        </activity>
+        <activity android:name=".AppModules.Regulation.Activities.WaterBillsAndLocation"
+            android:parentActivityName=".AppModules.Regulation.Activities.RegulationHome"/>
         <activity android:name=".AppModules.Regulation.Activities.RegulationHome" />
         <activity
             android:name=".AppModules.UnionCouncilHead.CertificatesDetailsActivity"
