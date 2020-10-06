@@ -18,7 +18,10 @@ import com.example.tmaadminapp.AppModules.Administration.AdminStaffManagement.Wo
 import com.example.tmaadminapp.Presenters.WorkersHeadPresenter;
 import com.example.tmaadminapp.R;
 import com.example.tmaadminapp.Views.WorkerHeadView;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
@@ -124,46 +127,65 @@ public class WorkersHeadPresenterImplementer implements WorkersHeadPresenter , A
 
                             // sign up the workers head with email
                             mAuth.createUserWithEmailAndPassword(email.getText().toString() , password.getText().toString())
-                                    .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                                @Override
-                                public void onSuccess(AuthResult authResult) {
-
-                                    //to get device token
-                                    FirebaseInstanceId.getInstance().getInstanceId()
-                                            .addOnSuccessListener(new OnSuccessListener<InstanceIdResult>() {
+                                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                         @Override
-                                        public void onSuccess(InstanceIdResult instanceIdResult) {
+                                        public void onComplete(@NonNull Task<AuthResult> task) {
+
+                                            if(task.isSuccessful())
+                                            {
+
+                                            //to get device token
+                                            FirebaseInstanceId.getInstance().getInstanceId()
+                                                    .addOnSuccessListener(new OnSuccessListener<InstanceIdResult>() {
+                                                        @Override
+                                                        public void onSuccess(InstanceIdResult instanceIdResult) {
 
 
-                                            // get token
-                                            String deviceToken = instanceIdResult.getToken();
-                                            Log.d("deviceTokenByAdmin", "onSuccess: "+deviceToken);
+                                                            // get token
+                                                            String deviceToken = instanceIdResult.getToken();
+                                                            Log.d("deviceTokenByAdmin", "onSuccess: " + deviceToken);
 
-                                            //TODO : token id is left to store in database
-                                            // set data in map
-                                            final Map<String, String> workerHeadData = new HashMap<>();
-                                            workerHeadData.put("name_worker_head", name.getText().toString());
-                                            workerHeadData.put("phone", phone.getText().toString());
-                                            workerHeadData.put("department", department);
-                                            workerHeadData.put("password", password.getText().toString());
-                                            workerHeadData.put("email", email.getText().toString());
-                                            workerHeadData.put("token", "null for this time");
-                                            workerHeadData.put("uid", mAuth.getCurrentUser().getUid());
+                                                            // set data in map
+                                                            final Map<String, String> workerHeadData = new HashMap<>();
+                                                            workerHeadData.put("name_worker_head", name.getText().toString());
+                                                            workerHeadData.put("phone", phone.getText().toString());
+                                                            workerHeadData.put("department", department);
+                                                            workerHeadData.put("password", password.getText().toString());
+                                                            workerHeadData.put("email", email.getText().toString());
+                                                            workerHeadData.put("token", "null for this time");
+                                                            workerHeadData.put("uid", mAuth.getCurrentUser().getUid());
 
-                                            // store data in firebase database
-                                            dbRef.child("WorkersHead").child(mAuth.getCurrentUser().getUid())
-                                                    .setValue(workerHeadData).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                @Override
-                                                public void onSuccess(Void aVoid) {
+                                                            // store data in firebase database
+                                                            dbRef.child("WorkersHead").child(mAuth.getCurrentUser().getUid())
+                                                                    .setValue(workerHeadData)
+                                                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                                        @Override
+                                                                        public void onComplete(@NonNull Task<Void> task) {
 
-                                                    workerHeadView.onHideProgressBar();
-                                                    workerHeadView.showMessage("SuccessFully register");
+                                                                            if (task.isSuccessful()) {
+                                                                                workerHeadView.onHideProgressBar();
+                                                                                workerHeadView.showMessage("SuccessFully register");
+                                                                            } else {
+                                                                                workerHeadView.onHideProgressBar();
+                                                                                workerHeadView.showMessage(task.getException().getMessage().toString());
+                                                                            }
 
-                                                }
-                                            });
+                                                                        }
+                                                                    });
+                                                        }
+                                                    });
+
+
+                                        }
+
+                                            else
+                                            {
+                                                workerHeadView.onHideProgressBar();
+                                                workerHeadView.showMessage(task.getException().getMessage());
+                                            }
+
                                         }
                                     });
-                                }});
 
 
                         } else {

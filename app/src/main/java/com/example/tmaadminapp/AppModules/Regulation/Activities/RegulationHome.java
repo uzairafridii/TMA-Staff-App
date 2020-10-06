@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.tmaadminapp.AppModules.NewsFeed.NewsFeedActivity.NewsFeedActivity;
+import com.example.tmaadminapp.AppModules.Regulation.Activities.Bills.WaterBillsAndLocation;
 import com.example.tmaadminapp.AppModules.Regulation.Activities.Tax.TaxesDetailsActivity;
 import com.example.tmaadminapp.R;
 

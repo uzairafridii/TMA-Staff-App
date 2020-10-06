@@ -18,7 +18,7 @@
             android:parentActivityName=".AppModules.Regulation.Activities.RegulationHome">
 
         </activity>
-        <activity android:name=".AppModules.Regulation.Activities.WaterBillsAndLocation"
+        <activity android:name=".AppModules.Regulation.Activities.Bills.WaterBillsAndLocation"
             android:parentActivityName=".AppModules.Regulation.Activities.RegulationHome"/>
         <activity android:name=".AppModules.Regulation.Activities.RegulationHome" />
         <activity

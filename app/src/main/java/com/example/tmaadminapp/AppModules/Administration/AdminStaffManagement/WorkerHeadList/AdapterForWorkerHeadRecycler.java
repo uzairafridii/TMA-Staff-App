@@ -7,9 +7,12 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +34,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -41,6 +45,7 @@ public class AdapterForWorkerHeadRecycler extends RecyclerView.Adapter<AdapterFo
     private Context context;
     private DatabaseReference databaseReference;
     private WorkerHeadView workerHeadView;
+    private String userDepartment;
 
     public AdapterForWorkerHeadRecycler(List<ModelForWorkerHead> arrayList, Context context,
                                         DatabaseReference databaseReference, WorkerHeadView workerHeadView)
@@ -227,16 +232,41 @@ public class AdapterForWorkerHeadRecycler extends RecyclerView.Adapter<AdapterFo
             button.setText("Update");
             button.setTextSize(14);
 
+            final String[] departmentList = {"Sanitation", "Regulation", "Infrastructure",
+                    "Union Council" , "Finance", "Head Clerk"};
+
+
             // initialize edittext fields
-            final EditText name, phone , email , password , department;
+            final EditText name, phone , email , password;
+            Spinner departmentSpinner;
             name = myView.findViewById(R.id.worker_head_name);
             phone = myView.findViewById(R.id.worker_head_phone_no);
-            department = myView.findViewById(R.id.worker_head_dept);
+            departmentSpinner = myView.findViewById(R.id.worker_head_dept);
+
+            ArrayAdapter arrayAdapter = new ArrayAdapter(context, android.R.layout.simple_list_item_1, departmentList);
+            departmentSpinner.setAdapter(arrayAdapter);
+
+            // click on spinner item
+            departmentSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                    userDepartment = adapterView.getItemAtPosition(i).toString();
+
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
+
+                }
+            });
+
+
 
             email = myView.findViewById(R.id.worker_head_email);
-            email.setVisibility(View.INVISIBLE);
+            email.setVisibility(View.GONE);
             password = myView.findViewById(R.id.worker_head_password);
-            password.setVisibility(View.INVISIBLE);
+            password.setVisibility(View.GONE);
 
             // button upate click
 
@@ -245,7 +275,7 @@ public class AdapterForWorkerHeadRecycler extends RecyclerView.Adapter<AdapterFo
                 public void onClick(View view) {
 
                     if (!name.getText().toString().isEmpty() &&
-                            !phone.getText().toString().isEmpty() && !department.getText().toString().isEmpty())
+                            !phone.getText().toString().isEmpty() && !userDepartment.isEmpty())
                     {
                         workerHeadView.onShowProgressBar();
 
@@ -253,7 +283,7 @@ public class AdapterForWorkerHeadRecycler extends RecyclerView.Adapter<AdapterFo
                         HashMap<String, Object> updateData = new HashMap<>();
                         updateData.put("name_worker_head", name.getText().toString());
                         updateData.put("phone", phone.getText().toString());
-                        updateData.put("department", department.getText().toString());
+                        updateData.put("department", userDepartment);
 
                         //store update data in firebase
                         databaseReference.child("WorkersHead").child(uid).updateChildren(updateData)

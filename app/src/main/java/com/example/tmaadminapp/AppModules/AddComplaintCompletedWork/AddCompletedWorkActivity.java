@@ -39,7 +39,7 @@ public class AddCompletedWorkActivity extends AppCompatActivity implements AddCo
         AdapterView.OnItemSelectedListener {
 
     public static final int REQUEST_CODE = 1;
-    private boolean isChecked = false;
+    private boolean isChecked = true;
     private String title, pushKey, uid, department, firstWorker, secondWorker;
     private RecyclerView recyclerView;
     private GridLayoutManager layoutManager;
@@ -126,6 +126,9 @@ public class AddCompletedWorkActivity extends AppCompatActivity implements AddCo
 
     // click on submit work button
     public void submitWork(View view) {
+
+        Log.d("first", "submitWork: "+firstWorker);
+        Log.d("second", "submitWork: "+secondWorker);
         workPresenter.submitData(dbRef, storageRef, userAuth, pushKey,
                 title, firstWorker, secondWorker, imageUriList, uid);
     }
@@ -190,12 +193,14 @@ public class AddCompletedWorkActivity extends AppCompatActivity implements AddCo
         startActivityForResult(intent, REQUEST_CODE);
     }
 
+    // recycler selected image list
     @Override
     public void onSetSelectedImageRecyclerAdapter() {
         adapter = new AdapterForSelectedImageRv(imageUriList, this);
         recyclerView.setAdapter(adapter);
     }
 
+    // adapter of worker spinner
     @Override
     public void onSetWorkerListSpinnerAdapter(List<String> workerList) {
 
@@ -224,7 +229,8 @@ public class AddCompletedWorkActivity extends AppCompatActivity implements AddCo
                 } else if (adapterView.getId() == R.id.workerNameSecondSpinner) {
                     secondWorker = adapterView.getItemAtPosition(i).toString();
                 }
-            } else {
+            }
+            else {
 
                 if (adapterView.getId() == R.id.workerListSpinner) {
                     firstWorker = adapterView.getItemAtPosition(i).toString();
@@ -232,7 +238,6 @@ public class AddCompletedWorkActivity extends AppCompatActivity implements AddCo
                 }
 
             }
-
     }
 
     @Override

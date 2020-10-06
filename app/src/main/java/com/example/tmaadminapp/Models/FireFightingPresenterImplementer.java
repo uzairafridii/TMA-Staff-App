@@ -2,6 +2,7 @@ package com.example.tmaadminapp.Models;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -43,47 +44,37 @@ public class FireFightingPresenterImplementer implements FireFightingPresenter
     @Override
     public void getFireRequestList(DatabaseReference dbRef)
     {
-        if(dbRef != null)
-        {
+        if(dbRef != null) {
             // reference to fire brigade request node
             dbRef.child("Fire Fighting").child("Fire Brigade Request")
                     .addChildEventListener(new ChildEventListener() {
-                @Override
-                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s)
-                {
-
-                    final ModelForFireFighting fireFighting = dataSnapshot.getValue(ModelForFireFighting.class);
-
-                    // get the user name who request for fire fighting
-                    DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference()
-                            .child("Users").child(fireFighting.getUid());
-                    dbRef.addValueEventListener(new ValueEventListener() {
                         @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot)
-                        {
-                           String userName = dataSnapshot.child("user_name").getValue().toString();
-                           fireFighting.setUserName(userName);
+                        public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
-                           // add to list and send to adapter
-                           fireFightingList.add(fireFighting);
-                           fireFightingView.setAdapter(fireFightingList);
+                            final ModelForFireFighting fireFighting = dataSnapshot.getValue(ModelForFireFighting.class);
+                            // add to list and send to adapter
+                            fireFightingList.add(fireFighting);
+                            fireFightingView.setAdapter(fireFightingList);
 
                         }
 
                         @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {}
+                        public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                        }
+
+                        @Override
+                        public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+                        }
+
+                        @Override
+                        public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                        }
                     });
 
-                }
-                @Override
-                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {}
-                @Override
-                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {}
-                @Override
-                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {}
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {}
-            });
         }
     }
 

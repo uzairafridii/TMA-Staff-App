@@ -5,13 +5,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AppModules.Regulation.Activities.WaterBillsAndLocation">
+    tools:context=".AppModules.Regulation.Activities.Bills.WaterBillsAndLocation">
 
 
     <include layout="@layout/app_tool_bar"
         android:id="@+id/billToolbar"
         />
 
+
+    <include layout="@layout/no_item_found_layout"
+        android:id="@+id/noBillFound"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_below="@+id/billToolbar"
@@ -20,6 +23,7 @@
         android:id="@+id/rvBills"
         android:layout_margin="@dimen/edit_text_margin"
         />
+
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
