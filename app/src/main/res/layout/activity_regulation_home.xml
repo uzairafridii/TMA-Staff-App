@@ -133,7 +133,7 @@
                             android:layout_width="150dp"
                             android:layout_height="140dp"
                             android:layout_centerHorizontal="true"
-                            android:src="@drawable/newsfeed" />
+                            android:src="@drawable/bill" />
 
                         <TextView
                             android:id="@+id/waterBillsText"
@@ -188,7 +188,7 @@
                             android:layout_width="150dp"
                             android:layout_height="140dp"
                             android:layout_centerHorizontal="true"
-                            android:src="@drawable/newsfeed" />
+                            android:src="@drawable/ic_baseline_menu_book_24" />
 
                         <TextView
                             android:id="@+id/taxesDetails"
@@ -231,7 +231,7 @@
                             android:layout_width="150dp"
                             android:layout_height="140dp"
                             android:layout_centerHorizontal="true"
-                            android:src="@drawable/newsfeed" />
+                            android:src="@drawable/ic_baseline_assignment_24" />
 
                         <TextView
                             android:id="@+id/revenueTxt"

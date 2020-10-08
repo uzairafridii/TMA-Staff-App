@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/recycler_view_margin"
+        android:layout_marginBottom="1.5dp"
+        android:layout_marginLeft="@dimen/recycler_view_margin"
+        android:layout_marginRight="@dimen/recycler_view_margin"
+        app:cardElevation="4dp"
+
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/card_elevation"
+            >
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ownerNameInRV"
+                android:text="Owner Name"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginLeft="@dimen/edit_text_margin"
+                android:layout_marginTop="@dimen/recycler_view_margin"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/address"
+                android:text="Location"
+                android:layout_below="@+id/ownerNameInRV"
+                android:layout_marginLeft="@dimen/edit_text_margin"
+                android:gravity="center"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/billLastUpdate"
+                android:text="Bill Upload Date:  "
+                android:layout_below="@+id/address"
+                android:layout_marginLeft="@dimen/edit_text_margin"
+                android:gravity="center"
+                />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/moreIconButtonInBill"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_more_vert_black_24dp"
+                android:background="@null"
+                android:layout_marginTop="@dimen/recycler_view_margin"
+                android:layout_marginRight="@dimen/recycler_view_margin"
+
+                />
+
+
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
+</LinearLayout>

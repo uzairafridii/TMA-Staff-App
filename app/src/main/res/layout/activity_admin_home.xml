@@ -80,8 +80,7 @@
                     android:layout_weight="1"
                     android:foreground="?android:attr/selectableItemBackground"
                     android:onClick="newsFeedCardClick"
-                    android:layout_below="@id/administration_tool_bar"
-                    android:id="@+id/newsFeedCardViewOfInfra"
+                    android:id="@+id/newsFeedCardViewAdmin"
                     android:layout_alignParentLeft="true"
                     android:layout_marginLeft="@dimen/edit_text_margin"
                     android:layout_marginTop="@dimen/card_elevation"
@@ -122,8 +121,7 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
                     android:layout_height="170dp"
-                    android:layout_below="@id/administration_tool_bar"
-                    android:id="@+id/complaintCardViewInInfra"
+                    android:id="@+id/staffManagementCardViewAdmin"
                     android:clickable="true"
                     android:onClick="staffManagementCardClick"
                     android:foreground="?android:attr/selectableItemBackground"
@@ -179,8 +177,7 @@
                     android:layout_width="0dp"
                     android:layout_height="170dp"
                     android:layout_weight="1"
-                    android:layout_below="@id/newsFeedCardViewOfInfra"
-                    android:id="@+id/workerListCardViewOfInfra"
+                    android:id="@+id/financeAdmin"
                     android:clickable="true"
                     android:onClick="financeCardClick"
                     android:foreground="?android:attr/selectableItemBackground"
@@ -203,7 +200,7 @@
                             android:layout_width="130dp"
                             android:layout_height="130dp"
                             android:layout_centerHorizontal="true"
-                            android:src="@drawable/newsfeed" />
+                            android:src="@drawable/finance" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -225,8 +222,7 @@
                     android:layout_width="0dp"
                     android:layout_height="170dp"
                     android:layout_weight="1"
-                    android:layout_below="@id/complaintCardViewInInfra"
-                    android:id="@+id/nocCardViewOfInfra"
+                    android:id="@+id/complaintsAdmin"
                     android:clickable="true"
                     android:onClick="complaintCardClick"
                     android:foreground="?android:attr/selectableItemBackground"
@@ -242,8 +238,7 @@
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:outlineSpotShadowColor="#000"
-                        >
+                        android:outlineSpotShadowColor="#000">
 
                         <ImageView
                             android:id="@+id/nocImageInfra"
@@ -253,16 +248,15 @@
                             android:src="@drawable/complain" />
 
                         <TextView
+                            android:id="@+id/nocTextInfra"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/nocImageInfra"
-                            android:id="@+id/nocTextInfra"
-                            android:text="@string/complaints"
-                            android:textSize="16sp"
                             android:layout_centerHorizontal="true"
                             android:layout_marginBottom="4dp"
-                            android:textStyle="bold"
-                            />
+                            android:text="@string/complaints"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
 
                     </RelativeLayout>

@@ -195,7 +195,7 @@
                             android:layout_width="90dp"
                             android:layout_height="110dp"
                             android:id="@+id/workerListImage"
-                            android:src="@drawable/ic_group_black_24dp"
+                            android:src="@drawable/worker"
                             android:layout_centerHorizontal="true"
                             />
                         <TextView
@@ -239,7 +239,7 @@
                             android:layout_width="90dp"
                             android:layout_height="110dp"
                             android:id="@+id/complaintFeedBackImage"
-                            android:src="@drawable/ic_feedback_black_24dp"
+                            android:src="@drawable/feedback"
                             android:layout_centerHorizontal="true"
                             />
                         <TextView

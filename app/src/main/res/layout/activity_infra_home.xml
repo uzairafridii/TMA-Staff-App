@@ -312,11 +312,11 @@
 
                         <ImageView
                             android:id="@+id/feedbackImageInfra"
-                            android:layout_width="80dp"
+                            android:layout_width="100dp"
                             android:layout_height="110dp"
                             android:paddingTop="4dp"
                             android:layout_centerHorizontal="true"
-                            android:src="@drawable/ic_feedback_black_24dp" />
+                            android:src="@drawable/feedback" />
 
                         <TextView
                             android:layout_width="wrap_content"
